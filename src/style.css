@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sedan+SC&display=swap');
+
+body {
+  background-color: #024059;
+  color: #024059;
+}
+
+.dblue {
+  background-color: #024059;
+  color: #024059;
+}
+.lblue {
+  color: #026873;
+}
+.teal {
+  color: #04BF8A;
+}
+.dgreen {
+  color: #025940;
+}
+.lgreen {
+  color: #03A64A;
+}
+.white {
+  color: white;
+}
+.header-text {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+}
+#name {
+  font-family: "Montserrat", sans-serif;
+  font-size: 48px;
+  font-weight: bold;
+}
+.small-text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 30px;
+}
+#text-container {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+
+#orbit-container {
+  position: absolute;
+  top: 42%;
+  left: 43.5%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+.orbit {
+  position: absolute;
+  border-radius: 500%;
+  animation: orbitAnimation 15s linear infinite;
+  z-index: -1;
+}
+
+.orbit2 {
+  animation-delay: -2.5s;
+}
+.orbit3 {
+  animation-delay: -5s;
+}
+.orbit4 {
+  animation-delay: -7.5s;
+}
+.orbit5 {
+  animation-delay: -10s;
+}
+.orbit6 {
+  animation-delay: -12.5s;
+}
+
+@keyframes orbitAnimation {
+  from {
+    transform: rotate(0deg) translateX(350px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(350px) rotate(-360deg);
+  }
+}
