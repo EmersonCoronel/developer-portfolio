@@ -5,38 +5,44 @@ body {
   background-color: #024059;
   color: #024059;
 }
-
 .dblue {
   background-color: #024059;
   color: #024059;
 }
 .lblue {
-  color: #026873;
-}
-.teal {
-  color: #04BF8A;
-}
-.dgreen {
-  color: #025940;
-}
-.lgreen {
-  color: #03A64A;
+  color: #87CEEB;
 }
 .white {
   color: white;
 }
 .header-text {
-  color: white;
+  color: #87CEEB;
+  opacity: 80%;
   font-family: "Montserrat", sans-serif;
 }
 #name {
   font-family: "Montserrat", sans-serif;
-  font-size: 48px;
-  font-weight: bold;
+  font-size: 600%;
+  letter-spacing: 15px;
+  display: block;
+  width: 100%;
+  text-align: justify;
+  white-space: nowrap;
+  color: #87CEEB;
+  opacity: 80%;
+}
+
+#name::after {
+  content: '';
+  display: inline-block;
+  width: 100%;
 }
 .small-text {
   font-family: "Montserrat", sans-serif;
   font-size: 30px;
+  letter-spacing: 12px;
+  color: #87CEEB;
+  opacity: 80%;
 }
 #text-container {
   position: absolute;
@@ -46,42 +52,23 @@ body {
   z-index: 1;
 }
 
-
-#orbit-container {
-  position: absolute;
-  top: 42%;
-  left: 43.5%;
-  transform: translate(-50%, -50%);
+#particles {
   z-index: -1;
-}
-.orbit {
-  position: absolute;
-  border-radius: 500%;
-  animation: orbitAnimation 15s linear infinite;
-  z-index: -1;
+  height: 100%;
+  width: 100%;
+  position:absolute;
 }
 
-.orbit2 {
-  animation-delay: -2.5s;
-}
-.orbit3 {
-  animation-delay: -5s;
-}
-.orbit4 {
-  animation-delay: -7.5s;
-}
-.orbit5 {
-  animation-delay: -10s;
-}
-.orbit6 {
-  animation-delay: -12.5s;
+#skydiving {
+  opacity: 60%;
+  width:100%;
+  padding-bottom: 5%;
 }
 
-@keyframes orbitAnimation {
-  from {
-    transform: rotate(0deg) translateX(350px) rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg) translateX(350px) rotate(-360deg);
-  }
+.page-header-text {
+  color: #87CEEB;
+  font-size: 400%;
+  opacity: 75%;
+  letter-spacing: 15px;
+  font-family: "Montserrat", sans-serif;
 }

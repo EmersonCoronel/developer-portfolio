@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
-import emersonImage from '../images/emerson.jpeg';
+import skydiving from '../images/skydiving.jpg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style.css';
 
@@ -10,12 +10,9 @@ const About = () => {
       <Header />
       <div className="container text-center">
         <div className="row align-items-start">
-          <div className="col white">
-            <img src={emersonImage} alt="Emerson" height="800" />
-          </div>
-          <div className="col white">
-            WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS 
-          </div>
+          <h2 class="page-header-text">About Me</h2>
+          <img src={skydiving} alt="Emerson Skydiving" id="skydiving"/>
+          WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS WORDS 
         </div>
       </div>
     </>

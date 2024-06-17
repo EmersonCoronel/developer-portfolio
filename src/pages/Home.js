@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Header from '../components/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style.css';
 
 const Home = () => {
+  const videoRef = useRef(null); // Step 2: Create a ref
+
+  useEffect(() => { // Step 3: Adjust playbackRate after component mounts
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.5; // Half the normal speed
+    }
+  }, []);
+
   return (
     <>
       <Header />
-      <div id="text-container" className="text-center">
-        <p className="small-text white">Hi, I'm</p>
-        <p id="name" className="white">Emerson Coronel,</p>
-        <p className="small-text white">Full Stack Developer</p>
+      <div className="container-fluid">
+        <div id="text-container" className="row">
+          <div className="col text-center">
+            <p id="name" className="white">EMERSON CORONEL</p>
+            <p className="small-text white">FULL STACK DEVELOPER</p>
+          </div>
+        </div>
       </div>
     </>
   );
