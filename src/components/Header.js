@@ -8,9 +8,9 @@ const Header = () => {
     <div className="container-flex">
       <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="/" className="nav-link px-2 header-text">Home</a></li>
-          <li><a href="/about" className="nav-link px-2 header-text">About</a></li>
-          <li><a href="mailto:e.coronel@icloud.com" className="nav-link px-2 header-text">Contact</a></li>
+          <li><a href="/" className="nav-link px-2 header-links-text">Home</a></li>
+          <li><a href="/about" className="nav-link px-2 header-links-text">About</a></li>
+          <li><a href="mailto:dev@emersoncoronel.com" className="nav-link px-2 header-links-text">Contact</a></li>
         </ul>
         <div className="text-end">
           <ul className="nav nav-pills">

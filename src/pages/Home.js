@@ -16,11 +16,9 @@ const Home = () => {
     <>
       <Header />
       <div className="container-fluid">
-        <div id="text-container" className="row">
-          <div className="col text-center">
-            <p id="name" className="white">EMERSON CORONEL</p>
-            <p className="small-text white">FULL STACK DEVELOPER</p>
-          </div>
+        <div id="home-text-container" className="text-center">
+          <p id="home-name">EMERSON CORONEL</p>
+          <p id="home-subtext">SOFTWARE DEVELOPER</p>
         </div>
       </div>
     </>
