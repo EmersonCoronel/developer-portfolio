@@ -5,23 +5,13 @@ body {
   background-color: #024059;
   color: #024059;
 }
-.dblue {
-  background-color: #024059;
-  color: #024059;
-}
-.lblue {
-  color: #87CEEB;
-}
-.white {
-  color: white;
-}
-.header-text {
+.header-links-text {
   color: #87CEEB;
   opacity: 80%;
   font-family: "Montserrat", sans-serif;
 }
 
-#name {
+#home-name {
   font-family: "Montserrat", sans-serif;
   letter-spacing: 15px;
   display: block;
@@ -30,36 +20,25 @@ body {
   white-space: nowrap;
   color: #87CEEB;
   opacity: 80%;
-  font-size: 600%; /* Default to large font size */
+  font-size: 6vw;
 }
 
-/* Adjust font size for screens narrower than 768px */
-@media (max-width: 768px) {
-  #name {
-    font-size: 150%; /* Smaller font size for mobile devices */
+@media (max-width: 600px) {
+  #home-name {
+    white-space: normal;
   }
 }
 
-/* You can add more breakpoints for finer control */
-@media (max-width: 480px) {
-  #name {
-    font-size: 100%; /* Even smaller font size for very small devices */
-  }
-}
 
-#name::after {
-  content: '';
-  display: inline-block;
-  width: 100%;
-}
-.small-text {
+#home-subtext {
   font-family: "Montserrat", sans-serif;
-  font-size: 30px;
+  font-size: 2.5vw;
   letter-spacing: 12px;
   color: #87CEEB;
   opacity: 80%;
 }
-#text-container {
+
+#home-text-container {
   position: absolute;
   top: 52%;
   left: 50%;
@@ -81,16 +60,17 @@ body {
   position:absolute;
 }
 
-#skydiving {
+#skydivingimg {
   opacity: 60%;
   width:100%;
-  padding-bottom: 5%;
+  padding: 2%;
 }
 
-.page-header-text {
-  color: #87CEEB;
-  font-size: 400%;
-  opacity: 75%;
-  letter-spacing: 15px;
+.about-text {
+  text-align: justify;
+  opacity: 80%;
+  width:100%;
   font-family: "Montserrat", sans-serif;
+  color: #87CEEB;
+  font-size: large;
 }
