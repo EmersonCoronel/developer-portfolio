@@ -82,8 +82,8 @@ function checkNeighbors(board: BoardTile[][]) {
       const neighbor = board[Math.floor(neighborNum / 10)][neighborNum % 10];
       // Return false if a rule is violated
       if (neighbor.number === tile.number ||
-       ((tile.number == 6 || tile.number == 8) && (neighbor.number == 6 || neighbor.number == 8)) ||
-       ((tile.number == 2 || (tile.number == 12)) && (neighbor.number == 2 || neighbor.number == 12))) {
+       ((tile.number === 6 || tile.number === 8) && (neighbor.number === 6 || neighbor.number === 8)) ||
+       ((tile.number === 2 || (tile.number === 12)) && (neighbor.number === 2 || neighbor.number === 12))) {
         return false;
       }
     }
