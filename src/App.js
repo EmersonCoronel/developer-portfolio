@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Home from './pages/Home';
 import About from './pages/About';
-import TypeTest from './pages/TypeTest';
 import Catan from './pages/Catan';
 import Particles from "./components/Particles";
 
@@ -19,7 +18,6 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/type-test" element={<TypeTest />} />
             <Route path="/catan" element={<Catan />} />
           </Routes>
         </Router>
