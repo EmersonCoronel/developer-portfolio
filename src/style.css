@@ -38,12 +38,13 @@ body {
   opacity: 80%;
 }
 
-#home-text-container {
+.centered-container {
   position: absolute;
   top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
+  width: 80%;
 }
 
 #text-container .col {
@@ -57,7 +58,7 @@ body {
   z-index: -1;
   height: 100%;
   width: 100%;
-  position:absolute;
+  position: absolute;
 }
 
 #skydivingimg {
@@ -73,4 +74,15 @@ body {
   font-family: "Montserrat", sans-serif;
   color: #87CEEB;
   font-size: large;
+}
+
+#type-text-block {
+  text-align: justify;
+  white-space: 'pre-wrap';
+  font-size: xx-large;
+  width: 100%;
+}
+
+.test-text {
+  color: gray;
 }
