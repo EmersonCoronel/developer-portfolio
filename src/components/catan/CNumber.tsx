@@ -2,9 +2,10 @@ import React from 'react';
 
 interface NumberProps {
   value: number;
+  expansion: boolean;
 }
 
-const CNumber: React.FC<NumberProps> = ({ value }) => {
+const CNumber: React.FC<NumberProps> = ({ value, expansion }) => {
   const getImageForNumber = (num: number): string => {
     const imageMap: { [key: number]: string } = {
       2: '/images/catan/numbers/2.png',
@@ -26,7 +27,7 @@ const CNumber: React.FC<NumberProps> = ({ value }) => {
   }
 
   return (
-    <div>
+    <div className={expansion ? 'catan-number-expansion' : 'catan-number'}>
       <img src={getImageForNumber(value)} alt={`Number ${value}`} style={{ width: '100%', height: '100%' }} />
     </div>
   );

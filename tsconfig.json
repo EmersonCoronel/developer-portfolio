@@ -6,7 +6,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "downlevelIteration": true // Add this line
+    "downlevelIteration": true
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
