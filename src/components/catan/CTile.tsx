@@ -27,7 +27,7 @@ const CTile: React.FC<TileProps> = ({ resource, number, expansion }) => {
         alt={resource}
         style={{ width: '100%', height: '100%' }}
       />
-      <CNumber value={number} expansion={expansion} />
+      <CNumber value={number} />
     </div>
   );
 };
