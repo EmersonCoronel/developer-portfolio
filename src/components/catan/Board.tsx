@@ -15,9 +15,9 @@ const Board: React.FC<BoardProps> = ({ expansion }) => {
   }, [expansion]);
 
   return (
-    <div >
+    <div className="catan-board">
       {board.map((row, rowIndex) => (
-        <div key={rowIndex} className="board-row">
+        <div key={rowIndex} className={`board-row row-${rowIndex}`}>
           {row.map((tile, tileIndex) => (
             <CTile
               key={`${rowIndex}-${tileIndex}`}
