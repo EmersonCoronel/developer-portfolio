@@ -1,14 +1,13 @@
-// src/components/Tile.tsx
-
 import React from 'react';
 import CNumber from './CNumber';
 
 interface TileProps {
   resource: string;
-  number: number | undefined;
+  number: number;
+  expansion: boolean;
 }
 
-const CTile: React.FC<TileProps> = ({ resource, number }) => {
+const CTile: React.FC<TileProps> = ({ resource, number, expansion }) => {
   const getResourceImage = (resource: string): string => {
     const resourceMap: { [key: string]: string } = {
       Wood: './images/catan/tiles/forest.svg',
@@ -22,17 +21,13 @@ const CTile: React.FC<TileProps> = ({ resource, number }) => {
   };
 
   return (
-    <div style={{ position: 'relative', width: '150px', height: '150px' }}>
+    <div className={expansion ? 'catan-tile-expansion' : 'catan-tile'}>
       <img
         src={getResourceImage(resource)}
         alt={resource}
         style={{ width: '100%', height: '100%' }}
       />
-      {number !== undefined && (
-        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '50px', height: '50px' }}>
-          <CNumber value={number} />
-        </div>
-      )}
+      <CNumber value={number} expansion={expansion} />
     </div>
   );
 };
