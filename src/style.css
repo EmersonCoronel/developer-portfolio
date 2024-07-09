@@ -92,10 +92,13 @@ body {
 
 /* About Page */
 
-#skydivingimg {
-  opacity: 60%;
-  width: 100%;
+#professionalimg {
+  opacity: 90%;
+  width: 50%;
   padding: 2%;
+  float: right;
+  margin-left: 20px;
+  margin-bottom: 20px;
 }
 
 .about-text {
@@ -105,6 +108,15 @@ body {
   font-family: "Montserrat", sans-serif;
   color: #87CEEB;
   font-size: large;
+}
+
+.center-align {
+  justify-content: center;
+  align-items: center;
+}
+
+.top-buffer {
+  margin-top: 3%;
 }
 
 /* Type-Test */

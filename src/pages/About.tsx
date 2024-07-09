@@ -8,8 +8,8 @@ const About: React.FC = () => {
     <>
       <Header />
       <div className="container">
-        <div className="row align-items-start">
-          <img src="/images/skydiving.jpg" alt="Emerson Skydiving" id="skydivingimg" />
+        <img src="/images/emerson.jpeg" alt="Emerson" id="professionalimg" />
+        <div className="content top-buffer">
           <p className="about-text">Welcome to my website! I'm Emerson Coronel, a passionate and driven full stack developer. I graduated from Rice University in 2024 with a degree in Computer Science after three years of study. Since graduating, my technological pursuits have been characterized by a drive to learn, explore, and create.</p>
           <p className="about-text">I built this website myself as a platform to display my expertise in a variety of programming skills, with a particular focus on Typescript/Node, React, and Python. My experience extends across both the front and back end, enabling me to create dynamic and responsive web applications.</p>
           <p className="about-text">In addition to my development skills, I have professional experience as a video editor and photographer, which has given me a keen eye for detail and a deep understanding of various photo and video technologies. This unique combination of skills allows me to approach projects with a creative and technical mindset.</p>
