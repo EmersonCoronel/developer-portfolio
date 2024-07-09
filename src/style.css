@@ -136,7 +136,6 @@ body {
   width: 100%;
 }
 
-
 /* Catan Generator */
 
 .catan-board {
@@ -149,7 +148,7 @@ body {
   max-width: 900px;
   max-height: 900px;
   margin: auto;
-  margin-top: 4vh;
+  margin-top: 2vh;
 }
 
 .catan-board-row {
@@ -194,9 +193,6 @@ body {
 }
 
 @media (max-width: 750px) {
-  .catan-board {
-    margin-top: 10vh;
-  }
   .catan-board-row {
     margin-left: -12%;
     margin-right: -12%;
