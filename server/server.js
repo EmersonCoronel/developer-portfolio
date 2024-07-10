@@ -12,6 +12,7 @@ app.use(cors());
 const fetchWords = async () => {
     const maxRetries = 5;
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
+        console.log("Fetching from Server");
         try {
             const response = await axios.get('https://api.wordnik.com/v4/words.json/randomWords', {
                 params: {
