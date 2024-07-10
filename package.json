@@ -2,13 +2,15 @@
     "name": "developer-portfolio",
     "version": "1.0.0",
     "scripts": {
-      "start": "concurrently \"npm run start-client\" \"npm run start-server\"",
-      "start-client": "cd client && npm start",
-      "start-server": "cd server && npm start",
-      "build": "cd client && npm install && npm run build && cd ../server && npm install"
+        "start": "concurrently \"npm run start-client\" \"npm run start-server\"",
+        "start-client": "cd client && npm start",
+        "start-server": "cd server && npm start",
+        "build": "cd client && npm install && npm run build && cd ../server && npm install"
     },
     "devDependencies": {
-      "concurrently": "^6.2.0"
+        "concurrently": "^6.2.0"
+    },
+    "dependencies": {
+        "dotenv": "^16.4.5"
     }
-  }
-  
+}

@@ -11,13 +11,18 @@ app.use(cors());
 
 app.get('/api/words', async (req, res) => {
     try {
-        const response = await axios.get('https://api.wordnik.com/v4/words.json/randomWords', {
-            params: {
-                api_key: WORDNIK_API_KEY,
-                limit: 30
-            }
-        });
-        const words = response.data.map(wordObj => wordObj.word);
+        const words = [];
+        for (let i = 0; i < 30; i++) {
+            const response = await axios.get('https://api.wordnik.com/v4/words.json/randomWord', {
+                params: {
+                    api_key: process.env.WORDNIK_API_KEY,
+                    minLength: 2,
+                    maxLength: 7,
+                    hasDictionaryDef: true
+                }
+            });
+            words.push(response.data.word);
+        }
         res.json(words);
     } catch (error) {
         console.error('Error fetching random words:', error);
