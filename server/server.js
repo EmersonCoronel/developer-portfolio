@@ -11,7 +11,7 @@ app.use(cors());
 
 app.get('/api/words', async (req, res) => {
     try {
-        const response = await axios.get('https://api.wordnik.com/v4/words.json/top', {
+        const response = await axios.get('https://api.wordnik.com/v4/words.json/randomWords', {
             params: {
                 api_key: process.env.WORDNIK_API_KEY,
                 limit: 30,
