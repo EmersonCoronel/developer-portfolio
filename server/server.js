@@ -21,9 +21,17 @@ const fetchWords = async () => {
                     maxLength: 7
                 }
             });
+            console.log('Rate Limit:', response.headers['x-rate-limit-limit']);
+            console.log('Rate Limit Remaining:', response.headers['x-rate-limit-remaining']);
+            console.log('Rate Limit Reset:', new Date(response.headers['x-rate-limit-reset'] * 1000).toLocaleString());
             return response.data.map(wordObj => wordObj.word);
         } catch (error) {
             console.error(`Attempt ${attempt} failed: ${error.message}`);
+            if (error.response && error.response.headers) {
+                console.log('Rate Limit:', error.response.headers['x-rate-limit-limit']);
+                console.log('Rate Limit Remaining:', error.response.headers['x-rate-limit-remaining']);
+                console.log('Rate Limit Reset:', new Date(error.response.headers['x-rate-limit-reset'] * 1000).toLocaleString());
+            }
             if (attempt === maxRetries) {
                 throw error;
             }
