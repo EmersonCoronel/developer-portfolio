@@ -18,8 +18,7 @@ const fetchWords = async () => {
                     api_key: WORDNIK_API_KEY,
                     limit: 30,
                     minCorpusCount: 100000,
-                    maxLength: 7,
-                    excludePartOfSpeech: 'proper-noun,proper-noun-plural,proper-noun-posessive'
+                    maxLength: 7
                 }
             });
             return response.data.map(wordObj => wordObj.word);
