@@ -21,7 +21,7 @@ const TypeTest: React.FC = () => {
         // Function to fetch random words
         const fetchRandomWords = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/api/words');
+                const response = await axios.get('https://developer-portfolio-emerson-coronels-projects.vercel.app/api/words');
                 const words = response.data.join(' ');
                 setTestText(words);
             } catch (error) {
