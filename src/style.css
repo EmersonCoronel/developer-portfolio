@@ -126,6 +126,8 @@ body {
   white-space: 'pre-wrap';
   font-size: xx-large;
   width: 100%;
+  background: transparent;
+  border: none;
 }
 
 .test-text {
@@ -134,7 +136,7 @@ body {
 
 .centered-container {
   position: absolute;
-  top: 30%; /* Adjusted to move a bit above the center */
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
