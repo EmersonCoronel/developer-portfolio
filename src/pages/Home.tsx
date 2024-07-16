@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '../components/Header';
-import ProjectCard from '../components/ProjectCard';
-import projects from '../constants';
+import Header from '../components/general/Header';
+import ProjectCard from '../components/home/ProjectCard';
+import projects from '../components/home/constants';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style.css';
 

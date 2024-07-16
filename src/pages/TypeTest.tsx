@@ -1,76 +1,99 @@
-import React, { useState, useEffect, useRef, ChangeEvent } from 'react';
-import Header from '../components/Header';
-import axios from 'axios';
+import React, { useState, useEffect, useRef, ChangeEvent, KeyboardEvent } from 'react';
+import Header from '../components/general/Header';
+import generateRandomLine from '../components/typetest/WordGenerator';
+import Line from '../components/typetest/TestLine';
 
 const TypeTest: React.FC = () => {
-    const [testText, setTestText] = useState<string>('');
-    const [userInput, setUserInput] = useState<string>('');
+  const [lines, setLines] = useState<string[]>(['', '', '']);
+  const [userInputs, setUserInputs] = useState<string[]>(['', '', '']);
+  const [currentLineIndex, setCurrentLineIndex] = useState<number>(0);
+  const [currentCharIndex, setCurrentCharIndex] = useState<number>(0);
 
-    // Function to handle input change
-    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setUserInput(event.target.value);
-    };
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const input = event.target.value;
+    const updatedInputs = [...userInputs];
+    updatedInputs[currentLineIndex] = input;
+    setUserInputs(updatedInputs);
+  };
 
-    // Function to handle click on the text block to refocus the hidden input
-    const hiddenInputRef = useRef<HTMLInputElement>(null);
-    const handleTextBlockClick = () => {
-        hiddenInputRef.current?.focus();
-    };
+  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Backspace') {
+      setCurrentCharIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+    } else if (event.key.length === 1) {
+      if (event.key !== ' ' || currentCharIndex !== 0) {
+        setCurrentCharIndex((prevIndex) => prevIndex + 1);
+      }
+    }
 
-    useEffect(() => {
-        // Function to fetch random words
-        const fetchRandomWords = async () => {
-            try {
-                const response = await axios.get('https://developer-portfolio-emerson-coronels-projects.vercel.app/api/words');
-                const words = response.data.join(' ');
-                setTestText(words);
-            } catch (error) {
-                console.error('There was a problem with the fetch operation:', error);
-            }
-        };
+    // Move to the next line when the user hits space at the end of the line
+    if (event.key === ' ' && currentCharIndex >= lines[currentLineIndex].length - 1) {
+      moveToNextLine();
+      event.preventDefault(); // Prevent the default space behavior
+    }
 
-        fetchRandomWords();
-    }, []); // Empty dependency array means this effect runs once on mount
+    // Ignore spacebar if at the beginning of the line
+    if (event.key === ' ' && currentCharIndex === 0) {
+      event.preventDefault();
+    }
+  };
 
-    // Function to render the test text with styling based on user input
-    const renderTestText = () => {
-        const inputChars = userInput.split('');
-        return (
-            <div id="type-text-block">
-                {testText.split('').map((char, index) => {
-                    let style: React.CSSProperties = {
-                        color: 'gray',
-                    };
-                    if (index < inputChars.length) {
-                        // User has typed this character
-                        style.color = char === inputChars[index] ? 'white' : 'red';
-                    }
-                    // Highlight the next character to type
-                    if (index === inputChars.length) {
-                        style.textDecoration = 'underline';
-                    }
-                    return <span key={index} style={style}>{char}</span>;
-                })}
-            </div>
-        );
-    };
+  const moveToNextLine = () => {
+    if (currentLineIndex == 0) {
+      setCurrentLineIndex(currentLineIndex + 1);
+      setCurrentCharIndex(0);
+    } else {
+      let newLines = [...lines];
+      let newInputs = ['', '', ''];
+      newLines[0] = newLines[1];
+      newLines[1] = newLines[2];
+      newLines[2] = generateRandomLine();
+      newInputs[0] = userInputs[1];
+      setLines(newLines);
+      setUserInputs(newInputs);
+      setCurrentLineIndex(1);
+      setCurrentCharIndex(0);
+    }
+  };
 
-    return (
-        <div>
-            <Header />
-            <div className="text-center centered-container">
-                <input
-                    ref={hiddenInputRef}
-                    type="text"
-                    onChange={handleInputChange}
-                    style={{ opacity: 0, position: 'absolute', zIndex: -1 }}
-                />
-                <button id="type-text-block" onClick={handleTextBlockClick}>
-                    {renderTestText()}
-                </button>
-            </div>
+  const hiddenInputRef = useRef<HTMLInputElement>(null);
+  const handleTextBlockClick = () => {
+    hiddenInputRef.current?.focus();
+  };
+
+  useEffect(() => {
+    const newLines = Array(3).fill(null).map(() => generateRandomLine());
+    setLines(newLines);
+    hiddenInputRef.current?.focus();
+  }, []);
+
+  return (
+    <div>
+      <Header />
+      <div className="text-center centered-container">
+        <input
+          ref={hiddenInputRef}
+          type="text"
+          onKeyDown={handleKeyDown}
+          onChange={handleInputChange}
+          value={userInputs[currentLineIndex]}
+          className='hidden-input'
+          style={{ opacity: 0, position: 'absolute', zIndex: -1, caretColor: 'red' }}
+        />
+        <div id="type-text-block" onClick={handleTextBlockClick}>
+          {lines.map((line, index) => (
+            <Line
+              key={index}
+              line={line}
+              userInput={userInputs[index]}
+              currentLineIndex={currentLineIndex}
+              lineIndex={index}
+              currentCharIndex={currentCharIndex}
+            />
+          ))}
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default TypeTest;

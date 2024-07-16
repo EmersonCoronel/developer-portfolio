@@ -121,32 +121,54 @@ body {
 
 /* Type-Test */
 
-#type-text-block {
-  text-align: justify;
-  white-space: 'pre-wrap';
-  font-size: xx-large;
-  width: 100%;
-}
-
-.test-text {
-  color: gray;
-}
-
 .centered-container {
   position: absolute;
-  top: 30%; /* Adjusted to move a bit above the center */
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
   width: 80%;
 }
 
-#text-container .col {
+#type-text-block {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  font-size: 1.7vw;
   width: 100%;
+  border: none;
+  background: rgba(0, 0, 0, 0.05);
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden; /* Hide overflowed text */
 }
+
+.test-line {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  white-space: 'no-wrap';
+}
+
+.word {
+  color: gray;
+  display: inline-block;
+}
+
+.cursor {
+  position: absolute;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
 
 /* Catan Generator */
 

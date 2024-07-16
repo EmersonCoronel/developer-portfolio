@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Catan from './pages/Catan';
-import ParticlesComponent from './components/Particles';
+import TypeTest from './pages/TypeTest';
+import ParticlesComponent from './components/general/Particles';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
@@ -19,6 +20,7 @@ const App: React.FC = () => {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/catan" element={<Catan />} />
+            <Route path="/typetest" element={<TypeTest />} />
           </Routes>
         </Router>
       </div>

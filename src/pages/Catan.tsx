@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Header from '../components/Header';
+import Header from '../components/general/Header';
 import Board from '../components/catan/Board';
 
 const Catan: React.FC = () => {
