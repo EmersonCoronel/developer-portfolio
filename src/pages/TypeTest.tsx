@@ -38,7 +38,7 @@ const TypeTest: React.FC = () => {
   };
 
   const moveToNextLine = () => {
-    if (currentLineIndex == 0) {
+    if (currentLineIndex === 0) {
       setCurrentLineIndex(currentLineIndex + 1);
       setCurrentCharIndex(0);
     } else {
