@@ -6,9 +6,10 @@ interface LineProps {
   currentLineIndex: number;
   lineIndex: number;
   currentCharIndex: number;
+  timer: number;
 }
 
-const Line: React.FC<LineProps> = ({ line, userInput, currentLineIndex, lineIndex, currentCharIndex }) => {
+const Line: React.FC<LineProps> = ({ line, userInput, currentLineIndex, lineIndex, currentCharIndex, timer }) => {
   let globalCharIndex = 0;
 
   return (
@@ -22,7 +23,7 @@ const Line: React.FC<LineProps> = ({ line, userInput, currentLineIndex, lineInde
           <span key={wordIndex} className="word">
             {wordChars.map((char, charIndex) => {
               let charStyle: React.CSSProperties = {
-                color: 'gray',
+                color: '#999999',
               };
               if (charIndex < inputChars.length) {
                 charStyle.color = char === inputChars[charIndex] ? 'white' : 'red';
@@ -30,13 +31,13 @@ const Line: React.FC<LineProps> = ({ line, userInput, currentLineIndex, lineInde
 
               return (
                 <React.Fragment key={charIndex}>
-                  {(lineIndex === currentLineIndex && globalCharIndex === currentCharIndex) && <span className="cursor">|</span>}
+                  {(lineIndex === currentLineIndex && globalCharIndex === currentCharIndex && timer > 0) && <span className="cursor">|</span>}
                   <span style={charStyle}>{char}</span>
                   {incrementGlobalCharIndex()}
                 </React.Fragment>
               );
             })}
-            {(lineIndex === currentLineIndex && globalCharIndex === currentCharIndex) && <span className="cursor">|</span>}
+            {(lineIndex === currentLineIndex && globalCharIndex === currentCharIndex && timer > 0) && <span className="cursor">|</span>}
             {wordIndex < line.split(' ').length - 1 && ' '}
             {incrementGlobalCharIndex()} {/* Increment for the space between words */}
           </span>

@@ -12,9 +12,18 @@ const TypeTest: React.FC = () => {
   const [currentLineIndex, setCurrentLineIndex] = useState<number>(0);
   // State to track the current character index within the current line
   const [currentCharIndex, setCurrentCharIndex] = useState<number>(0);
+  // State to manage the timer
+  const [timer, setTimer] = useState<number>(15);
+  // State to track if typing has started
+  const [typingStarted, setTypingStarted] = useState<boolean>(false);
+  // State to track the total number of characters typed
+  const [totalCharsTyped, setTotalCharsTyped] = useState<number>(0);
+  // State to track the number of correct characters typed
+  const [correctCharsTyped, setCorrectCharsTyped] = useState<number>(0);
 
   // Function to handle changes in the input field
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (timer === 0) return;
     const input = event.target.value;
     const updatedInputs = [...userInputs];
     updatedInputs[currentLineIndex] = input;
@@ -23,6 +32,16 @@ const TypeTest: React.FC = () => {
 
   // Function to handle key down events
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    // Start the timer when typing starts
+    if (!typingStarted) {
+      setTypingStarted(true);
+    }
+
+    // Prevent further input if the timer is up
+    if (timer === 0) {
+      return;
+    }
+
     // Handle backspace key
     if (event.key === 'Backspace') {
       // Check if the character being deleted is a space
@@ -38,6 +57,11 @@ const TypeTest: React.FC = () => {
       if (event.key !== ' ' || currentCharIndex !== 0) {
         // Increase the character index by 1
         setCurrentCharIndex((prevIndex) => prevIndex + 1);
+        // Increment the total characters typed
+        setTotalCharsTyped((prevTotal) => prevTotal + 1);
+      }
+      if (lines[currentLineIndex][currentCharIndex] === event.key) {
+        setCorrectCharsTyped((prevCorrect) => prevCorrect + 1);
       }
     }
 
@@ -106,10 +130,44 @@ const TypeTest: React.FC = () => {
     hiddenInputRef.current?.focus();
   }, []);
 
+  // Effect to manage the timer countdown
+  useEffect(() => {
+    if (typingStarted && timer > 0) {
+      const interval = setInterval(() => {
+        setTimer((prevTimer) => prevTimer - 1);
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [typingStarted, timer]);
+
+  // Calculate words per minute and accuracy
+  const wordsPerMinute = (totalCharsTyped / 5) / 0.25; // 0.25 minutes for 15 seconds
+  const accuracy = totalCharsTyped > 0 ? (correctCharsTyped / totalCharsTyped) * 100 : 0;
+
+  // Function to reset the state
+  const resetTest = () => {
+    setLines(Array(3).fill(null).map(() => generateRandomLine()));
+    setUserInputs(['', '', '']);
+    setCurrentLineIndex(0);
+    setCurrentCharIndex(0);
+    setTimer(15);
+    setTypingStarted(false);
+    setTotalCharsTyped(0);
+    setCorrectCharsTyped(0);
+    hiddenInputRef.current?.focus();
+  };
+
   return (
     <div>
       <Header />
       <div className="text-center centered-container">
+        <div id="timer">{timer}</div>
+        {timer === 0 && (
+          <div>
+            <div id="wpm">WPM: {Math.round(wordsPerMinute)}</div>
+            <div id="accuracy">Accuracy: {Math.round(accuracy)}%</div>
+          </div>
+        )}
         <input
           ref={hiddenInputRef}
           type="text"
@@ -119,7 +177,7 @@ const TypeTest: React.FC = () => {
           className='hidden-input'
           style={{ opacity: 0, position: 'absolute', zIndex: -1, caretColor: 'red' }}
         />
-        <div id="type-text-block" onClick={handleTextBlockClick}>
+        <div id="type-text-block" className={timer === 0 ? 'finished' : ''} onClick={handleTextBlockClick}>
           {lines.map((line, index) => (
             <Line
               key={index}
@@ -128,9 +186,11 @@ const TypeTest: React.FC = () => {
               currentLineIndex={currentLineIndex}
               lineIndex={index}
               currentCharIndex={currentCharIndex}
+              timer={timer}
             />
           ))}
         </div>
+        <button id="reset-test" onClick={resetTest}><img src={'./images/redo.svg'} alt="Reset" /></button>
       </div>
     </div>
   );
