@@ -28,19 +28,15 @@ const Line: React.FC<LineProps> = ({ line, userInput, currentLineIndex, lineInde
                 charStyle.color = char === inputChars[charIndex] ? 'white' : 'red';
               }
 
-              // Determine if the cursor should be shown here
-              const showCursor = lineIndex === currentLineIndex && globalCharIndex === currentCharIndex;
-
-              globalCharIndex++; // Increment the global character index
-
               return (
                 <React.Fragment key={charIndex}>
-                  {showCursor && <span className="cursor">|</span>}
+                  {(lineIndex === currentLineIndex && globalCharIndex === currentCharIndex) && <span className="cursor">|</span>}
                   <span style={charStyle}>{char}</span>
+                  {incrementGlobalCharIndex()}
                 </React.Fragment>
               );
             })}
-            {lineIndex === currentLineIndex && globalCharIndex === currentCharIndex && <span className="cursor">|</span>}
+            {(lineIndex === currentLineIndex && globalCharIndex === currentCharIndex) && <span className="cursor">|</span>}
             {wordIndex < line.split(' ').length - 1 && ' '}
             {incrementGlobalCharIndex()} {/* Increment for the space between words */}
           </span>
