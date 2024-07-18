@@ -194,6 +194,8 @@ const TypeTest: React.FC = () => {
           onChange={handleInputChange}
           value={userInputs[currentLineIndex]}
           className='hidden-input'
+          autoComplete="off"
+          spellCheck="false"
           style={{ opacity: 0, position: 'absolute', zIndex: -1, caretColor: 'red' }}
         />
         <div id="type-text-block" className={timer === 0 ? 'finished' : ''} onClick={handleTextBlockClick}>
