@@ -20,6 +20,8 @@ const TypeTest: React.FC = () => {
   const [totalCharsTyped, setTotalCharsTyped] = useState<number>(0);
   // State to track the number of correct characters typed
   const [correctCharsTyped, setCorrectCharsTyped] = useState<number>(0);
+  // State to track which timer the user has selected
+  const [selectedTimer, setSelectedTimer] = useState<number>(15);
 
   // Function to handle changes in the input field
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -140,8 +142,13 @@ const TypeTest: React.FC = () => {
     }
   }, [typingStarted, timer]);
 
+  const handleTimerChange = (time: number) => {
+    setSelectedTimer(time);
+    setTimer(time);
+  };
+
   // Calculate words per minute and accuracy
-  const wordsPerMinute = (totalCharsTyped / 5) / 0.25; // 0.25 minutes for 15 seconds
+  const wordsPerMinute = (totalCharsTyped / 5) / (selectedTimer / 60);
   const accuracy = totalCharsTyped > 0 ? (correctCharsTyped / totalCharsTyped) * 100 : 0;
 
   // Function to reset the state
@@ -150,7 +157,7 @@ const TypeTest: React.FC = () => {
     setUserInputs(['', '', '']);
     setCurrentLineIndex(0);
     setCurrentCharIndex(0);
-    setTimer(15);
+    setTimer(selectedTimer);
     setTypingStarted(false);
     setTotalCharsTyped(0);
     setCorrectCharsTyped(0);
@@ -161,7 +168,19 @@ const TypeTest: React.FC = () => {
     <div>
       <Header />
       <div className="text-center centered-container">
-        <div id="timer">{timer}</div>
+      <div id="timer">
+          {timer}
+          {!typingStarted && (
+            <span>
+              <span style={{ margin: '0 20px' }}>|</span> 
+              Set Duration: 
+              <button className="set-timer-button" onClick={() => handleTimerChange(15)}>15</button>
+              <button className="set-timer-button" onClick={() => handleTimerChange(30)}>30</button>
+              <button className="set-timer-button" onClick={() => handleTimerChange(60)}>60</button>
+              <button className="set-timer-button" onClick={() => handleTimerChange(120)}>120</button>
+            </span>
+          )}
+        </div>
         {timer === 0 && (
           <div>
             <div id="wpm">WPM: {Math.round(wordsPerMinute)}</div>

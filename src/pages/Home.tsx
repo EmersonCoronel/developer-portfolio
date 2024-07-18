@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/general/Header';
 import ProjectCard from '../components/home/ProjectCard';
-import projects from '../components/home/constants';
+import projects from '../components/home/projects';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style.css';
 
@@ -19,7 +19,6 @@ const Home: React.FC = () => {
             <ProjectCard
               key={index}
               title={project.title}
-              description={project.description}
               imageUrl={project.imageUrl}
               link={project.link}
             />

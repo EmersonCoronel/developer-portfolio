@@ -51,13 +51,19 @@ body {
 }
 
 .card {
-  width: 50%;
-  max-width: 300px;
+  width: 275px;
   margin: auto;
   color: #87CEEB;
   border: 1px solid #87CEEB;
   cursor: pointer;
   background-color: transparent;
+  height: 375px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-image-container {
+  height: 275px;
 }
 
 .card-link {
@@ -70,7 +76,7 @@ body {
 
 .card-img-top {
   height: 100%;
-  object-fit: fill;
+  object-fit: cover;
 }
 
 .card-body {
@@ -178,6 +184,12 @@ body {
   top: -35%;
   color: white;
   font-size: 1.85vw;
+}
+
+.set-timer-button {
+  border: none;
+  background: transparent;
+  color: white;
 }
 
 #wpm {
