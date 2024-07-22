@@ -33,7 +33,7 @@ const TypeTest: React.FC = () => {
   };
 
   // Function to handle key down events
-  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => { 
     // Start the timer when typing starts
     if (!typingStarted) {
       setTypingStarted(true);
@@ -41,6 +41,13 @@ const TypeTest: React.FC = () => {
 
     // Prevent further input if the timer is up
     if (timer === 0) {
+      return;
+    }
+
+    // Prevent action if the last character in user input is a space or if at the beginning of the line
+    if (event.key === ' ' && (userInputs[currentLineIndex].slice(-1) === ' ' || currentCharIndex === 0)) {
+      console.log("Here")
+      event.preventDefault();
       return;
     }
 
@@ -54,27 +61,10 @@ const TypeTest: React.FC = () => {
         // Decrease the character index by 1, ensuring it doesn't go below 0
         setCurrentCharIndex((prevIndex) => Math.max(prevIndex - 1, 0));
       }
-    } else if (event.key.length === 1) {
-      // Handle other character inputs
-      if (event.key !== ' ' || currentCharIndex !== 0) {
-        // Increase the character index by 1
-        setCurrentCharIndex((prevIndex) => prevIndex + 1);
-        // Increment the total characters typed
-        setTotalCharsTyped((prevTotal) => prevTotal + 1);
-      }
-      if (lines[currentLineIndex][currentCharIndex] === event.key) {
-        setCorrectCharsTyped((prevCorrect) => prevCorrect + 1);
-      }
-    }
-
-    // Handle space key
-    if (event.key === ' ') {
-      // Move to the next line when the user hits space at the end of the line
+    } else if (event.key === ' ') {
+      // Move to the next line when user reaches the end
       if (currentCharIndex >= lines[currentLineIndex].length - 1) {
         moveToNextLine();
-        event.preventDefault();
-      // Ignore spacebar if at the beginning of the line
-      } else if (currentCharIndex === 0) {
         event.preventDefault();
       // Move to the next word when space is pressed in the middle of a word
       } else if (lines[currentLineIndex][currentCharIndex] !== ' ') {
@@ -93,6 +83,23 @@ const TypeTest: React.FC = () => {
           setCurrentCharIndex(lines[currentLineIndex].length);
         }
         event.preventDefault();
+      } else {
+        // Increase the character index by 1
+        setCurrentCharIndex((prevIndex) => prevIndex + 1);
+        // Increment the total characters typed
+        setTotalCharsTyped((prevTotal) => prevTotal + 1);
+        if (lines[currentLineIndex][currentCharIndex] === event.key) {
+          setCorrectCharsTyped((prevCorrect) => prevCorrect + 1);
+        }
+      }
+    // Handle all other character inputs
+    } else if (event.key.length === 1) {
+      // Increase the character index by 1
+      setCurrentCharIndex((prevIndex) => prevIndex + 1);
+      // Increment the total characters typed
+      setTotalCharsTyped((prevTotal) => prevTotal + 1);
+      if (lines[currentLineIndex][currentCharIndex] === event.key) {
+        setCorrectCharsTyped((prevCorrect) => prevCorrect + 1);
       }
     }
   };
