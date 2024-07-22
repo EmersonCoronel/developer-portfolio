@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../components/general/Header';
-import Board from '../components/catan/Board';
+import {Board} from 'catan-board-generator';
 
 const Catan: React.FC = () => {
   const [expansion, setExpansion] = useState(false);
