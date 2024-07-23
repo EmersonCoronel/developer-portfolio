@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sedan+SC&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sedan+SC&display=swap");
 
 /* Website */
 body {
@@ -16,7 +16,7 @@ body {
 /* Header */
 
 .header-links-text {
-  color: #87CEEB;
+  color: #87ceeb;
   opacity: 80%;
   font-family: "Montserrat", sans-serif;
 }
@@ -30,7 +30,7 @@ body {
   width: 100%;
   text-align: center;
   white-space: nowrap;
-  color: #87CEEB;
+  color: #87ceeb;
   opacity: 80%;
   font-size: 6vw;
   margin-top: 60px;
@@ -46,15 +46,15 @@ body {
   font-family: "Montserrat", sans-serif;
   font-size: 2.5vw;
   letter-spacing: 12px;
-  color: #87CEEB;
+  color: #87ceeb;
   opacity: 80%;
 }
 
 .card {
   width: 275px;
   margin: auto;
-  color: #87CEEB;
-  border: 1px solid #87CEEB;
+  color: #87ceeb;
+  border: 1px solid #87ceeb;
   cursor: pointer;
   background-color: transparent;
   height: 375px;
@@ -110,9 +110,9 @@ body {
 .about-text {
   text-align: justify;
   opacity: 80%;
-  width:100%;
+  width: 100%;
   font-family: "Montserrat", sans-serif;
-  color: #87CEEB;
+  color: #87ceeb;
   font-size: large;
 }
 
@@ -145,7 +145,7 @@ body {
   width: 100%;
   border: none;
   background: rgba(0, 0, 0, 0.05);
-  white-space: nowrap; 
+  white-space: nowrap;
   overflow: hidden;
 }
 
@@ -157,7 +157,7 @@ body {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  white-space: 'no-wrap';
+  white-space: "no-wrap";
 }
 
 .word {
@@ -171,7 +171,8 @@ body {
 }
 
 @keyframes blink {
-  from, to {
+  from,
+  to {
     opacity: 1;
   }
   50% {
@@ -267,7 +268,7 @@ body {
 
 .generate-board-button {
   background-color: #024059;
-  color: #87CEEB;
+  color: #87ceeb;
   border: none;
   border-radius: 8px;
   padding: 10px 20px;
@@ -288,7 +289,7 @@ body {
   }
 
   .generate-board-button {
-    margin-right: 0; /* Remove right margin */
-    margin-bottom: 10px; /* Add bottom margin */
+    margin-right: 0;
+    margin-bottom: 10px;
   }
 }

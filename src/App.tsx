@@ -1,14 +1,11 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import Home from './pages/Home';
-import About from './pages/About';
-import Catan from './pages/Catan';
-import Typographia from './pages/Typographia';
-import ParticlesComponent from './components/general/Particles';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './style.css';
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Catan from "./pages/Catan";
+import Typographia from "./pages/Typographia";
+import ParticlesComponent from "./components/general/Particles";
 
 const App: React.FC = () => {
   return (
