@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/general/Header';
-import TypeTest from '../components/typetest/TypeTest';
+import {TypeTest} from 'typographia';
 
 const Typographia: React.FC = () => {
   return (
