@@ -353,7 +353,6 @@ export const words: string[] = [
   "hour",
   "better",
   "true",
-  ".",
   "during",
   "hundred",
   "five",

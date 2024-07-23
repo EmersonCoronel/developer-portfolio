@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useRef, ChangeEvent, KeyboardEvent } from 'react';
-import Header from '../components/general/Header';
-import Line from '../components/typetest/TestLine';
-import generateRandomLine from '../components/typetest/WordGenerator';
+import { useState, useEffect, useRef, ChangeEvent, KeyboardEvent } from 'react';
+import generateRandomLine from './WordGenerator';
 
-const TypeTest: React.FC = () => {
+const useTypeTest = () => {
   // State to manage the lines of text to be typed
   const [lines, setLines] = useState<string[]>(['', '', '']);
   // State to manage user inputs for each line
@@ -171,57 +169,22 @@ const TypeTest: React.FC = () => {
     hiddenInputRef.current?.focus();
   };
 
-  return (
-    <div>
-      <Header />
-      <div className="text-center centered-container">
-      <div id="timer">
-          {timer}
-          {!typingStarted && (
-            <span>
-              <span style={{ margin: '0 20px' }}>|</span> 
-              Set Duration: 
-              <button className="set-timer-button" onClick={() => handleTimerChange(15)}>15</button>
-              <button className="set-timer-button" onClick={() => handleTimerChange(30)}>30</button>
-              <button className="set-timer-button" onClick={() => handleTimerChange(60)}>60</button>
-              <button className="set-timer-button" onClick={() => handleTimerChange(120)}>120</button>
-            </span>
-          )}
-        </div>
-        {timer === 0 && (
-          <div>
-            <div id="wpm">WPM: {Math.round(wordsPerMinute)}</div>
-            <div id="accuracy">Accuracy: {Math.round(accuracy)}%</div>
-          </div>
-        )}
-        <input
-          ref={hiddenInputRef}
-          type="text"
-          onKeyDown={handleKeyDown}
-          onChange={handleInputChange}
-          value={userInputs[currentLineIndex]}
-          className='hidden-input'
-          autoComplete="off"
-          spellCheck="false"
-          style={{ opacity: 0, position: 'absolute', zIndex: -1, caretColor: 'red' }}
-        />
-        <div id="type-text-block" className={timer === 0 ? 'finished' : ''} onClick={handleTextBlockClick}>
-          {lines.map((line, index) => (
-            <Line
-              key={index}
-              line={line}
-              userInput={userInputs[index]}
-              currentLineIndex={currentLineIndex}
-              lineIndex={index}
-              currentCharIndex={currentCharIndex}
-              timer={timer}
-            />
-          ))}
-        </div>
-        <button id="reset-test" onClick={resetTest}><img src={'./images/redo.svg'} alt="Reset" /></button>
-      </div>
-    </div>
-  );
+  return {
+    lines,
+    userInputs,
+    currentLineIndex,
+    currentCharIndex,
+    timer,
+    typingStarted,
+    wordsPerMinute,
+    accuracy,
+    hiddenInputRef,
+    handleInputChange,
+    handleKeyDown,
+    handleTextBlockClick,
+    handleTimerChange,
+    resetTest,
+  };
 };
 
-export default TypeTest;
+export default useTypeTest;

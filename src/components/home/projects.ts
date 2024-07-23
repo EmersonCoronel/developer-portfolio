@@ -5,9 +5,9 @@ const projects = [
       link: '/catan',
     },
     {
-      title: 'SpeedType Typing Challenge',
+      title: 'Typographia Typing Challenge',
       imageUrl: '/images/project-cards/typing.png',
-      link: '/typetest',
+      link: '/typographia',
     }
   ];
   

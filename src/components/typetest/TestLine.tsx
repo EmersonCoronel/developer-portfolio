@@ -39,7 +39,7 @@ const Line: React.FC<LineProps> = ({ line, userInput, currentLineIndex, lineInde
             })}
             {(lineIndex === currentLineIndex && globalCharIndex === currentCharIndex && timer > 0) && <span className="cursor">|</span>}
             {wordIndex < line.split(' ').length - 1 && ' '}
-            {incrementGlobalCharIndex()} {/* Increment for the space between words */}
+            {incrementGlobalCharIndex()}
           </span>
         );
       })}

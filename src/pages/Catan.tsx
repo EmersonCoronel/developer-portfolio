@@ -4,7 +4,7 @@ import {Board} from 'catan-board-generator';
 
 const Catan: React.FC = () => {
   const [expansion, setExpansion] = useState(false);
-  const [key, setKey] = useState(0); // To force re-render the Board component
+  const [key, setKey] = useState(0);
 
   const generateRegularBoard = () => {
     setExpansion(false);
