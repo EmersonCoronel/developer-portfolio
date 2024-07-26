@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Catan from "./pages/Catan";
 import Typographia from "./pages/Typographia";
+import EtzAi from "./pages/EtzAI";
 import ParticlesComponent from "./components/general/Particles";
 
 const App: React.FC = () => {
@@ -18,6 +19,7 @@ const App: React.FC = () => {
             <Route path="/about" element={<About />} />
             <Route path="/catan" element={<Catan />} />
             <Route path="/typographia" element={<Typographia />} />
+            <Route path="/etzai" element={<EtzAi />} />
           </Routes>
         </Router>
       </div>
