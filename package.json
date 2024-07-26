@@ -5,6 +5,7 @@
   "dependencies": {
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.5.0",
+    "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "catan-board-generator": "^1.0.8",
     "eslint-config-react-app": "^7.0.1",
@@ -14,12 +15,7 @@
     "react-scripts": "^5.0.1",
     "typographia": "^1.0.0"
   },
-  "resolutions": {
-    "nth-check": "^2.0.1",
-    "postcss": "^8.4.31"
-  },
   "scripts": {
-    "preinstall": "npx npm-force-resolutions",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
