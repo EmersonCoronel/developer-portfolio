@@ -9,11 +9,6 @@ const projects = [
     imageUrl: "/images/project-cards/catan-board.png",
     link: "/catan",
   },
-  {
-    title: "EtzAi Virtual Assistant",
-    imageUrl: "/images/project-cards/etzai.png",
-    link: "/etzai",
-  },
 ];
 
 export default projects;
