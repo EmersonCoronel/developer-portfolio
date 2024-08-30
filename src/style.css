@@ -110,7 +110,7 @@ body {
 }
 
 .about-text {
-  text-align: justify;
+  text-align: left;
   opacity: 80%;
   width: 100%;
   font-family: "Montserrat", sans-serif;
