@@ -4,7 +4,9 @@ import axios from "axios";
 
 const EtzAI: React.FC = () => {
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState<{ role: string; content: string }[]>([]);
+  const [messages, setMessages] = useState<{ role: string; content: string }[]>(
+    [],
+  );
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const sendMessage = async () => {
@@ -15,11 +17,14 @@ const EtzAI: React.FC = () => {
     setMessage("");
 
     try {
-      const res = await axios.post('https://etz-ai-d44ad13dc91b.herokuapp.com/api/chat', { message });
+      const res = await axios.post(
+        "https://etz-ai-d44ad13dc91b.herokuapp.com/api/chat",
+        { message },
+      );
       const aiResponse = res.data.response;
       setMessages([...newMessages, { role: "assistant", content: aiResponse }]);
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.error("Error sending message:", error);
     }
   };
 

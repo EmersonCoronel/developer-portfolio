@@ -25,11 +25,18 @@ const About: React.FC = () => {
             responsive web applications.
           </p>
           <p className="about-text">
-            In addition to my development skills, I have professional experience
-            as a video editor and photographer, which has given me a keen eye
-            for detail and a deep understanding of various photo and video
-            technologies. This unique combination of skills allows me to
-            approach projects with a creative and technical mindset.
+            In addition to my development skills, I’ve gained valuable
+            experience across multiple roles. As a Software Engineer
+            at Genjo.ai, I worked within a small team to develop an AI-powered
+            sales assistant, leading the development of a mobile app and
+            integrating AWS APIs and services to enhance user experience. At New
+            Direction, a Tel Aviv-based startup, I took on a full stack
+            development role, working closely with company administrators and
+            leading key projects to ensure timely and high-quality delivery.
+            Additionally, as a Research Assistant in Dr. Randi Martin’s Lab, I
+            conducted linguistic analysis using natural language processing,
+            designed user-friendly workflows to improve lab efficiency, and
+            collaborated with non-technical researchers to streamline processes.
           </p>
           <p className="about-text">
             I am currently seeking a full-time position where I can leverage my
