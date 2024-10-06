@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../components/general/Header";
 import { TypeTest } from "typographia";
 
-const Typographia: React.FC = () => {
+const TypingChallenge: React.FC = () => {
   return (
     <div>
       <Header />
@@ -11,4 +11,4 @@ const Typographia: React.FC = () => {
   );
 };
 
-export default Typographia;
+export default TypingChallenge;
