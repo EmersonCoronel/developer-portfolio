@@ -24,34 +24,37 @@ const About: React.FC = () => {
             daily life. For example, my friends and I love to play Catan, so I
             created a custom board generator just for us. I also recreated my
             favorite online typing test so I could practice right here on my own
-            site. Additionally, I built Aristotle AI to guide me through my
-            reading of Nicomachean Ethics, making philosophy more interactive
-            and accessible. These projects demonstrate my ability to work across
-            both the front and back end, with technologies like React, Node, and
-            Machine Learning playing a central role.
+            website. Additionally, I built Aristotle AI to guide me through my
+            reading of the Nicomachean Ethics, making philosophy more
+            interactive and dialectic. These projects are meant to demonstrate
+            my ability to work across both the front and back end, integrating
+            diverse platforms and technologies.
           </p>
           <p className="about-text">
-            In addition to my development skills, I’ve gained valuable
+            In addition to my development skills, I've gained valuable
             experience across multiple roles. As a Software Engineer at
             Genjo.ai, I worked within a small team to develop an AI-powered
-            sales assistant, leading the development of a mobile app and
-            integrating AWS APIs and services to enhance user experience. At New
-            Direction, a Tel Aviv-based startup, I took on a full stack
-            development role, working closely with company administrators and
-            leading key projects to ensure timely and high-quality delivery.
-            Additionally, as a Research Assistant in Dr. Randi Martin’s Lab, I
-            conducted linguistic analysis using natural language processing,
-            designed user-friendly workflows to improve lab efficiency, and
-            collaborated with non-technical researchers to streamline processes.
+            sales assistant. I personally lead the development of a react-native
+            mobile app, integrating AWS APIs and services to build a user
+            friendly front end connected to a robust backend. At New Direction,
+            a Tel Aviv-based startup, I took on a full stack development role,
+            working closely with company administrators and leading key projects
+            to ensure high-quality delivery. Additionally, as a Research
+            Assistant in Dr. Randi Martin's Lab at Rice University I conducted
+            linguistic analysis using natural language processing, designing
+            user-friendly workflows for non-technical staff to improve improve
+            lab efficiency.
           </p>
           <p className="about-text">
-            I am currently seeking a full-time position where I can leverage my
-            strengths in independent learning and exploration, clear and
-            thorough task delegation, and a process-oriented approach that
-            values frequent feedback and iteration. I thrive in environments
-            that challenge me to learn new technologies and solve complex
-            problems, and I am excited about the opportunity to contribute to a
-            forward-thinking team.
+            In addition to my diverse experience as a software engineer, one
+            area that particularly excites me is the potential for AI to reshape
+            the world of digital education. I'm especially interested in how
+            AI-driven tutors and personalized learning platforms can democratize
+            education and provide more adaptive, effective learning experiences
+            for people around the world. This blend of technology and education
+            is something I'm passionate about persuing into the future, and I'm eager
+            to see how AI can help make education more accessible and impactful
+            globally.
           </p>
           <p className="about-text">
             Thank you for visiting my website! Feel free to take a look at my CV{" "}

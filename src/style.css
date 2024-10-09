@@ -111,7 +111,7 @@ body {
 
 .about-text {
   text-align: left;
-  opacity: 80%;
+  opacity: 90%;
   width: 100%;
   font-family: "Montserrat", sans-serif;
   color: #87ceeb;
@@ -505,7 +505,6 @@ body {
   color: #024059;
   margin-bottom: 5px;
 }
-
 
 /* Show the dropdown on small screens */
 @media (max-width: 768px) {
