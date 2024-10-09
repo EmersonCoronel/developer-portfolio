@@ -11,6 +11,7 @@ const Aristotle: React.FC = () => {
   const [mode, setMode] = useState<string>("normal"); // New state to track the mode
   const [selectedPhilosopher, setSelectedPhilosopher] =
     useState<string>("Aristotle"); // For Philosophy Battle
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const API_URL = process.env.REACT_APP_API_URL;
 
@@ -40,6 +41,10 @@ const Aristotle: React.FC = () => {
       console.error("Error starting Socratic Dialogue:", error);
     }
   };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };  
 
   // Function to start a Thematic Conversation
   const startThematicConversation = async (topic: string) => {
@@ -134,6 +139,70 @@ const Aristotle: React.FC = () => {
     <div>
       <Header />
       <div className="chat-container">
+        {/* Dropdown Menu for Mobile */}
+      <div className="dropdown-container">
+        <button className="dropdown-button" onClick={toggleDropdown}>
+          Select Mode
+        </button>
+        {isDropdownOpen && (
+          <div className="dropdown-content">
+            <h3>Socratic Dialogues</h3>
+            <ul>
+              {topics.map((topic) => (
+                <li key={topic}>
+                  <button
+                    onClick={() => {
+                      startSocraticDialogue(topic);
+                      toggleDropdown();
+                    }}
+                  >
+                    {topic}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <h3>Thematic Conversations</h3>
+            <ul>
+              {thematicTopics.map((topic) => (
+                <li key={topic}>
+                  <button
+                    onClick={() => {
+                      startThematicConversation(topic);
+                      toggleDropdown();
+                    }}
+                  >
+                    {topic}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <h3>Philosophy Battle</h3>
+            <ul>
+              {philosophers.map((philosopher) => (
+                <li key={philosopher}>
+                  <button
+                    onClick={() => {
+                      startPhilosophyBattle(philosopher);
+                      toggleDropdown();
+                    }}
+                  >
+                    {philosopher}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <h3>Scenario-Based Advice</h3>
+            <button
+              onClick={() => {
+                startScenarioAdvice();
+                toggleDropdown();
+              }}
+            >
+              Start Scenario Advice
+            </button>
+          </div>
+        )}
+      </div>
         <div className="chat-box">
           <div className="messages-container">
             {messages.map((msg, index) => (

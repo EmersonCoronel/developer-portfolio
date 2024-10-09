@@ -425,17 +425,86 @@ body {
 
 /* Media Query for Small Screens */
 @media (max-width: 768px) {
-  /* Remove side margins to use full width */
+  .sidebar {
+    display: none;
+  }
+
+  /* Adjust chat-container to use full width */
   .chat-container {
     margin: 0;
     max-width: 100%;
+    height: 85vh;
   }
 
-  /* Stack sidebar below the chat container */
-  .sidebar {
-    position: static; /* Remove absolute positioning */
-    width: 100%;      /* Full width */
-    height: auto;     /* Adjust height to content */
-    margin-top: 20px; /* Add spacing above the sidebar */
+  .dropdown-container {
+    display: block;
   }
+}
+
+/* Dropdown Menu */
+.dropdown-container {
+  display: none;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center; /* Center the button */
+}
+
+.dropdown-button {
+  width: 50%; /* 50% width for the button */
+  margin: 0 auto; /* Center the button */
+  background-color: #87ceeb;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  color: #024059;
+}
+
+.dropdown-content {
+  padding: 10px;
+  box-sizing: border-box;
+  max-height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap; /* Enable two columns */
+  justify-content: space-around; /* Space out buttons */
+}
+
+.dropdown-content h3 {
+  width: 100%; /* Ensure the heading takes full width */
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #87ceeb;
+}
+
+.dropdown-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.dropdown-content li {
+  display: inline-block; /* Inline block for columns */
+  width: 40%; /* Each button takes 40% of the width */
+  margin: 10px;
+  text-align: center; /* Center buttons in each column */
+}
+
+.dropdown-content button {
+  width: 100%; /* Make button take full width of its column */
+  padding: 10px;
+  background-color: #87ceeb;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  color: #024059;
+  margin-bottom: 5px;
 }
