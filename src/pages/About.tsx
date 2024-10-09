@@ -12,22 +12,28 @@ const About: React.FC = () => {
         <div className="content top-buffer">
           <p className="about-text">
             Welcome to my website! I'm Emerson Coronel, a passionate and driven
-            full stack developer. I graduated from Rice University in 2024 with
-            a degree in Computer Science after three years of study. Since
-            graduating, my technological pursuits have been characterized by a
-            drive to learn, explore, and create.
+            software developer. I graduated from Rice University in 2024 with a
+            degree in Computer Science after three years of study. Since
+            graduating, my technical endeavors have been marked by a drive to
+            learn, explore, and build.
           </p>
           <p className="about-text">
-            I built this website myself as a platform to display my expertise in
-            a variety of programming skills, with a particular focus on
-            Typescript/Node, React, and Python. My experience extends across
-            both the front and back end, enabling me to create dynamic and
-            responsive web applications.
+            I built this website as a platform to showcase the diverse projects
+            I've worked on, each reflecting my passion for solving real-world
+            problems and building innovative solutions that I actually use in my
+            daily life. For example, my friends and I love to play Catan, so I
+            created a custom board generator just for us. I also recreated my
+            favorite online typing test so I could practice right here on my own
+            site. Additionally, I built Aristotle AI to guide me through my
+            reading of Nicomachean Ethics, making philosophy more interactive
+            and accessible. These projects demonstrate my ability to work across
+            both the front and back end, with technologies like React, Node, and
+            Machine Learning playing a central role.
           </p>
           <p className="about-text">
             In addition to my development skills, I’ve gained valuable
-            experience across multiple roles. As a Software Engineer
-            at Genjo.ai, I worked within a small team to develop an AI-powered
+            experience across multiple roles. As a Software Engineer at
+            Genjo.ai, I worked within a small team to develop an AI-powered
             sales assistant, leading the development of a mobile app and
             integrating AWS APIs and services to enhance user experience. At New
             Direction, a Tel Aviv-based startup, I took on a full stack

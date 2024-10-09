@@ -5,11 +5,12 @@ import axios from "axios";
 const Aristotle: React.FC = () => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<{ role: string; content: string }[]>(
-    []
+    [],
   );
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
   const [mode, setMode] = useState<string>("normal"); // New state to track the mode
-  const [selectedPhilosopher, setSelectedPhilosopher] = useState<string>("Aristotle"); // For Philosophy Battle
+  const [selectedPhilosopher, setSelectedPhilosopher] =
+    useState<string>("Aristotle"); // For Philosophy Battle
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const API_URL = process.env.REACT_APP_API_URL;
 
