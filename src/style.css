@@ -127,6 +127,7 @@ body {
   margin-top: 3%;
 }
 
+
 /* Type-Test */
 
 .centered-container {
@@ -157,9 +158,21 @@ body {
 
 .test-line {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  white-space: "no-wrap";
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.test-line .char {
+  display: inline-flex;
+  align-items: center;
+}
+
+.test-line .char span {
+  display: inline;
+}
+
+.test-line .cursor {
+  display: inline;
 }
 
 .word {
