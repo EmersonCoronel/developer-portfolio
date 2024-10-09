@@ -425,11 +425,17 @@ body {
 
 /* Media Query for Small Screens */
 @media (max-width: 768px) {
-  .sidebar {
-    width: 150px;
+  /* Remove side margins to use full width */
+  .chat-container {
+    margin: 0;
+    max-width: 100%;
   }
 
-  .chat-container {
-    margin-right: 150px;
+  /* Stack sidebar below the chat container */
+  .sidebar {
+    position: static; /* Remove absolute positioning */
+    width: 100%;      /* Full width */
+    height: auto;     /* Adjust height to content */
+    margin-top: 20px; /* Add spacing above the sidebar */
   }
 }
