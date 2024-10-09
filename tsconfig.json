@@ -8,6 +8,6 @@
     "forceConsistentCasingInFileNames": true,
     "downlevelIteration": true
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "src/server/server.js"],
   "exclude": ["node_modules"]
 }

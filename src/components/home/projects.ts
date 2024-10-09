@@ -1,5 +1,10 @@
 const projects = [
   {
+    title: "Aristotle.ai",
+    imageUrl: "/images/project-cards/aristotle.png",
+    link: "/artistotle",
+  },
+  {
     title: "Typing Challenge",
     imageUrl: "/images/project-cards/typetest.png",
     link: "/typingchallenge",
