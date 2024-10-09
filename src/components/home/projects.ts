@@ -2,7 +2,7 @@ const projects = [
   {
     title: "Aristotle.ai",
     imageUrl: "/images/project-cards/aristotle.png",
-    link: "/artistotle",
+    link: "/aristotle",
   },
   {
     title: "Typing Challenge",

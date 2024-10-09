@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Catan from "./pages/Catan";
 import TypingChallenge from "./pages/TypingChallenge";
-import ArtistotleAi from "./pages/ArtistotleAi";
+import Aristotle from "./pages/Aristotle";
 import ParticlesComponent from "./components/general/Particles";
 
 const App: React.FC = () => {
@@ -19,7 +19,7 @@ const App: React.FC = () => {
             <Route path="/about" element={<About />} />
             <Route path="/catan" element={<Catan />} />
             <Route path="/typingchallenge" element={<TypingChallenge />} />
-            <Route path="/artistotle" element={<ArtistotleAi />} />
+            <Route path="/aristotle" element={<Aristotle />} />
           </Routes>
         </Router>
       </div>

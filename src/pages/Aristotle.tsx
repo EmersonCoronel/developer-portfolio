@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Header from "../components/general/Header";
 import axios from "axios";
 
-const AristotleAi: React.FC = () => {
+const Aristotle: React.FC = () => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<{ role: string; content: string }[]>(
     []
@@ -193,4 +193,4 @@ const AristotleAi: React.FC = () => {
   );
 };
 
-export default AristotleAi;
+export default Aristotle;
