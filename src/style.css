@@ -175,14 +175,10 @@ body {
   display: inline;
 }
 
-.word {
-  color: gray;
-  display: inline-block;
-}
-
 .cursor {
   position: absolute;
   animation: blink 1s step-end infinite;
+  color: gray;
 }
 
 @keyframes blink {
