@@ -435,10 +435,6 @@ body {
     max-width: 100%;
     height: 85vh;
   }
-
-  .dropdown-container {
-    display: block;
-  }
 }
 
 /* Dropdown Menu */
@@ -507,4 +503,12 @@ body {
   text-align: center;
   color: #024059;
   margin-bottom: 5px;
+}
+
+
+/* Show the dropdown on small screens */
+@media (max-width: 768px) {
+  .dropdown-container {
+    display: block;
+  }
 }
