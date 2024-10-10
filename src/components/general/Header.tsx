@@ -40,8 +40,6 @@ const Header: React.FC = () => {
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
                     height="20"
-                    fill="#87CEEB"
-                    opacity="80%"
                     className="bi bi-linkedin"
                     viewBox="0 0 16 16"
                   >
@@ -60,8 +58,6 @@ const Header: React.FC = () => {
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
                     height="20"
-                    fill="#87CEEB"
-                    opacity="80%"
                     className="bi bi-github"
                     viewBox="0 0 16 16"
                   >
@@ -80,8 +76,6 @@ const Header: React.FC = () => {
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
                     height="20"
-                    fill="#87CEEB"
-                    opacity="80%"
                     className="bi bi-instagram"
                     viewBox="0 0 16 16"
                   >

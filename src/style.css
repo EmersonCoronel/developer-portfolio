@@ -1,6 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sedan+SC&display=swap");
 
+:root {
+  --primary-color: #87ceeb;
+  --primary-color-r: 135;
+  --primary-color-g: 206; 
+  --primary-color-b: 235; 
+}
+
 /* Website */
 body {
   background-color: #024059;
@@ -16,9 +23,13 @@ body {
 /* Header */
 
 .header-links-text {
-  color: #87ceeb;
-  opacity: 80%;
+  color: var(--primary-color);
+  font-weight: 500;
   font-family: "Montserrat", sans-serif;
+}
+
+.nav-link svg {
+  fill: var(--primary-color);
 }
 
 /* Home Page */
@@ -30,7 +41,7 @@ body {
   width: 100%;
   text-align: center;
   white-space: nowrap;
-  color: #87ceeb;
+  color: var(--primary-color);
   opacity: 80%;
   font-size: 6vw;
   margin-top: 60px;
@@ -46,15 +57,15 @@ body {
   font-family: "Montserrat", sans-serif;
   font-size: 2.5vw;
   letter-spacing: 12px;
-  color: #87ceeb;
+  color: var(--primary-color);
   opacity: 80%;
 }
 
 .card {
   width: 275px;
   margin: auto;
-  color: #87ceeb;
-  border: 1px solid #87ceeb;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
   cursor: pointer;
   background-color: transparent;
   height: 375px;
@@ -114,7 +125,7 @@ body {
   opacity: 90%;
   width: 100%;
   font-family: "Montserrat", sans-serif;
-  color: #87ceeb;
+  color: var(--primary-color);
   font-size: large;
 }
 
@@ -279,7 +290,7 @@ body {
 
 .generate-board-button {
   background-color: #024059;
-  color: #87ceeb;
+  color: var(--primary-color);
   border: none;
   border-radius: 8px;
   padding: 10px 20px;
@@ -306,6 +317,15 @@ body {
 }
 
 /* AristotleAi */
+
+#image-display {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0.5;
+  z-index: -1;
+  background-size: cover;
+}
 
 /* Chat Interface */
 .chat-container {
@@ -338,7 +358,7 @@ body {
 .message {
   margin: 10px 0;
   font-family: "Montserrat", sans-serif;
-  color: #87ceeb;
+  color: var(--primary-color);
   padding: 10px 15px;
   border-radius: 15px;
   max-width: 70%;
@@ -346,13 +366,13 @@ body {
 }
 
 .message.user {
-  background-color: rgba(135, 206, 235, 0.3);
+  background: rgba(calc(var(--primary-color-r) * 0.5), calc(var(--primary-color-g) * 0.5), calc(var(--primary-color-b) * 0.5), 0.5);
   align-self: flex-end;
   text-align: left;
 }
 
 .message.assistant {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.6);
   align-self: flex-start;
   text-align: left;
 }
@@ -362,22 +382,26 @@ body {
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
-  background: transparent;
 }
 
 .input-container textarea {
   flex-grow: 1;
   padding: 10px;
-  border: 1px solid #87ceeb;
+  border: 1px solid var(--primary-color);
   border-radius: 8px;
-  background: transparent;
-  color: #87ceeb;
+  background: rgba(var(--primary-color-r), var(--primary-color-g), var(--primary-color-b), 0.15);
+  color: var(--primary-color);
   font-family: "Montserrat", sans-serif;
   resize: none;
+  outline: none;
+}
+
+.input-container textarea::placeholder {
+  color: var(--primary-color); /* You can change this to any color you prefer */
 }
 
 .input-container button {
-  background-color: #87ceeb;
+  background-color: var(--primary-color);
   border: none;
   border-radius: 8px;
   padding: 10px 20px;
@@ -392,7 +416,7 @@ body {
   right: 0;
   width: 200px;
   height: 90vh;
-  color: #87ceeb;
+  color: var(--primary-color);
   padding: 20px;
   box-sizing: border-box;
   overflow-y: auto;
@@ -418,7 +442,7 @@ body {
 .sidebar button {
   width: 100%;
   padding: 10px;
-  background-color: #87ceeb;
+  background-color: var(--primary-color);
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -428,14 +452,35 @@ body {
   transition: background-color 0.3s ease;
 }
 
+select {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  color: #024059;
+  transition: background-color 0.3s ease;
+  margin-bottom: 15px;
+  white-space: normal;
+  height: 60px;
+}
+
 .sidebar button:hover {
-  background-color: rgba(135, 206, 235, 0.8);
+  background-color: var(--primary-color);
+  opacity: .8;
 }
 
 /* Media Query for Small Screens */
 @media (max-width: 768px) {
   .sidebar {
     display: none;
+  }
+
+  select {
+    width: 40%;
   }
 
   /* Adjust chat-container to use full width */
@@ -459,7 +504,7 @@ body {
 .dropdown-button {
   width: 50%; /* 50% width for the button */
   margin: 0 auto; /* Center the button */
-  background-color: #87ceeb;
+  background-color: var(--primary-color);
   border: none;
   border-radius: 8px;
   padding: 10px;
@@ -485,7 +530,7 @@ body {
   font-size: 1.2em;
   margin-bottom: 10px;
   text-align: center;
-  color: #87ceeb;
+  color: var(--primary-color);
 }
 
 .dropdown-content ul {
@@ -505,7 +550,7 @@ body {
 .dropdown-content button {
   width: 100%; /* Make button take full width of its column */
   padding: 10px;
-  background-color: #87ceeb;
+  background-color: var(--primary-color);
   border: none;
   border-radius: 8px;
   cursor: pointer;
