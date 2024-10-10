@@ -7,7 +7,7 @@ const projects = [
   {
     title: "Typing Challenge",
     imageUrl: "/images/project-cards/typetest.png",
-    link: "/typingchallenge",
+    link: "/typetest",
   },
   {
     title: "Settlers of Catan Board Generator",
