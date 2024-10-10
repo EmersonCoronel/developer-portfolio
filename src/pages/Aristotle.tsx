@@ -25,17 +25,17 @@ interface Figure {
 const getBackgroundImage = (figure: string) => {
   switch (figure) {
     case "Aristotle":
-      return "backgrounds/aristotle.jpg"; // Path to Aristotle background
+      return "images/backgrounds/aristotle.jpg"; // Path to Aristotle background
     case "Albert Einstein":
-      return "/backgrounds/einstein.jpg"; // Path to Einstein background
+      return "/images/backgrounds/einstein.jpg"; // Path to Einstein background
     case "Leonardo da Vinci":
-      return "/backgrounds/davinci.jpeg"; // Path to da Vinci background
+      return "/images/backgrounds/davinci.jpeg"; // Path to da Vinci background
     case "Napoleon Bonaparte":
-      return "/backgrounds/napoleon.jpg"; // Path to Napoleon background
+      return "/images/backgrounds/napoleon.jpg"; // Path to Napoleon background
     case "Cleopatra":
-      return "/backgrounds/cleopatra.jpg"; // Path to Cleopatra background
+      return "/images/backgrounds/cleopatra.jpg"; // Path to Cleopatra background
     case "Confucius":
-      return "/backgrounds/confucius.jpg"; // Path to Confucius background
+      return "/images/backgrounds/confucius.jpg"; // Path to Confucius background
     default:
       return "";
   }
