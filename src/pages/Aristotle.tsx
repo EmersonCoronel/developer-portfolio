@@ -30,6 +30,7 @@ const Aristotle: React.FC = () => {
     setMessages([]);
     setMode(selectedMode);
     setSelectedTopic(topic);
+    setIsDropdownOpen(false);
 
     try {
       const response = await fetch(`${API_URL}/start-dialogue`, {
@@ -103,6 +104,7 @@ const Aristotle: React.FC = () => {
 
   const startScenarioAdvice = () => {
     setMessages([]);
+    setIsDropdownOpen(false);
     setMode("scenario");
 
     setMessages([
@@ -115,6 +117,7 @@ const Aristotle: React.FC = () => {
 
   const sendMessage = async () => {
     if (message.trim() === "") return;
+    setIsDropdownOpen(false);
 
     const newMessages = [...messages, { role: "user", content: message }];
     setMessages(newMessages);
@@ -307,7 +310,12 @@ const Aristotle: React.FC = () => {
           )}
         </div>
         <div className="chat-box">
-          <div className="messages-container">
+          <div
+            className="messages-container"
+            style={{
+              opacity: isDropdownOpen ? 0 : 1,
+            }}
+          >
             {messages.map((msg, index) => (
               <div key={index} className={`message ${msg.role}`}>
                 {msg.content}

@@ -325,6 +325,7 @@ body {
   opacity: 0.5;
   z-index: -1;
   background-size: cover;
+  background-position: center;
 }
 
 /* Chat Interface */
@@ -344,6 +345,8 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+  flex-grow: 1; /* Allow it to grow and fill available space */
+  min-height: 0; /* Prevent child overflow */
 }
 
 .messages-container {
@@ -493,6 +496,7 @@ select {
 
 /* Dropdown Menu */
 .dropdown-container {
+  position: relative; /* Add this line */
   display: none;
   width: 100%;
   padding: 10px;
@@ -500,6 +504,22 @@ select {
   box-sizing: border-box;
   text-align: center; /* Center the button */
 }
+
+.dropdown-content {
+  position: absolute; /* Change to absolute positioning */
+  top: 100%; /* Position it directly below the dropdown button */
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Ensure it appears above other content */
+  padding: 10px;
+  box-sizing: border-box;
+  max-height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap; /* Enable two columns */
+  justify-content: space-around; /* Space out buttons */
+}
+
 
 .dropdown-button {
   width: 50%; /* 50% width for the button */
@@ -512,16 +532,6 @@ select {
   font-family: "Montserrat", sans-serif;
   text-align: center;
   color: #024059;
-}
-
-.dropdown-content {
-  padding: 10px;
-  box-sizing: border-box;
-  max-height: 300px;
-  overflow-y: auto;
-  display: flex;
-  flex-wrap: wrap; /* Enable two columns */
-  justify-content: space-around; /* Space out buttons */
 }
 
 .dropdown-content h3 {
