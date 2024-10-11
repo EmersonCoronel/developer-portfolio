@@ -16,7 +16,6 @@ const Aristotle: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const API_URL = process.env.REACT_APP_API_URL || "http://localhost:4000/api";
-  console.log("Using api url: ", API_URL)
 
   useEffect(() => {
     if (selectedFigure) {
@@ -76,16 +75,20 @@ const Aristotle: React.FC = () => {
               setMessages((prevMessages) => {
                 const lastMessageIndex = prevMessages.length - 1;
                 const updatedMessages = [...prevMessages];
-                const lastMessage = updatedMessages[lastMessageIndex];
-                if (lastMessage.role === 'assistant') {
+  
+                // Add assistant message only on the first response chunk
+                if (assistantMessage.length === content.length) {
+                  updatedMessages.push({ role: 'assistant', content: assistantMessage });
+                } else {
+                  // Update the assistant message with incremental content
+                  const lastMessage = updatedMessages[lastMessageIndex];
                   updatedMessages[lastMessageIndex] = {
                     ...lastMessage,
                     content: assistantMessage,
                   };
-                  return updatedMessages;
-                } else {
-                  return prevMessages;
                 }
+  
+                return updatedMessages;
               });
             } catch (e) {
               console.error('Error parsing message part:', e);
@@ -143,9 +146,6 @@ const Aristotle: React.FC = () => {
       let assistantMessage = '';
       let done = false;
 
-      // Add an initial assistant message to update incrementally
-      setMessages((prevMessages) => [...prevMessages, { role: 'assistant', content: '' }]);
-
       while (!done) {
         const { value, done: doneReading } = await reader.read();
         done = doneReading;
@@ -166,16 +166,20 @@ const Aristotle: React.FC = () => {
               setMessages((prevMessages) => {
                 const lastMessageIndex = prevMessages.length - 1;
                 const updatedMessages = [...prevMessages];
-                const lastMessage = updatedMessages[lastMessageIndex];
-                if (lastMessage.role === 'assistant') {
+  
+                // Add assistant message only on the first response chunk
+                if (assistantMessage.length === content.length) {
+                  updatedMessages.push({ role: 'assistant', content: assistantMessage });
+                } else {
+                  // Update the assistant message with incremental content
+                  const lastMessage = updatedMessages[lastMessageIndex];
                   updatedMessages[lastMessageIndex] = {
                     ...lastMessage,
                     content: assistantMessage,
                   };
-                  return updatedMessages;
-                } else {
-                  return prevMessages;
                 }
+  
+                return updatedMessages;
               });
             } catch (e) {
               console.error('Error parsing message part:', e);
