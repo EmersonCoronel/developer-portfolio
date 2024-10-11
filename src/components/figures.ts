@@ -159,6 +159,50 @@ export const figures: Figure[] = [
       },
     ],
   },
+  {
+    name: "David Bowie",
+    color: "#C0C0C0", // Stardust Silver
+    colorRGB: { r: 192, g: 192, b: 192 },
+    image: "/images/backgrounds/bowie.jpeg",
+    categories: [
+      {
+        name: "Music & Legacy",
+        options: [
+          { label: "Reinventing Oneself" },
+          { label: "The Evolution of Music" },
+        ],
+      },
+      {
+        name: "Cultural Impact",
+        options: [
+          { label: "Challenging Norms in Music" },
+          { label: "The Influence of Fashion" },
+        ],
+      },
+    ],
+  },  
+  {
+    name: "Charles Darwin",
+                color: "#98FF98", // Mint Green
+        colorRGB: { r: 152, g: 255, b: 152 },
+    image: "/images/backgrounds/darwin.jpeg", // Add your own image path
+    categories: [
+      {
+        name: "Evolution & Biology",
+        options: [
+          { label: "Natural Selection" },
+          { label: "The Origin of Species" },
+        ],
+      },
+      {
+        name: "Passion & Commitment",
+        options: [
+          { label: "Dedication to Discovery" },
+          { label: "Overcoming Doubts & Challenges" },
+        ],
+      },
+    ],
+  },  
 ];
 
   // Function to change primary color based on selected figure
