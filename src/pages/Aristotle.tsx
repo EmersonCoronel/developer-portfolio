@@ -1,328 +1,32 @@
 import React, { useState, useEffect, useRef } from "react";
 import Header from "../components/general/Header";
 import axios from "axios";
+import { figures, Figure, changePrimaryColor } from "../components/figures";
 
 interface Message {
   role: string;
   content: string;
 }
 
-interface Option {
-  label: string;
-  action: () => void;
-}
-
-interface Category {
-  name: string;
-  options: Option[];
-}
-
-interface Figure {
-  name: string;
-  categories: Category[];
-}
-
-const getBackgroundImage = (figure: string) => {
-  switch (figure) {
-    case "Aristotle":
-      return "images/backgrounds/aristotle.jpg"; // Path to Aristotle background
-    case "Albert Einstein":
-      return "/images/backgrounds/einstein.jpg"; // Path to Einstein background
-    case "Leonardo da Vinci":
-      return "/images/backgrounds/davinci.jpeg"; // Path to da Vinci background
-    case "Napoleon Bonaparte":
-      return "/images/backgrounds/napoleon.jpg"; // Path to Napoleon background
-    case "Cleopatra":
-      return "/images/backgrounds/cleopatra.jpg"; // Path to Cleopatra background
-    case "Confucius":
-      return "/images/backgrounds/confucius.jpg"; // Path to Confucius background
-    default:
-      return "";
-  }
-};
-
-
 const Aristotle: React.FC = () => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
-  const [selectedFigure, setSelectedFigure] = useState<string>("Aristotle");
+  const [selectedFigureName, setSelectedFigureName] = useState<string>("Aristotle");
   const [mode, setMode] = useState<string>("normal");
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const API_URL = process.env.REACT_APP_API_URL || "http://localhost:4000/api";
 
-  // Define the historical figures, their categories, and options
-  const figures: Figure[] = [
-    {
-      name: "Aristotle",
-      categories: [
-        {
-          name: "Socratic Dialogues",
-          options: [
-            {
-              label: "Happiness",
-              action: () => startDialogue("socratic", "Happiness"),
-            },
-            {
-              label: "Friendship",
-              action: () => startDialogue("socratic", "Friendship"),
-            },
-            {
-              label: "Courage",
-              action: () => startDialogue("socratic", "Courage"),
-            },
-            {
-              label: "Justice",
-              action: () => startDialogue("socratic", "Justice"),
-            },
-          ],
-        },
-        {
-          name: "Philosophical Teachings",
-          options: [
-            {
-              label: "Ethics",
-              action: () => startDialogue("teaching", "Ethics"),
-            },
-            {
-              label: "Logic",
-              action: () => startDialogue("teaching", "Logic"),
-            },
-            {
-              label: "Metaphysics",
-              action: () => startDialogue("teaching", "Metaphysics"),
-            },
-            {
-              label: "Politics",
-              action: () => startDialogue("teaching", "Politics"),
-            },
-          ],
-        },
-      ],
-    },
-    {
-      name: "Albert Einstein",
-      categories: [
-        {
-          name: "Thought Experiments",
-          options: [
-            {
-              label: "Relativity",
-              action: () => startDialogue("thought_experiment", "Relativity"),
-            },
-            {
-              label: "Time Dilation",
-              action: () => startDialogue("thought_experiment", "Time Dilation"),
-            },
-            {
-              label: "Twin Paradox",
-              action: () => startDialogue("thought_experiment", "Twin Paradox"),
-            },
-          ],
-        },
-        {
-          name: "Physics Lessons",
-          options: [
-            {
-              label: "General Relativity",
-              action: () => startDialogue("lesson", "General Relativity"),
-            },
-            {
-              label: "Quantum Mechanics",
-              action: () => startDialogue("lesson", "Quantum Mechanics"),
-            },
-            {
-              label: "Photoelectric Effect",
-              action: () => startDialogue("lesson", "Photoelectric Effect"),
-            },
-          ],
-        },
-      ],
-    },
-    {
-      name: "Leonardo da Vinci",
-      categories: [
-        {
-          name: "Creative Brainstorming",
-          options: [
-            {
-              label: "Inventions",
-              action: () => startDialogue("brainstorm", "Inventions"),
-            },
-            {
-              label: "Art Projects",
-              action: () => startDialogue("brainstorm", "Art Projects"),
-            },
-            {
-              label: "Flight Machines",
-              action: () => startDialogue("brainstorm", "Flight Machines"),
-            },
-          ],
-        },
-        {
-          name: "Art Lessons",
-          options: [
-            {
-              label: "Painting Techniques",
-              action: () => startDialogue("lesson", "Painting Techniques"),
-            },
-            {
-              label: "Anatomy",
-              action: () => startDialogue("lesson", "Anatomy"),
-            },
-            {
-              label: "Perspective Drawing",
-              action: () => startDialogue("lesson", "Perspective Drawing"),
-            },
-          ],
-        },
-      ],
-    },
-    {
-      name: "Napoleon Bonaparte",
-      categories: [
-        {
-          name: "Military Simulations",
-          options: [
-            {
-              label: "Battle Strategies",
-              action: () => startDialogue("simulation", "Battle Strategies"),
-            },
-            {
-              label: "Leadership Challenges",
-              action: () => startDialogue("simulation", "Leadership Challenges"),
-            },
-          ],
-        },
-        {
-          name: "Leadership Lessons",
-          options: [
-            {
-              label: "Commanding Armies",
-              action: () => startDialogue("lesson", "Commanding Armies"),
-            },
-            {
-              label: "Political Strategy",
-              action: () => startDialogue("lesson", "Political Strategy"),
-            },
-          ],
-        },
-      ],
-    },
-    {
-      name: "Cleopatra",
-      categories: [
-        {
-          name: "Role-Playing Diplomacy",
-          options: [
-            {
-              label: "Negotiating Alliances",
-              action: () => startDialogue("role_play", "Negotiating Alliances"),
-            },
-            {
-              label: "Court Intrigues",
-              action: () => startDialogue("role_play", "Court Intrigues"),
-            },
-          ],
-        },
-        {
-          name: "History Lessons",
-          options: [
-            {
-              label: "Ancient Egyptian Culture",
-              action: () => startDialogue("lesson", "Ancient Egyptian Culture"),
-            },
-            {
-              label: "Governance",
-              action: () => startDialogue("lesson", "Governance"),
-            },
-          ],
-        },
-      ],
-    },
-    {
-      name: "Confucius",
-      categories: [
-        {
-          name: "Philosophical Discussions",
-          options: [
-            {
-              label: "Moral Dilemmas",
-              action: () => startDialogue("discussion", "Moral Dilemmas"),
-            },
-            {
-              label: "Social Harmony",
-              action: () => startDialogue("discussion", "Social Harmony"),
-            },
-          ],
-        },
-        {
-          name: "Teachings",
-          options: [
-            {
-              label: "Ethics",
-              action: () => startDialogue("lesson", "Ethics"),
-            },
-            {
-              label: "The Five Relationships",
-              action: () => startDialogue("lesson", "The Five Relationships"),
-            },
-          ],
-        },
-      ],
-    },
-  ];
-const changePrimaryColor = (figure: string) => {
-  if (figure === "Aristotle") {
-    document.documentElement.style.setProperty("--primary-color", "#ffffff"); // Switch to white for Aristotle
-    document.documentElement.style.setProperty("--primary-color-r", "255");
-    document.documentElement.style.setProperty("--primary-color-g", "255");
-    document.documentElement.style.setProperty("--primary-color-b", "255");
-  } else if (figure === "Cleopatra") {
-    document.documentElement.style.setProperty("--primary-color", "#C2B280"); // Sandy color for Cleopatra
-    document.documentElement.style.setProperty("--primary-color-r", "194");
-    document.documentElement.style.setProperty("--primary-color-g", "178");
-    document.documentElement.style.setProperty("--primary-color-b", "128");
-  } else if (figure === "Napoleon Bonaparte") {
-    document.documentElement.style.setProperty("--primary-color", "#FFC0CB"); // Pink for Napoleon
-    document.documentElement.style.setProperty("--primary-color-r", "255");
-    document.documentElement.style.setProperty("--primary-color-g", "192");
-    document.documentElement.style.setProperty("--primary-color-b", "203");
-  } else if (figure === "Albert Einstein") {
-    document.documentElement.style.setProperty("--primary-color", "#ADD8E6"); // Lighter blue for Einstein
-    document.documentElement.style.setProperty("--primary-color-r", "173");
-    document.documentElement.style.setProperty("--primary-color-g", "216");
-    document.documentElement.style.setProperty("--primary-color-b", "230");
-  } else if (figure === "Leonardo da Vinci") {
-    document.documentElement.style.setProperty("--primary-color", "#C8A2C8"); // Lavender for Da Vinci
-    document.documentElement.style.setProperty("--primary-color-r", "200");
-    document.documentElement.style.setProperty("--primary-color-g", "162");
-    document.documentElement.style.setProperty("--primary-color-b", "200");
-  } else if (figure === "Confucius") {
-    document.documentElement.style.setProperty("--primary-color", "#F0E68C"); // Mellowed yellow for Confucius
-    document.documentElement.style.setProperty("--primary-color-r", "240");
-    document.documentElement.style.setProperty("--primary-color-g", "230");
-    document.documentElement.style.setProperty("--primary-color-b", "140");
-  } else {
-    document.documentElement.style.setProperty("--primary-color", "#87ceeb"); // Default back to the original color
-    document.documentElement.style.setProperty("--primary-color-r", "135");
-    document.documentElement.style.setProperty("--primary-color-g", "206");
-    document.documentElement.style.setProperty("--primary-color-b", "235");
-  }
-};
-  
-  // Call this function when the figure is changed
+  // Find the selected figure object
+  const selectedFigure = figures.find((f) => f.name === selectedFigureName)!;
+
   useEffect(() => {
-    changePrimaryColor(selectedFigure);
-    setMessages([]);
-  }, [selectedFigure]);
-
-  const selectedFigureObj = figures.find((f) => f.name === selectedFigure);
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+    if (selectedFigure) {
+      changePrimaryColor(selectedFigure);
+      setMessages([]);
+    }
+  }, [selectedFigureName]);
 
   // Function to start a dialogue based on mode and topic
   const startDialogue = async (selectedMode: string, topic: string) => {
@@ -333,7 +37,7 @@ const changePrimaryColor = (figure: string) => {
 
     try {
       const res = await axios.post(`${API_URL}/start-dialogue`, {
-        figure: selectedFigure,
+        figure: selectedFigure.name,
         mode: selectedMode,
         topic,
       });
@@ -373,7 +77,7 @@ const changePrimaryColor = (figure: string) => {
         message,
         messages: newMessages,
         mode,
-        selectedFigure,
+        selectedFigure: selectedFigure.name,
         selectedTopic,
       });
       const aiResponse = res.data.response;
@@ -398,25 +102,78 @@ const changePrimaryColor = (figure: string) => {
     }
   };
 
+  // Function to attach action handlers to options
+  const attachActionsToOptions = (figure: Figure) => {
+    return figure.categories.map((category) => ({
+      ...category,
+      options: category.options.map((option) => ({
+        ...option,
+        action: () => {
+          const mode = getModeForOption(figure.name, category.name);
+          startDialogue(mode, option.label);
+        },
+      })),
+    }));
+  };
+
+  // Function to determine the mode based on figure and category
+  const getModeForOption = (figureName: string, categoryName: string): string => {
+    // Define modes based on figure and category
+    const modeMapping: { [key: string]: { [key: string]: string } } = {
+      Aristotle: {
+        "Socratic Dialogues": "socratic",
+        "Philosophical Teachings": "teaching",
+      },
+      "Albert Einstein": {
+        "Thought Experiments": "thought_experiment",
+        "Physics Lessons": "lesson",
+      },
+      "Leonardo da Vinci": {
+        "Creative Brainstorming": "brainstorm",
+        "Art Lessons": "lesson",
+      },
+      "Napoleon Bonaparte": {
+        "Military Simulations": "simulation",
+        "Leadership Lessons": "lesson",
+      },
+      Cleopatra: {
+        "Role-Playing Diplomacy": "role_play",
+        "History Lessons": "lesson",
+      },
+      Confucius: {
+        "Philosophical Discussions": "discussion",
+        Teachings: "lesson",
+      },
+    };
+
+    return modeMapping[figureName]?.[categoryName] || "normal";
+  };
+
+  // Get the categories with actions attached
+  const categoriesWithActions = attachActionsToOptions(selectedFigure);
+
   return (
     <div>
-      <div id="image-display" style={{
-        backgroundImage: `url(${getBackgroundImage(selectedFigure)})`,
-      }} />
+      <div
+        id="image-display"
+        style={{
+          backgroundImage: `url(${selectedFigure.image})`,
+        }}
+      />
       <Header />
-        <div className="chat-container">
+      <div className="chat-container">
         {/* Dropdown Menu for Mobile */}
         <div className="dropdown-container">
-          <button className="dropdown-button" onClick={toggleDropdown}>
-            {selectedFigure}
+          <button className="dropdown-button" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+            {selectedFigure.name}
           </button>
           {isDropdownOpen && (
             <div className="dropdown-content">
               {/* Figure Selection */}
               <h3>Select Figure</h3>
               <select
-                value={selectedFigure}
-                onChange={(e) => setSelectedFigure(e.target.value)}
+                value={selectedFigureName}
+                onChange={(e) => setSelectedFigureName(e.target.value)}
                 style={{ whiteSpace: "normal" }}
               >
                 {figures.map((figure) => (
@@ -425,22 +182,21 @@ const changePrimaryColor = (figure: string) => {
                   </option>
                 ))}
               </select>
-            
+
               {/* Figure-specific options */}
-              {selectedFigureObj &&
-                selectedFigureObj.categories.map((category, catIndex) => (
-                  <div key={catIndex}>
-                    <h3>{category.name}</h3>
-                    <ul>
-                      {category.options.map((option, optIndex) => (
-                        <li key={optIndex}>
-                          <button onClick={option.action}>{option.label}</button>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-            
+              {categoriesWithActions.map((category, catIndex) => (
+                <div key={catIndex}>
+                  <h3>{category.name}</h3>
+                  <ul>
+                    {category.options.map((option, optIndex) => (
+                      <li key={optIndex}>
+                        <button onClick={option.action}>{option.label}</button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+
               {/* Scenario-Based Advice */}
               <h3>Scenario-Based Advice</h3>
               <button onClick={startScenarioAdvice}>Start Scenario Advice</button>
@@ -471,9 +227,9 @@ const changePrimaryColor = (figure: string) => {
         <div className="sidebar">
           <h3>Select Figure</h3>
           <select
-            value={selectedFigure}
-            onChange={(e) => setSelectedFigure(e.target.value)}
-            style={{ whiteSpace: "normal" }} // Ensure names wrap
+            value={selectedFigureName}
+            onChange={(e) => setSelectedFigureName(e.target.value)}
+            style={{ whiteSpace: "normal" }}
           >
             {figures.map((figure) => (
               <option key={figure.name} value={figure.name}>
@@ -482,19 +238,18 @@ const changePrimaryColor = (figure: string) => {
             ))}
           </select>
 
-          {selectedFigureObj &&
-            selectedFigureObj.categories.map((category, catIndex) => (
-              <div key={catIndex}>
-                <h3>{category.name}</h3>
-                <ul>
-                  {category.options.map((option, optIndex) => (
-                    <li key={optIndex}>
-                      <button onClick={option.action}>{option.label}</button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          {categoriesWithActions.map((category, catIndex) => (
+            <div key={catIndex}>
+              <h3>{category.name}</h3>
+              <ul>
+                {category.options.map((option, optIndex) => (
+                  <li key={optIndex}>
+                    <button onClick={option.action}>{option.label}</button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
           <h3>Scenario-Based Advice</h3>
           <button onClick={startScenarioAdvice}>Start Scenario Advice</button>
