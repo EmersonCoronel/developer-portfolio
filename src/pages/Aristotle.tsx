@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import Header from "../components/general/Header";
-import axios from "axios";
 import { figures, Figure, changePrimaryColor } from "../components/figures";
 
 interface Message {
@@ -11,22 +10,20 @@ interface Message {
 const Aristotle: React.FC = () => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
-  const [selectedFigureName, setSelectedFigureName] = useState<string>("Aristotle");
+  const [selectedFigure, setSelectedFigure] = useState<Figure>(figures.find((f) => f.name === "Aristotle") || figures[0]);
   const [mode, setMode] = useState<string>("normal");
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const API_URL = process.env.REACT_APP_API_URL || "http://localhost:4000/api";
-
-  // Find the selected figure object
-  const selectedFigure = figures.find((f) => f.name === selectedFigureName)!;
+  console.log("Using api url: ", API_URL)
 
   useEffect(() => {
     if (selectedFigure) {
       changePrimaryColor(selectedFigure);
       setMessages([]);
     }
-  }, [selectedFigureName]);
+  }, [selectedFigure]);
 
   // Function to start a dialogue based on mode and topic
   const startDialogue = async (selectedMode: string, topic: string) => {
@@ -36,15 +33,66 @@ const Aristotle: React.FC = () => {
     setSelectedTopic(topic);
 
     try {
-      const res = await axios.post(`${API_URL}/start-dialogue`, {
-        figure: selectedFigure.name,
-        mode: selectedMode,
-        topic,
+      const response = await fetch(`${API_URL}/start-dialogue`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          figure: selectedFigure.name,
+          mode: selectedMode,
+          topic,
+        }),
       });
-      const aiResponse = res.data.response;
 
-      // Add the figure's initial message to the chat
-      setMessages([{ role: "assistant", content: aiResponse }]);
+      if (!response.body) {
+        throw new Error('ReadableStream not yet supported in this browser.');
+      }
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder('utf-8');
+
+      let assistantMessage = '';
+      let done = false;
+
+      // Add an initial assistant message to update incrementally
+      setMessages([{ role: 'assistant', content: '' }]);
+
+      while (!done) {
+        const { value, done: doneReading } = await reader.read();
+        done = doneReading;
+
+        if (value) {
+          const chunk = decoder.decode(value);
+          const lines = chunk.split('\n').filter((line) => line.trim() !== '');
+          for (const line of lines) {
+            const messagePart = line.replace(/^data: /, '');
+            if (messagePart === '[DONE]') {
+              done = true;
+              break;
+            }
+            try {
+              const content = JSON.parse(messagePart);
+              assistantMessage += content;
+
+              setMessages((prevMessages) => {
+                const lastMessageIndex = prevMessages.length - 1;
+                const updatedMessages = [...prevMessages];
+                const lastMessage = updatedMessages[lastMessageIndex];
+                if (lastMessage.role === 'assistant') {
+                  updatedMessages[lastMessageIndex] = {
+                    ...lastMessage,
+                    content: assistantMessage,
+                  };
+                  return updatedMessages;
+                } else {
+                  return prevMessages;
+                }
+              });
+            } catch (e) {
+              console.error('Error parsing message part:', e);
+            }
+          }
+        }
+      }
     } catch (error) {
       console.error("Error starting dialogue:", error);
     }
@@ -73,15 +121,68 @@ const Aristotle: React.FC = () => {
     setMessage("");
 
     try {
-      const res = await axios.post(`${API_URL}/chat`, {
-        message,
-        messages: newMessages,
-        mode,
-        selectedFigure: selectedFigure.name,
-        selectedTopic,
+      const response = await fetch(`${API_URL}/chat`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message,
+          messages: newMessages,
+          mode,
+          selectedFigure: selectedFigure.name,
+          selectedTopic,
+        }),
       });
-      const aiResponse = res.data.response;
-      setMessages([...newMessages, { role: "assistant", content: aiResponse }]);
+
+      if (!response.body) {
+        throw new Error('ReadableStream not yet supported in this browser.');
+      }
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder('utf-8');
+
+      let assistantMessage = '';
+      let done = false;
+
+      // Add an initial assistant message to update incrementally
+      setMessages((prevMessages) => [...prevMessages, { role: 'assistant', content: '' }]);
+
+      while (!done) {
+        const { value, done: doneReading } = await reader.read();
+        done = doneReading;
+
+        if (value) {
+          const chunk = decoder.decode(value);
+          const lines = chunk.split('\n').filter((line) => line.trim() !== '');
+          for (const line of lines) {
+            const messagePart = line.replace(/^data: /, '');
+            if (messagePart === '[DONE]') {
+              done = true;
+              break;
+            }
+            try {
+              const content = JSON.parse(messagePart);
+              assistantMessage += content;
+
+              setMessages((prevMessages) => {
+                const lastMessageIndex = prevMessages.length - 1;
+                const updatedMessages = [...prevMessages];
+                const lastMessage = updatedMessages[lastMessageIndex];
+                if (lastMessage.role === 'assistant') {
+                  updatedMessages[lastMessageIndex] = {
+                    ...lastMessage,
+                    content: assistantMessage,
+                  };
+                  return updatedMessages;
+                } else {
+                  return prevMessages;
+                }
+              });
+            } catch (e) {
+              console.error('Error parsing message part:', e);
+            }
+          }
+        }
+      }
     } catch (error) {
       console.error("Error sending message:", error);
     }
@@ -142,7 +243,7 @@ const Aristotle: React.FC = () => {
       },
       Confucius: {
         "Philosophical Discussions": "discussion",
-        Teachings: "lesson",
+        "Teachings": "lesson",
       },
     };
 
@@ -172,8 +273,8 @@ const Aristotle: React.FC = () => {
               {/* Figure Selection */}
               <h3>Select Figure</h3>
               <select
-                value={selectedFigureName}
-                onChange={(e) => setSelectedFigureName(e.target.value)}
+                value={selectedFigure.name}
+                onChange={(e) => setSelectedFigure(figures.find((f) => f.name === e.target.value) || figures[0])}
                 style={{ whiteSpace: "normal" }}
               >
                 {figures.map((figure) => (
@@ -227,8 +328,8 @@ const Aristotle: React.FC = () => {
         <div className="sidebar">
           <h3>Select Figure</h3>
           <select
-            value={selectedFigureName}
-            onChange={(e) => setSelectedFigureName(e.target.value)}
+            value={selectedFigure.name}
+            onChange={(e) => setSelectedFigure(figures.find((f) => f.name === e.target.value) || figures[0])}
             style={{ whiteSpace: "normal" }}
           >
             {figures.map((figure) => (
