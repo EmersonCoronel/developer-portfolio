@@ -53,25 +53,27 @@ const Aristotle: React.FC = () => {
       let assistantMessage = "";
       let done = false;
 
-      // Add an initial assistant message to update incrementally
-      setMessages([{ role: "assistant", content: "" }]);
-
       const processChunk = (messagePart: string) => {
         const content = JSON.parse(messagePart);
         assistantMessage += content;
-
+      
         setMessages((prevMessages) => {
-          const updatedMessages = [...prevMessages];
-          const lastMessageIndex = updatedMessages.length - 1;
-          const lastMessage = updatedMessages[lastMessageIndex];
-
-          // Update the assistant message with incremental content
-          updatedMessages[lastMessageIndex] = {
-            ...lastMessage,
-            content: assistantMessage,
-          };
-
-          return updatedMessages;
+          if (prevMessages.length === 0) {
+            // Add the initial assistant message only after the first chunk is processed
+            return [{ role: "assistant", content: assistantMessage }];
+          } else {
+            const updatedMessages = [...prevMessages];
+            const lastMessageIndex = updatedMessages.length - 1;
+            const lastMessage = updatedMessages[lastMessageIndex];
+      
+            // Update the assistant message with incremental content
+            updatedMessages[lastMessageIndex] = {
+              ...lastMessage,
+              content: assistantMessage,
+            };
+      
+            return updatedMessages;
+          }
         });
       };
 
@@ -143,35 +145,37 @@ const Aristotle: React.FC = () => {
       const reader = response.body.getReader();
       const decoder = new TextDecoder("utf-8");
 
-      let assistantMessage = "";
       let done = false;
-
+      let assistantMessage = "";
+      
       const processChunk = (messagePart: string) => {
         const content = JSON.parse(messagePart);
         assistantMessage += content;
-
+      
         setMessages((prevMessages) => {
-          const updatedMessages = [...prevMessages];
-          const lastMessageIndex = updatedMessages.length - 1;
-          const lastMessage = updatedMessages[lastMessageIndex];
-
-          // Update the assistant message with incremental content
-          updatedMessages[lastMessageIndex] = {
-            ...lastMessage,
-            content: assistantMessage,
-          };
-
-          return updatedMessages;
+          if (prevMessages.length === 0 || prevMessages[prevMessages.length - 1].role !== "assistant") {
+            // Add the initial assistant message only after the first chunk is processed
+            return [...prevMessages, { role: "assistant", content: assistantMessage }];
+          } else {
+            const updatedMessages = [...prevMessages];
+            const lastMessageIndex = updatedMessages.length - 1;
+            const lastMessage = updatedMessages[lastMessageIndex];
+      
+            // Update the assistant message with incremental content
+            updatedMessages[lastMessageIndex] = {
+              ...lastMessage,
+              content: assistantMessage,
+            };
+      
+            return updatedMessages;
+          }
         });
       };
-
-      // Add an initial assistant message to update incrementally
-      setMessages((prevMessages) => [...prevMessages, { role: "assistant", content: "" }]);
-
+      
       while (!done) {
         const { value, done: doneReading } = await reader.read();
         done = doneReading; // Separate logic from chunk processing
-
+      
         if (value) {
           const chunk = decoder.decode(value);
           const lines = chunk.split("\n").filter((line) => line.trim() !== "");
