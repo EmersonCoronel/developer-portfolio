@@ -10,7 +10,9 @@ interface Message {
 const Aristotle: React.FC = () => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
-  const [selectedFigure, setSelectedFigure] = useState<Figure>(figures.find((f) => f.name === "Aristotle") || figures[0]);
+  const [selectedFigure, setSelectedFigure] = useState<Figure>(
+    figures.find((f) => f.name === "Aristotle") || figures[0]
+  );
   const [mode, setMode] = useState<string>("normal");
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -24,17 +26,15 @@ const Aristotle: React.FC = () => {
     }
   }, [selectedFigure]);
 
-  // Function to start a dialogue based on mode and topic
   const startDialogue = async (selectedMode: string, topic: string) => {
-    // Clear previous messages and set the selected mode and topic
     setMessages([]);
     setMode(selectedMode);
     setSelectedTopic(topic);
 
     try {
       const response = await fetch(`${API_URL}/start-dialogue`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           figure: selectedFigure.name,
           mode: selectedMode,
@@ -43,56 +43,56 @@ const Aristotle: React.FC = () => {
       });
 
       if (!response.body) {
-        throw new Error('ReadableStream not yet supported in this browser.');
+        throw new Error("ReadableStream not yet supported in this browser.");
       }
 
       const reader = response.body.getReader();
-      const decoder = new TextDecoder('utf-8');
+      const decoder = new TextDecoder("utf-8");
 
-      let assistantMessage = '';
+      let assistantMessage = "";
       let done = false;
 
       // Add an initial assistant message to update incrementally
-      setMessages([{ role: 'assistant', content: '' }]);
+      setMessages([{ role: "assistant", content: "" }]);
+
+      const processChunk = (messagePart: string) => {
+        const content = JSON.parse(messagePart);
+        assistantMessage += content;
+
+        setMessages((prevMessages) => {
+          const updatedMessages = [...prevMessages];
+          const lastMessageIndex = updatedMessages.length - 1;
+          const lastMessage = updatedMessages[lastMessageIndex];
+
+          // Update the assistant message with incremental content
+          updatedMessages[lastMessageIndex] = {
+            ...lastMessage,
+            content: assistantMessage,
+          };
+
+          return updatedMessages;
+        });
+      };
 
       while (!done) {
         const { value, done: doneReading } = await reader.read();
-        done = doneReading;
+        done = doneReading; // Separate logic from chunk processing
 
         if (value) {
           const chunk = decoder.decode(value);
-          const lines = chunk.split('\n').filter((line) => line.trim() !== '');
+          const lines = chunk.split("\n").filter((line) => line.trim() !== "");
           for (const line of lines) {
-            const messagePart = line.replace(/^data: /, '');
-            if (messagePart === '[DONE]') {
+            const messagePart = line.replace(/^data: /, "");
+            if (messagePart === "[DONE]") {
               done = true;
-              break;
+            } else {
+              try {
+                processChunk(messagePart);
+              } catch (e) {
+                console.error("Error parsing message part:", e);
+              }
             }
-            try {
-              const content = JSON.parse(messagePart);
-              assistantMessage += content;
-
-              setMessages((prevMessages) => {
-                const lastMessageIndex = prevMessages.length - 1;
-                const updatedMessages = [...prevMessages];
-  
-                // Add assistant message only on the first response chunk
-                if (assistantMessage.length === content.length) {
-                  updatedMessages.push({ role: 'assistant', content: assistantMessage });
-                } else {
-                  // Update the assistant message with incremental content
-                  const lastMessage = updatedMessages[lastMessageIndex];
-                  updatedMessages[lastMessageIndex] = {
-                    ...lastMessage,
-                    content: assistantMessage,
-                  };
-                }
-  
-                return updatedMessages;
-              });
-            } catch (e) {
-              console.error('Error parsing message part:', e);
-            }
+            if (done) break; // Exit the loop if done
           }
         }
       }
@@ -101,13 +101,10 @@ const Aristotle: React.FC = () => {
     }
   };
 
-  // Function to start Scenario-Based Advice
   const startScenarioAdvice = () => {
-    // Clear previous messages and set mode
     setMessages([]);
     setMode("scenario");
 
-    // Add the initial message
     setMessages([
       {
         role: "assistant",
@@ -125,8 +122,8 @@ const Aristotle: React.FC = () => {
 
     try {
       const response = await fetch(`${API_URL}/chat`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           message,
           messages: newMessages,
@@ -137,53 +134,56 @@ const Aristotle: React.FC = () => {
       });
 
       if (!response.body) {
-        throw new Error('ReadableStream not yet supported in this browser.');
+        throw new Error("ReadableStream not yet supported in this browser.");
       }
 
       const reader = response.body.getReader();
-      const decoder = new TextDecoder('utf-8');
+      const decoder = new TextDecoder("utf-8");
 
-      let assistantMessage = '';
+      let assistantMessage = "";
       let done = false;
+
+      const processChunk = (messagePart: string) => {
+        const content = JSON.parse(messagePart);
+        assistantMessage += content;
+
+        setMessages((prevMessages) => {
+          const updatedMessages = [...prevMessages];
+          const lastMessageIndex = updatedMessages.length - 1;
+          const lastMessage = updatedMessages[lastMessageIndex];
+
+          // Update the assistant message with incremental content
+          updatedMessages[lastMessageIndex] = {
+            ...lastMessage,
+            content: assistantMessage,
+          };
+
+          return updatedMessages;
+        });
+      };
+
+      // Add an initial assistant message to update incrementally
+      setMessages((prevMessages) => [...prevMessages, { role: "assistant", content: "" }]);
 
       while (!done) {
         const { value, done: doneReading } = await reader.read();
-        done = doneReading;
+        done = doneReading; // Separate logic from chunk processing
 
         if (value) {
           const chunk = decoder.decode(value);
-          const lines = chunk.split('\n').filter((line) => line.trim() !== '');
+          const lines = chunk.split("\n").filter((line) => line.trim() !== "");
           for (const line of lines) {
-            const messagePart = line.replace(/^data: /, '');
-            if (messagePart === '[DONE]') {
+            const messagePart = line.replace(/^data: /, "");
+            if (messagePart === "[DONE]") {
               done = true;
-              break;
+            } else {
+              try {
+                processChunk(messagePart);
+              } catch (e) {
+                console.error("Error parsing message part:", e);
+              }
             }
-            try {
-              const content = JSON.parse(messagePart);
-              assistantMessage += content;
-
-              setMessages((prevMessages) => {
-                const lastMessageIndex = prevMessages.length - 1;
-                const updatedMessages = [...prevMessages];
-  
-                // Add assistant message only on the first response chunk
-                if (assistantMessage.length === content.length) {
-                  updatedMessages.push({ role: 'assistant', content: assistantMessage });
-                } else {
-                  // Update the assistant message with incremental content
-                  const lastMessage = updatedMessages[lastMessageIndex];
-                  updatedMessages[lastMessageIndex] = {
-                    ...lastMessage,
-                    content: assistantMessage,
-                  };
-                }
-  
-                return updatedMessages;
-              });
-            } catch (e) {
-              console.error('Error parsing message part:', e);
-            }
+            if (done) break; // Exit the loop if done
           }
         }
       }
@@ -207,7 +207,6 @@ const Aristotle: React.FC = () => {
     }
   };
 
-  // Function to attach action handlers to options
   const attachActionsToOptions = (figure: Figure) => {
     return figure.categories.map((category) => ({
       ...category,
@@ -221,9 +220,7 @@ const Aristotle: React.FC = () => {
     }));
   };
 
-  // Function to determine the mode based on figure and category
   const getModeForOption = (figureName: string, categoryName: string): string => {
-    // Define modes based on figure and category
     const modeMapping: { [key: string]: { [key: string]: string } } = {
       Aristotle: {
         "Socratic Dialogues": "socratic",
@@ -254,7 +251,6 @@ const Aristotle: React.FC = () => {
     return modeMapping[figureName]?.[categoryName] || "normal";
   };
 
-  // Get the categories with actions attached
   const categoriesWithActions = attachActionsToOptions(selectedFigure);
 
   return (
@@ -278,7 +274,9 @@ const Aristotle: React.FC = () => {
               <h3>Select Figure</h3>
               <select
                 value={selectedFigure.name}
-                onChange={(e) => setSelectedFigure(figures.find((f) => f.name === e.target.value) || figures[0])}
+                onChange={(e) =>
+                  setSelectedFigure(figures.find((f) => f.name === e.target.value) || figures[0])
+                }
                 style={{ whiteSpace: "normal" }}
               >
                 {figures.map((figure) => (
@@ -333,7 +331,9 @@ const Aristotle: React.FC = () => {
           <h3>Select Figure</h3>
           <select
             value={selectedFigure.name}
-            onChange={(e) => setSelectedFigure(figures.find((f) => f.name === e.target.value) || figures[0])}
+            onChange={(e) =>
+              setSelectedFigure(figures.find((f) => f.name === e.target.value) || figures[0])
+            }
             style={{ whiteSpace: "normal" }}
           >
             {figures.map((figure) => (
