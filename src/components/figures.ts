@@ -158,33 +158,11 @@ export const figures: Figure[] = [
         ],
       },
     ],
-  },
-  {
-    name: "David Bowie",
-    color: "#C0C0C0", // Stardust Silver
-    colorRGB: { r: 192, g: 192, b: 192 },
-    image: "/images/backgrounds/bowie.jpeg",
-    categories: [
-      {
-        name: "Music & Legacy",
-        options: [
-          { label: "Reinventing Oneself" },
-          { label: "The Evolution of Music" },
-        ],
-      },
-      {
-        name: "Cultural Impact",
-        options: [
-          { label: "Challenging Norms in Music" },
-          { label: "The Influence of Fashion" },
-        ],
-      },
-    ],
-  },  
+  }, 
   {
     name: "Charles Darwin",
-                color: "#98FF98", // Mint Green
-        colorRGB: { r: 152, g: 255, b: 152 },
+    color: "#98FF98", // Mint Green
+    colorRGB: { r: 152, g: 255, b: 152 },
     image: "/images/backgrounds/darwin.jpeg", // Add your own image path
     categories: [
       {
@@ -202,7 +180,32 @@ export const figures: Figure[] = [
         ],
       },
     ],
-  },  
+  },
+  {
+    name: "The Rebbe",
+    color: "#FFECB3", // Light Gold
+    colorRGB: { r: 255, g: 236, b: 179 },
+    image: "/images/backgrounds/rebbe.jpeg", // Add your own image path
+    categories: [
+      {
+        name: "Spiritual Guidance",
+        options: [
+          { label: "Jewish Mysticism & Chassidism" },
+          { label: "Faith & Overcoming Challenges" },
+          { label: "Mitzvot & Daily Life" },
+        ],
+      },
+      {
+        name: "Leadership & Education",
+        options: [
+          { label: "The Power of Positive Influence" },
+          { label: "Education & Community Building" },
+          { label: "Finding Meaning in Every Moment" },
+        ],
+      },
+    ],
+  }
+  
 ];
 
   // Function to change primary color based on selected figure
@@ -212,4 +215,48 @@ export const figures: Figure[] = [
     document.documentElement.style.setProperty("--primary-color-r", colorRGB.r.toString());
     document.documentElement.style.setProperty("--primary-color-g", colorRGB.g.toString());
     document.documentElement.style.setProperty("--primary-color-b", colorRGB.b.toString());
+  };
+
+  export const getModeForOption = (figureName: string, categoryName: string): string => {
+    const modeMapping: { [key: string]: { [key: string]: string } } = {
+      'Aristotle': {
+        'Socratic Dialogues': 'socratic',
+        'Philosophical Teachings': 'teaching',
+      },
+      'Albert Einstein': {
+        'Thought Experiments': 'thought_experiment',
+        'Physics Lessons': 'lesson',
+      },
+      'Leonardo da Vinci': {
+        'Creative Brainstorming': 'brainstorm',
+        'Art Lessons': 'lesson',
+      },
+      'Napoleon Bonaparte': {
+        'Military Simulations': 'simulation',
+        'Leadership Lessons': 'lesson',
+      },
+      'Cleopatra': {
+        'Role-Playing Diplomacy': 'role_play',
+        'History Lessons': 'lesson',
+      },
+      'Confucius': {
+        'Philosophical Discussions': 'discussion',
+        'Teachings': 'lesson',
+      },
+      'Charles Darwin': {
+        'Evolution & Biology': 'teaching',
+        'Passion & Commitment': 'discussion',
+      },
+      'The Rebbe': {
+        'Spiritual Guidance': 'guidance',
+        'Leadership & Education': 'teaching',
+      },
+      'David Bowie': {
+        'Music & Legacy': 'creative_discussion',
+        'Cultural Impact': 'creative_discussion',
+        'Philosophy & Reflection': 'philosophy',
+      },
+    };
+  
+    return modeMapping[figureName]?.[categoryName] || 'normal';
   };

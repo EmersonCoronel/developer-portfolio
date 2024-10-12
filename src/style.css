@@ -364,12 +364,13 @@ body {
   color: var(--primary-color);
   padding: 10px 15px;
   border-radius: 15px;
+  font-size: 20px;
   max-width: 80%;
   word-wrap: break-word;
 }
 
 .message.user {
-  background: rgba(calc(var(--primary-color-r) * 0.5), calc(var(--primary-color-g) * 0.5), calc(var(--primary-color-b) * 0.5), 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   align-self: flex-end;
   text-align: left;
 }
@@ -385,6 +386,7 @@ body {
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
+  font-size: 20px;
 }
 
 .input-container textarea {
@@ -393,7 +395,7 @@ body {
   border: 1px solid var(--primary-color);
   border-radius: 8px;
   background: rgba(var(--primary-color-r), var(--primary-color-g), var(--primary-color-b), 0.15);
-  color: var(--primary-color);
+  color: white;
   font-family: "Montserrat", sans-serif;
   resize: none;
   outline: none;

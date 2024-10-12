@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Header from "../components/general/Header";
-import { figures, Figure, changePrimaryColor } from "../components/figures";
+import { figures, Figure, changePrimaryColor, getModeForOption } from "../components/figures";
 
 interface Message {
   role: string;
@@ -225,37 +225,6 @@ const Aristotle: React.FC = () => {
         },
       })),
     }));
-  };
-
-  const getModeForOption = (figureName: string, categoryName: string): string => {
-    const modeMapping: { [key: string]: { [key: string]: string } } = {
-      Aristotle: {
-        "Socratic Dialogues": "socratic",
-        "Philosophical Teachings": "teaching",
-      },
-      "Albert Einstein": {
-        "Thought Experiments": "thought_experiment",
-        "Physics Lessons": "lesson",
-      },
-      "Leonardo da Vinci": {
-        "Creative Brainstorming": "brainstorm",
-        "Art Lessons": "lesson",
-      },
-      "Napoleon Bonaparte": {
-        "Military Simulations": "simulation",
-        "Leadership Lessons": "lesson",
-      },
-      Cleopatra: {
-        "Role-Playing Diplomacy": "role_play",
-        "History Lessons": "lesson",
-      },
-      Confucius: {
-        "Philosophical Discussions": "discussion",
-        "Teachings": "lesson",
-      },
-    };
-
-    return modeMapping[figureName]?.[categoryName] || "normal";
   };
 
   const categoriesWithActions = attachActionsToOptions(selectedFigure);
