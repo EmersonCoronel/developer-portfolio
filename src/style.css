@@ -370,13 +370,13 @@ body {
 }
 
 .message.user {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.4);
   align-self: flex-end;
   text-align: left;
 }
 
 .message.assistant {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.4);
   align-self: flex-start;
   text-align: left;
 }
