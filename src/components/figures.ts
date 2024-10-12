@@ -183,8 +183,8 @@ export const figures: Figure[] = [
   },
   {
     name: "The Rebbe",
-    color: "#FFECB3", // Light Gold
-    colorRGB: { r: 255, g: 236, b: 179 },
+    color: "#E0E0E0", // Lighter Silver (Gainsboro)
+    colorRGB: { r: 224, g: 224, b: 224 },
     image: "/images/backgrounds/rebbe.jpeg", // Add your own image path
     categories: [
       {
