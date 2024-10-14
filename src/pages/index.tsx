@@ -2,7 +2,6 @@ import React from "react";
 import Header from "../components/general/Header";
 import ProjectCard from "../components/home/ProjectCard";
 import projects from "../components/home/projects";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 const Home: React.FC = () => {
   return (

@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import Link from "next/link";
 
 interface ProjectCardProps {
   title: string;
@@ -11,7 +10,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ title, imageUrl, link }) => {
   return (
     <div className="col-md-4 mb-4">
-      <Link to={link} className="card-link">
+      <Link href={link} className="card-link">
         <div className="card">
           <div className="card-image-container">
             <img src={imageUrl} className="card-img-top" alt={title} />

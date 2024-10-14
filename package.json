@@ -3,21 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@netlify/plugin-nextjs": "^5.7.4",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.5.0",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
-    "catan-board-generator": "^1.0.8",
+    "catan-board-generator": "^1.1.0",
+    "depcheck": "^1.4.7",
     "eslint-config-react-app": "^7.0.1",
+    "next": "^14.2.15",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.23.1",
     "react-scripts": "^5.0.1",
-    "typographia": "^1.1.2"
+    "typographia": "^1.1.7"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
   },
   "eslintConfig": {
