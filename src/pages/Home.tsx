@@ -10,8 +10,8 @@ const Home: React.FC = () => {
       <Header />
       <div className="container-fluid">
         <div className="row justify-content-center text-center">
-          <p id="home-name">EMERSON CORONEL</p>
-          <p id="home-subtext">SOFTWARE DEVELOPER</p>
+          <h1 id="home-name">EMERSON CORONEL</h1>
+          <h2 id="home-subtext">SOFTWARE DEVELOPER</h2>
         </div>
         <div className="row justify-content-center">
           {projects.map((project, index) => (

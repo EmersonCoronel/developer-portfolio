@@ -8,7 +8,7 @@ const About: React.FC = () => {
     <>
       <Header />
       <div className="container">
-        <img src="/images/emerson.jpeg" alt="Emerson" id="professionalimg" />
+        <img src="/images/emerson-coronel.jpeg" alt="Emerson" id="professionalimg" />
         <div className="content top-buffer">
           <p className="about-text">
             Welcome to my website! I'm Emerson Coronel, a passionate and driven

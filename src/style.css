@@ -45,6 +45,8 @@ body {
   opacity: 80%;
   font-size: 6vw;
   margin-top: 60px;
+  padding-bottom: 20px;
+  font-weight: normal;
 }
 
 @media (max-width: 600px) {
@@ -59,6 +61,8 @@ body {
   letter-spacing: 12px;
   color: var(--primary-color);
   opacity: 80%;
+  padding-bottom: 20px;
+  font-weight: normal;
 }
 
 .card {
