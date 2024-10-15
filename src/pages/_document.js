@@ -30,6 +30,18 @@ export default function Document() {
             }
           `}
         </script>
+        <link rel="preload" as="image" href="/images/emerson-coronel.jpeg" />
+        <link rel="preload" as="image" href="/images/project-cards/catan-board.png" />
+        <link rel="preload" as="image" href="/images/project-cards/aristotle.png" />
+        <link rel="preload" as="image" href="/images/project-cards/typetest.png" />
+        <link rel="preload" as="image" href="/images/backgrounds/aristotle.jpg" />
+        <link rel="preload" as="image" href="/images/backgrounds/cleopatra.jpg" />
+        <link rel="preload" as="image" href="/images/backgrounds/confucius.jpg" />
+        <link rel="preload" as="image" href="/images/backgrounds/darwin.jpg" />
+        <link rel="preload" as="image" href="/images/backgrounds/davinci.jpg" />
+        <link rel="preload" as="image" href="/images/backgrounds/einstein.jpg" />
+        <link rel="preload" as="image" href="/images/backgrounds/napoleon.jpg" />
+        <link rel="preload" as="image" href="/images/backgrounds/rebbe.jpeg" />
       </Head>
       <body>
         <noscript>You need to enable JavaScript to run this app.</noscript>
