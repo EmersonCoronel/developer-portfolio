@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Header from "../components/general/Header";
-import { figures, Figure, changePrimaryColor, getModeForOption } from "../components/figures";
+import { figures, Figure, changePrimaryColor, getModeForOption, resetPrimaryColor } from "../components/figures";
 
 interface Message {
   role: string;
@@ -24,6 +24,10 @@ const Aristotle: React.FC = () => {
       changePrimaryColor(selectedFigure);
       setMessages([]);
     }
+
+    return () => {
+      resetPrimaryColor();
+    };
   }, [selectedFigure]);
 
   const startDialogue = async (selectedMode: string, topic: string) => {

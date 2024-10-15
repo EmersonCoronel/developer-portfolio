@@ -13,6 +13,9 @@ const About: React.FC = () => {
           src="/images/emerson-coronel.jpeg"
           alt="Emerson"
           id="professionalimg"
+          height={700}
+          width={430}
+          priority
         />
         <div className="content top-buffer">
           <p className="about-text">

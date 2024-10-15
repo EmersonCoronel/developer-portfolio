@@ -217,6 +217,13 @@ export const figures: Figure[] = [
     document.documentElement.style.setProperty("--primary-color-b", colorRGB.b.toString());
   };
 
+  export const resetPrimaryColor = () => {
+    document.documentElement.style.setProperty("--primary-color", '#87ceeb');
+    document.documentElement.style.setProperty("--primary-color-r", '135');
+    document.documentElement.style.setProperty("--primary-color-g", '206');
+    document.documentElement.style.setProperty("--primary-color-b", '235');
+  };
+
   export const getModeForOption = (figureName: string, categoryName: string): string => {
     const modeMapping: { [key: string]: { [key: string]: string } } = {
       'Aristotle': {
