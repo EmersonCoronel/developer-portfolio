@@ -8,15 +8,16 @@ const About: React.FC = () => {
     <>
       <Header />
       <div className="container">
-        {/* Add width and height for Image component */}
+        <div id="professionalimg">
         <Image
           src="/images/emerson-coronel.jpeg"
-          alt="Emerson"
-          id="professionalimg"
+          alt="Emerson Coronel"
+          layout="responsive"
           height={700}
           width={430}
           priority
         />
+        </div>
         <div className="content top-buffer">
           <p className="about-text">
             Welcome to my website! I&apos;m Emerson Coronel, a passionate and driven
