@@ -10,7 +10,7 @@ export default function Document() {
           name="description"
           content="Emerson Coronel's personal portfolio showcasing projects in full-stack development, AI, and software engineering."
         />
-        <link rel="icon" href="/logo.png" />
+        <link rel="icon" href="/images/logo.png" />
         <script type="application/ld+json">
           {`
             {
@@ -37,8 +37,8 @@ export default function Document() {
         <link rel="preload" as="image" href="/images/backgrounds/aristotle.jpg" />
         <link rel="preload" as="image" href="/images/backgrounds/cleopatra.jpg" />
         <link rel="preload" as="image" href="/images/backgrounds/confucius.jpg" />
-        <link rel="preload" as="image" href="/images/backgrounds/darwin.jpg" />
-        <link rel="preload" as="image" href="/images/backgrounds/davinci.jpg" />
+        <link rel="preload" as="image" href="/images/backgrounds/darwin.jpeg" />
+        <link rel="preload" as="image" href="/images/backgrounds/davinci.jpeg" />
         <link rel="preload" as="image" href="/images/backgrounds/einstein.jpg" />
         <link rel="preload" as="image" href="/images/backgrounds/napoleon.jpg" />
         <link rel="preload" as="image" href="/images/backgrounds/rebbe.jpeg" />
