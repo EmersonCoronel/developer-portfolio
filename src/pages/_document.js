@@ -11,25 +11,6 @@ export default function Document() {
           content="Emerson Coronel's personal portfolio showcasing projects in full-stack development, AI, and software engineering."
         />
         <link rel="icon" href="/images/logo.png" />
-        <script type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@type": "Person",
-              "name": "Emerson Coronel",
-              "url": "https://www.emersoncoronel.com",
-              "sameAs": [
-                "https://www.linkedin.com/in/emersoncoronel",
-                "https://github.com/EmersonCoronel"
-              ],
-              "jobTitle": "Software Engineer",
-              "worksFor": {
-                "@type": "Organization",
-                "name": "Genjo.ai"
-              }
-            }
-          `}
-        </script>
         <link rel="preload" as="image" href="/images/emerson-coronel.jpeg" />
         <link rel="preload" as="image" href="/images/project-cards/catan-board.png" />
         <link rel="preload" as="image" href="/images/project-cards/aristotle.png" />
