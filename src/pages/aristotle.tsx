@@ -17,7 +17,7 @@ const Aristotle: React.FC = () => {
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:4000/api";
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000/api";
 
   useEffect(() => {
     if (selectedFigure) {
