@@ -11,6 +11,8 @@ export default function Document() {
           content="Emerson Coronel's personal portfolio showcasing projects in full-stack development, AI, and software engineering."
         />
 
+        <link rel="icon" href={`${process.env.NEXT_PUBLIC_S3_URL}/images/logo.png`} />
+
         <link rel="preload" href={`${process.env.NEXT_PUBLIC_S3_URL}/images/emerson-coronel.jpeg`} as="image" />
 
         <link rel="preload" href={`${process.env.NEXT_PUBLIC_S3_URL}/images/project-cards/aristotle.png`} as="image" />
