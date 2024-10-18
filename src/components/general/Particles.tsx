@@ -1,15 +1,16 @@
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { useEffect, useMemo } from "react";
 import { loadSlim } from "@tsparticles/slim";
+import React from "react";
 
-const ParticlesComponent = (props) => {
+const ParticlesComponent = (props: { id: any; }) => {
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
-    });
+    }).then(particlesLoaded);
   }, []);
 
-  const particlesLoaded = (container) => {
+  const particlesLoaded = (container: any) => {
     console.log(container);
   };
 
@@ -54,10 +55,10 @@ const ParticlesComponent = (props) => {
           width: 1,
         },
         move: {
-          direction: "none",
+          direction: "none" as const,
           enable: true,
           outModes: {
-            default: "bounce",
+            default: "bounce" as const,
           },
           random: true,
           speed: 1,
@@ -84,7 +85,7 @@ const ParticlesComponent = (props) => {
     [],
   );
 
-  return <Particles id={props.id} init={particlesLoaded} options={options} />;
+  return <Particles id={props.id} options={options} />;
 };
 
 export default ParticlesComponent;
