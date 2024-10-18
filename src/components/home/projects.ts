@@ -1,17 +1,17 @@
 const projects = [
   {
     title: "Aristotle.ai",
-    imageUrl: "/images/project-cards/aristotle.png",
+    imageUrl: `${process.env.NEXT_PUBLIC_S3_URL}/images/project-cards/aristotle.png`,
     link: "/aristotle",
   },
   {
     title: "Typing Challenge",
-    imageUrl: "/images/project-cards/typetest.png",
+    imageUrl: `${process.env.NEXT_PUBLIC_S3_URL}/images/project-cards/typetest.png`,
     link: "/typetest",
   },
   {
     title: "Settlers of Catan Board Generator",
-    imageUrl: "/images/project-cards/catan-board.png",
+    imageUrl: `${process.env.NEXT_PUBLIC_S3_URL}/images/project-cards/catan-board.png`,
     link: "/catan",
   },
 ];

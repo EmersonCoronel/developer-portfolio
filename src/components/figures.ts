@@ -17,13 +17,12 @@ export interface Figure {
   categories: Category[];
 }
 
-// Define the figures array with all necessary data
 export const figures: Figure[] = [
   {
     name: "Aristotle",
     color: "#ffffff", // White
     colorRGB: { r: 255, g: 255, b: 255 },
-    image: "/images/backgrounds/aristotle.jpg",
+    image: `${process.env.NEXT_PUBLIC_S3_URL}/images/backgrounds/aristotle.jpg`,
     categories: [
       {
         name: "Socratic Dialogues",
@@ -49,7 +48,7 @@ export const figures: Figure[] = [
     name: "Albert Einstein",
     color: "#ADD8E6", // Light Blue
     colorRGB: { r: 173, g: 216, b: 230 },
-    image: "/images/backgrounds/einstein.jpg",
+    image: `${process.env.NEXT_PUBLIC_S3_URL}/images/backgrounds/einstein.jpg`,
     categories: [
       {
         name: "Thought Experiments",
@@ -73,7 +72,7 @@ export const figures: Figure[] = [
     name: "Leonardo da Vinci",
     color: "#C8A2C8", // Lavender
     colorRGB: { r: 200, g: 162, b: 200 },
-    image: "/images/backgrounds/davinci.jpeg",
+    image: `${process.env.NEXT_PUBLIC_S3_URL}/images/backgrounds/davinci.jpeg`,
     categories: [
       {
         name: "Creative Brainstorming",
@@ -97,7 +96,7 @@ export const figures: Figure[] = [
     name: "Napoleon Bonaparte",
     color: "#FFC0CB", // Pink
     colorRGB: { r: 255, g: 192, b: 203 },
-    image: "/images/backgrounds/napoleon.jpg",
+    image: `${process.env.NEXT_PUBLIC_S3_URL}/images/backgrounds/napoleon.jpg`,
     categories: [
       {
         name: "Military Simulations",
@@ -119,7 +118,7 @@ export const figures: Figure[] = [
     name: "Cleopatra",
     color: "#C2B280", // Sandy color
     colorRGB: { r: 194, g: 178, b: 128 },
-    image: "/images/backgrounds/cleopatra.jpg",
+    image: `${process.env.NEXT_PUBLIC_S3_URL}/images/backgrounds/cleopatra.jpg`,
     categories: [
       {
         name: "Role-Playing Diplomacy",
@@ -141,7 +140,7 @@ export const figures: Figure[] = [
     name: "Confucius",
     color: "#F0E68C", // Khaki
     colorRGB: { r: 240, g: 230, b: 140 },
-    image: "/images/backgrounds/confucius.jpg",
+    image: `${process.env.NEXT_PUBLIC_S3_URL}/images/backgrounds/confucius.jpg`,
     categories: [
       {
         name: "Philosophical Discussions",
@@ -163,7 +162,7 @@ export const figures: Figure[] = [
     name: "Charles Darwin",
     color: "#98FF98", // Mint Green
     colorRGB: { r: 152, g: 255, b: 152 },
-    image: "/images/backgrounds/darwin.jpeg", // Add your own image path
+    image: `${process.env.NEXT_PUBLIC_S3_URL}/images/backgrounds/darwin.jpeg`,
     categories: [
       {
         name: "Evolution & Biology",
@@ -183,9 +182,9 @@ export const figures: Figure[] = [
   },
   {
     name: "The Rebbe",
-    color: "#E0E0E0", // Lighter Silver (Gainsboro)
+    color: "#E0E0E0",
     colorRGB: { r: 224, g: 224, b: 224 },
-    image: "/images/backgrounds/rebbe.jpeg", // Add your own image path
+    image: `${process.env.NEXT_PUBLIC_S3_URL}/images/backgrounds/rebbe.jpeg`,
     categories: [
       {
         name: "Spiritual Guidance",
