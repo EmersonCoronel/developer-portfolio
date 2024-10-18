@@ -10,7 +10,7 @@ const About: React.FC = () => {
       <div className="container">
         <div id="professionalimg">
           <Image
-            src={`${process.env.NEXT_PUBLIC_S3_URL}/images/emerson-coronel.jpeg`}
+            src="https://assets.emersoncoronel.com/images/emerson-coronel.jpeg"
             alt="Emerson Coronel"
             layout="responsive"
             height={700}
@@ -68,7 +68,7 @@ const About: React.FC = () => {
           <p className="about-text">
             Thank you for visiting my website! Feel free to take a look at my CV{" "}
             <Link
-              href={`${process.env.NEXT_PUBLIC_S3_URL}/CV.pdf`}
+              href="https://assets.emersoncoronel.com/CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
             >

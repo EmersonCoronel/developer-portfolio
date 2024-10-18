@@ -99,7 +99,7 @@ const TestDisplay: React.FC = () => {
         </div>
         <button id="reset-test" onClick={resetTest}>
           <img
-            src={`${process.env.NEXT_PUBLIC_S3_URL}/images/redo.svg`}
+            src="https://assets.emersoncoronel.com/images/redo.svg"
             alt="Reset"
           />
         </button>

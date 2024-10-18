@@ -11,16 +11,16 @@ interface TileProps {
 const Tile: React.FC<TileProps> = ({ resource, number, expansion }) => {
   const getResourceImage = (resource: string): string => {
     const resourceMap: { [key: string]: string } = {
-      Wood: `${process.env.NEXT_PUBLIC_S3_URL}/images/catan/tiles/forest.svg`,
-      Brick: `${process.env.NEXT_PUBLIC_S3_URL}/images/catan/tiles/hill.svg`,
-      Wheat: `${process.env.NEXT_PUBLIC_S3_URL}/images/catan/tiles/field.svg`,
-      Sheep: `${process.env.NEXT_PUBLIC_S3_URL}/images/catan/tiles/pasture.svg`,
-      Ore: `${process.env.NEXT_PUBLIC_S3_URL}/images/catan/tiles/mountain.svg`,
-      Desert: `${process.env.NEXT_PUBLIC_S3_URL}/images/catan/tiles/desert.svg`,
+      Wood: "https://assets.emersoncoronel.com/images/catan/tiles/forest.svg",
+      Brick: "https://assets.emersoncoronel.com/images/catan/tiles/hill.svg",
+      Wheat: "https://assets.emersoncoronel.com/images/catan/tiles/field.svg",
+      Sheep: "https://assets.emersoncoronel.com/images/catan/tiles/pasture.svg",
+      Ore: "https://assets.emersoncoronel.com/images/catan/tiles/mountain.svg",
+      Desert: "https://assets.emersoncoronel.com/images/catan/tiles/desert.svg",
     };
     return (
       resourceMap[resource] ||
-      `${process.env.NEXT_PUBLIC_S3_URL}/images/catan/tiles/desert.svg`
+      "https://assets.emersoncoronel.com/images/catan/tiles/desert.svg"
     );
   };
 

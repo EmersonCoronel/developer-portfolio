@@ -4,7 +4,7 @@ module.exports = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: process.env.NEXT_PUBLIC_S3_BASE,
+        hostname: "assets.emersoncoronel.com",
         pathname: '/images/**',
       },
     ],
