@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface LineProps {
   line: string;
@@ -17,8 +17,8 @@ const Line: React.FC<LineProps> = ({
   currentCharIndex,
   timer,
 }) => {
-  const lineChars = line.split('');
-  const userChars = userInput.split('');
+  const lineChars = line.split("");
+  const userChars = userInput.split("");
 
   const isCurrentLine = lineIndex === currentLineIndex;
 
@@ -28,21 +28,21 @@ const Line: React.FC<LineProps> = ({
         const userChar = userChars[index];
 
         let charStyle: React.CSSProperties = {
-          color: '#999999',
+          color: "#999999",
         };
 
         if (userChar !== undefined) {
           if (userChar === char) {
-            charStyle.color = 'white';
+            charStyle.color = "white";
           } else {
-            charStyle.color = 'red';
+            charStyle.color = "red";
           }
         }
 
         const isCursor =
           isCurrentLine && index === currentCharIndex && timer > 0;
 
-        const displayChar = char === ' ' ? '\u00A0' : char;
+        const displayChar = char === " " ? "\u00A0" : char;
 
         return (
           <span key={index} className="char">

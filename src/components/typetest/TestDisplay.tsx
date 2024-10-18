@@ -1,6 +1,6 @@
-import React from 'react';
-import Line from './TestLine';
-import useTypeTest from './useTypeTest';
+import React from "react";
+import Line from "./TestLine";
+import useTypeTest from "./useTypeTest";
 
 const TestDisplay: React.FC = () => {
   // Logic defined in useTypeTest
@@ -25,16 +25,36 @@ const TestDisplay: React.FC = () => {
   return (
     <div>
       <div className="text-center centered-container">
-      <div id="timer">
+        <div id="timer">
           {timer}
           {!typingStarted && (
             <span>
-              <span style={{ margin: '0 20px' }}>|</span> 
-              Set Duration: 
-              <button className="set-timer-button" onClick={() => handleTimerChange(15)}>15</button>
-              <button className="set-timer-button" onClick={() => handleTimerChange(30)}>30</button>
-              <button className="set-timer-button" onClick={() => handleTimerChange(60)}>60</button>
-              <button className="set-timer-button" onClick={() => handleTimerChange(120)}>120</button>
+              <span style={{ margin: "0 20px" }}>|</span>
+              Set Duration:
+              <button
+                className="set-timer-button"
+                onClick={() => handleTimerChange(15)}
+              >
+                15
+              </button>
+              <button
+                className="set-timer-button"
+                onClick={() => handleTimerChange(30)}
+              >
+                30
+              </button>
+              <button
+                className="set-timer-button"
+                onClick={() => handleTimerChange(60)}
+              >
+                60
+              </button>
+              <button
+                className="set-timer-button"
+                onClick={() => handleTimerChange(120)}
+              >
+                120
+              </button>
             </span>
           )}
         </div>
@@ -50,12 +70,21 @@ const TestDisplay: React.FC = () => {
           onKeyDown={handleKeyDown}
           onChange={handleInputChange}
           value={userInputs[currentLineIndex]}
-          className='hidden-input'
+          className="hidden-input"
           autoComplete="off"
           spellCheck="false"
-          style={{ opacity: 0, position: 'absolute', zIndex: -1, caretColor: 'red' }}
+          style={{
+            opacity: 0,
+            position: "absolute",
+            zIndex: -1,
+            caretColor: "red",
+          }}
         />
-        <div id="type-text-block" className={timer === 0 ? 'finished' : ''} onClick={handleTextBlockClick}>
+        <div
+          id="type-text-block"
+          className={timer === 0 ? "finished" : ""}
+          onClick={handleTextBlockClick}
+        >
           {lines.map((line, index) => (
             <Line
               key={index}
@@ -68,7 +97,12 @@ const TestDisplay: React.FC = () => {
             />
           ))}
         </div>
-        <button id="reset-test" onClick={resetTest}><img src={`${process.env.NEXT_PUBLIC_S3_URL}/images/redo.svg`} alt="Reset" /></button>
+        <button id="reset-test" onClick={resetTest}>
+          <img
+            src={`${process.env.NEXT_PUBLIC_S3_URL}/images/redo.svg`}
+            alt="Reset"
+          />
+        </button>
       </div>
     </div>
   );

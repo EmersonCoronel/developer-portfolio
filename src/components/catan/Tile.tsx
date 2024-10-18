@@ -1,5 +1,6 @@
-import React from 'react';
-import Number from './Number';
+import React from "react";
+import Number from "./Number";
+import Image from "next/image";
 
 interface TileProps {
   resource: string;
@@ -17,15 +18,22 @@ const Tile: React.FC<TileProps> = ({ resource, number, expansion }) => {
       Ore: `${process.env.NEXT_PUBLIC_S3_URL}/images/catan/tiles/mountain.svg`,
       Desert: `${process.env.NEXT_PUBLIC_S3_URL}/images/catan/tiles/desert.svg`,
     };
-    return resourceMap[resource] || `${process.env.NEXT_PUBLIC_S3_URL}/images/catan/tiles/desert.svg`;
+    return (
+      resourceMap[resource] ||
+      `${process.env.NEXT_PUBLIC_S3_URL}/images/catan/tiles/desert.svg`
+    );
   };
 
   return (
-    <div className={expansion ? 'catan-tile-expansion' : 'catan-tile'}>
-      <img
+    <div className={expansion ? "catan-tile-expansion" : "catan-tile"}>
+      <Image
         src={getResourceImage(resource)}
         alt={resource}
-        className='tile-image'
+        className="tile-image"
+        layout="responsive"
+        width={1}
+        height={1}
+        priority={true}
       />
       <Number value={number} />
     </div>

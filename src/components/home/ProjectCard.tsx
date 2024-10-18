@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image"
+import Image from "next/image";
 
 interface ProjectCardProps {
   title: string;
@@ -14,7 +14,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, imageUrl, link }) => {
       <Link href={link} className="card-link">
         <div className="card">
           <div className="card-image-container">
-            <Image src={imageUrl} className="card-img-top" alt={title + "display image"} width={100} height={200} priority/>
+            <Image
+              src={imageUrl}
+              className="card-img-top"
+              alt={title + "display image"}
+              width={100}
+              height={200}
+              priority
+            />
           </div>
           <div className="card-body">
             <h3 className="card-title">{title}</h3>

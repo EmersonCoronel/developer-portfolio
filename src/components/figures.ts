@@ -144,20 +144,14 @@ export const figures: Figure[] = [
     categories: [
       {
         name: "Philosophical Discussions",
-        options: [
-          { label: "Moral Dilemmas" },
-          { label: "Social Harmony" },
-        ],
+        options: [{ label: "Moral Dilemmas" }, { label: "Social Harmony" }],
       },
       {
         name: "Teachings",
-        options: [
-          { label: "Ethics" },
-          { label: "The Five Relationships" },
-        ],
+        options: [{ label: "Ethics" }, { label: "The Five Relationships" }],
       },
     ],
-  }, 
+  },
   {
     name: "Charles Darwin",
     color: "#98FF98", // Mint Green
@@ -203,66 +197,77 @@ export const figures: Figure[] = [
         ],
       },
     ],
-  }
-  
+  },
 ];
 
-  // Function to change primary color based on selected figure
-  export const changePrimaryColor = (figure: Figure) => {
-    const { color, colorRGB } = figure;
-    document.documentElement.style.setProperty("--primary-color", color);
-    document.documentElement.style.setProperty("--primary-color-r", colorRGB.r.toString());
-    document.documentElement.style.setProperty("--primary-color-g", colorRGB.g.toString());
-    document.documentElement.style.setProperty("--primary-color-b", colorRGB.b.toString());
+// Function to change primary color based on selected figure
+export const changePrimaryColor = (figure: Figure) => {
+  const { color, colorRGB } = figure;
+  document.documentElement.style.setProperty("--primary-color", color);
+  document.documentElement.style.setProperty(
+    "--primary-color-r",
+    colorRGB.r.toString(),
+  );
+  document.documentElement.style.setProperty(
+    "--primary-color-g",
+    colorRGB.g.toString(),
+  );
+  document.documentElement.style.setProperty(
+    "--primary-color-b",
+    colorRGB.b.toString(),
+  );
+};
+
+export const resetPrimaryColor = () => {
+  document.documentElement.style.setProperty("--primary-color", "#87ceeb");
+  document.documentElement.style.setProperty("--primary-color-r", "135");
+  document.documentElement.style.setProperty("--primary-color-g", "206");
+  document.documentElement.style.setProperty("--primary-color-b", "235");
+};
+
+export const getModeForOption = (
+  figureName: string,
+  categoryName: string,
+): string => {
+  const modeMapping: { [key: string]: { [key: string]: string } } = {
+    Aristotle: {
+      "Socratic Dialogues": "socratic",
+      "Philosophical Teachings": "teaching",
+    },
+    "Albert Einstein": {
+      "Thought Experiments": "thought_experiment",
+      "Physics Lessons": "lesson",
+    },
+    "Leonardo da Vinci": {
+      "Creative Brainstorming": "brainstorm",
+      "Art Lessons": "lesson",
+    },
+    "Napoleon Bonaparte": {
+      "Military Simulations": "simulation",
+      "Leadership Lessons": "lesson",
+    },
+    Cleopatra: {
+      "Role-Playing Diplomacy": "role_play",
+      "History Lessons": "lesson",
+    },
+    Confucius: {
+      "Philosophical Discussions": "discussion",
+      Teachings: "lesson",
+    },
+    "Charles Darwin": {
+      "Evolution & Biology": "teaching",
+      "Passion & Commitment": "discussion",
+    },
+    "The Rebbe": {
+      "Spiritual Guidance": "guidance",
+      "Leadership & Education": "teaching",
+    },
+    "David Bowie": {
+      "Music & Legacy": "creative_discussion",
+      "Cultural Impact": "creative_discussion",
+      "Philosophy & Reflection": "philosophy",
+    },
   };
 
-  export const resetPrimaryColor = () => {
-    document.documentElement.style.setProperty("--primary-color", '#87ceeb');
-    document.documentElement.style.setProperty("--primary-color-r", '135');
-    document.documentElement.style.setProperty("--primary-color-g", '206');
-    document.documentElement.style.setProperty("--primary-color-b", '235');
-  };
-
-  export const getModeForOption = (figureName: string, categoryName: string): string => {
-    const modeMapping: { [key: string]: { [key: string]: string } } = {
-      'Aristotle': {
-        'Socratic Dialogues': 'socratic',
-        'Philosophical Teachings': 'teaching',
-      },
-      'Albert Einstein': {
-        'Thought Experiments': 'thought_experiment',
-        'Physics Lessons': 'lesson',
-      },
-      'Leonardo da Vinci': {
-        'Creative Brainstorming': 'brainstorm',
-        'Art Lessons': 'lesson',
-      },
-      'Napoleon Bonaparte': {
-        'Military Simulations': 'simulation',
-        'Leadership Lessons': 'lesson',
-      },
-      'Cleopatra': {
-        'Role-Playing Diplomacy': 'role_play',
-        'History Lessons': 'lesson',
-      },
-      'Confucius': {
-        'Philosophical Discussions': 'discussion',
-        'Teachings': 'lesson',
-      },
-      'Charles Darwin': {
-        'Evolution & Biology': 'teaching',
-        'Passion & Commitment': 'discussion',
-      },
-      'The Rebbe': {
-        'Spiritual Guidance': 'guidance',
-        'Leadership & Education': 'teaching',
-      },
-      'David Bowie': {
-        'Music & Legacy': 'creative_discussion',
-        'Cultural Impact': 'creative_discussion',
-        'Philosophy & Reflection': 'philosophy',
-      },
-    };
-  
-    return modeMapping[figureName]?.[categoryName] || 'normal';
-  };
+  return modeMapping[figureName]?.[categoryName] || "normal";
+};

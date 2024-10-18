@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef, ChangeEvent, KeyboardEvent } from 'react';
-import generateRandomLine from './WordGenerator';
+import { useState, useEffect, useRef, ChangeEvent, KeyboardEvent } from "react";
+import generateRandomLine from "./WordGenerator";
 
 const useTypeTest = () => {
   // State variables...
-  const [lines, setLines] = useState<string[]>(['', '', '']);
-  const [userInputs, setUserInputs] = useState<string[]>(['', '', '']);
+  const [lines, setLines] = useState<string[]>(["", "", ""]);
+  const [userInputs, setUserInputs] = useState<string[]>(["", "", ""]);
   const [currentLineIndex, setCurrentLineIndex] = useState<number>(0);
   const [currentCharIndex, setCurrentCharIndex] = useState<number>(0);
   const [timer, setTimer] = useState<number>(15);
@@ -50,7 +50,7 @@ const useTypeTest = () => {
   };
 
   // Handle key down events
-  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => { 
+  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     // Start the timer when typing starts
     if (!typingStarted) {
       setTypingStarted(true);
@@ -65,7 +65,7 @@ const useTypeTest = () => {
     const input = userInputs[currentLineIndex];
 
     // Prevent multiple spaces in a row or space at the beginning
-    if (event.key === ' ' && (input.endsWith(' ') || input.length === 0)) {
+    if (event.key === " " && (input.endsWith(" ") || input.length === 0)) {
       event.preventDefault();
       return;
     }
@@ -86,7 +86,7 @@ const useTypeTest = () => {
       // Shift the userInputs as well
       let newUserInputs = [...userInputs];
       newUserInputs.shift();
-      newUserInputs.push('');
+      newUserInputs.push("");
       setUserInputs(newUserInputs);
 
       setCurrentLineIndex(lines.length - 1);
@@ -102,7 +102,9 @@ const useTypeTest = () => {
 
   // Initialize lines and focus input
   useEffect(() => {
-    const newLines = Array(3).fill(null).map(() => generateRandomLine());
+    const newLines = Array(3)
+      .fill(null)
+      .map(() => generateRandomLine());
     setLines(newLines);
     hiddenInputRef.current?.focus();
   }, []);
@@ -123,13 +125,18 @@ const useTypeTest = () => {
   };
 
   // Calculate words per minute and accuracy
-  const wordsPerMinute = (totalCharsTyped / 5) / (selectedTimer / 60);
-  const accuracy = totalCharsTyped > 0 ? (correctCharsTyped / totalCharsTyped) * 100 : 0;
+  const wordsPerMinute = totalCharsTyped / 5 / (selectedTimer / 60);
+  const accuracy =
+    totalCharsTyped > 0 ? (correctCharsTyped / totalCharsTyped) * 100 : 0;
 
   // Reset test
   const resetTest = () => {
-    setLines(Array(3).fill(null).map(() => generateRandomLine()));
-    setUserInputs(['', '', '']);
+    setLines(
+      Array(3)
+        .fill(null)
+        .map(() => generateRandomLine()),
+    );
+    setUserInputs(["", "", ""]);
     setCurrentLineIndex(0);
     setCurrentCharIndex(0);
     setTimer(selectedTimer);

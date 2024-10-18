@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import Image from "next/image";
 
 interface NumberProps {
   value: number;
@@ -18,7 +19,10 @@ const Number: React.FC<NumberProps> = ({ value }) => {
       11: `${process.env.NEXT_PUBLIC_S3_URL}/images/catan/numbers/11.png`,
       12: `${process.env.NEXT_PUBLIC_S3_URL}/images/catan/numbers/12.png`,
     };
-    return imageMap[num] || `${process.env.NEXT_PUBLIC_S3_URL}/images/catan/numbers/2.png`;
+    return (
+      imageMap[num] ||
+      `${process.env.NEXT_PUBLIC_S3_URL}/images/catan/numbers/2.png`
+    );
   };
 
   if (value === 0) {
@@ -26,8 +30,16 @@ const Number: React.FC<NumberProps> = ({ value }) => {
   }
 
   return (
-    <div className='number-container'>
-      <img src={getImageForNumber(value)} alt={`Number ${value}`} className='number-image' />
+    <div className="number-container">
+      <Image
+        src={getImageForNumber(value)}
+        alt={`Number ${value}`}
+        className="number-image"
+        layout="responsive"
+        width={1}
+        height={1}
+        priority={true}
+      />
     </div>
   );
 };

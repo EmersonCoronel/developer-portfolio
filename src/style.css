@@ -4,8 +4,8 @@
 :root {
   --primary-color: #87ceeb;
   --primary-color-r: 135;
-  --primary-color-g: 206; 
-  --primary-color-b: 235; 
+  --primary-color-g: 206;
+  --primary-color-b: 235;
 }
 
 /* Website */
@@ -141,7 +141,6 @@ div .card {
 .top-buffer {
   margin-top: 3%;
 }
-
 
 /* Type-Test */
 
@@ -326,7 +325,12 @@ div .card {
   padding: 10px;
   border: 1px solid var(--primary-color);
   border-radius: 8px;
-  background: rgba(var(--primary-color-r), var(--primary-color-g), var(--primary-color-b), 0.15);
+  background: rgba(
+    var(--primary-color-r),
+    var(--primary-color-g),
+    var(--primary-color-b),
+    0.15
+  );
   color: var(--primary-color);
   font-family: "Montserrat", sans-serif;
   resize: none;
@@ -407,7 +411,7 @@ div select {
 
 .sidebar button:hover {
   background-color: var(--primary-color);
-  opacity: .8;
+  opacity: 0.8;
 }
 
 /* Media Query for Small Screens */
@@ -453,7 +457,6 @@ div select {
   flex-wrap: wrap; /* Enable two columns */
   justify-content: space-around; /* Space out buttons */
 }
-
 
 .dropdown-button {
   width: 50%; /* 50% width for the button */
@@ -531,7 +534,6 @@ div select {
   margin: 20px;
 }
 
-
 .catan-board {
   display: flex;
   flex-direction: column;
@@ -592,7 +594,6 @@ div select {
 }
 
 @media (max-width: 768px) {
-
   .generate-board-button {
     margin-right: 0;
     margin-bottom: 10px;

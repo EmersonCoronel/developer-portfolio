@@ -1,5 +1,5 @@
 // Define possible tile types
-type Tile = 'Wood' | 'Brick' | 'Wheat' | 'Sheep' | 'Ore' | 'Desert';
+type Tile = "Wood" | "Brick" | "Wheat" | "Sheep" | "Ore" | "Desert";
 
 // Define the structure of a board tile
 export interface BoardTile {
@@ -61,9 +61,8 @@ const expandedNeighbors: { [key: number]: number[] } = {
   53: [43, 44, 52, 62],
   60: [50, 51, 61],
   61: [51, 52, 60, 62],
-  62: [52, 53, 61]
+  62: [52, 53, 61],
 };
-
 
 // Function to shuffle an array in place
 function shuffleArray(array: any) {
@@ -89,13 +88,63 @@ function incrementCounter(num: number, expansion: boolean): number {
   return nextIndexMap[num] !== undefined ? nextIndexMap[num] : num + 1;
 }
 
-
 // Function to fill the board with resources
 function fillResources(board: BoardTile[][], expansion: boolean) {
   // Array of tiles to be distributed on the board
-  let tiles: Tile[] = ['Wood', 'Wood', 'Wood', 'Wood', 'Brick', 'Brick', 'Brick', 'Wheat', 'Wheat', 'Wheat', 'Wheat', 'Sheep', 'Sheep', 'Sheep', 'Sheep', 'Ore', 'Ore', 'Ore', 'Desert'];
+  let tiles: Tile[] = [
+    "Wood",
+    "Wood",
+    "Wood",
+    "Wood",
+    "Brick",
+    "Brick",
+    "Brick",
+    "Wheat",
+    "Wheat",
+    "Wheat",
+    "Wheat",
+    "Sheep",
+    "Sheep",
+    "Sheep",
+    "Sheep",
+    "Ore",
+    "Ore",
+    "Ore",
+    "Desert",
+  ];
   if (expansion) {
-    tiles = ['Wood', 'Wood', 'Wood', 'Wood', 'Wood', 'Wood', 'Brick', 'Brick', 'Brick', 'Brick', 'Brick', 'Wheat',  'Wheat',  'Wheat',  'Wheat',  'Wheat',  'Wheat', 'Sheep', 'Sheep', 'Sheep', 'Sheep', 'Sheep', 'Sheep', 'Ore',  'Ore',  'Ore', 'Ore',  'Ore', 'Desert', 'Desert']
+    tiles = [
+      "Wood",
+      "Wood",
+      "Wood",
+      "Wood",
+      "Wood",
+      "Wood",
+      "Brick",
+      "Brick",
+      "Brick",
+      "Brick",
+      "Brick",
+      "Wheat",
+      "Wheat",
+      "Wheat",
+      "Wheat",
+      "Wheat",
+      "Wheat",
+      "Sheep",
+      "Sheep",
+      "Sheep",
+      "Sheep",
+      "Sheep",
+      "Sheep",
+      "Ore",
+      "Ore",
+      "Ore",
+      "Ore",
+      "Ore",
+      "Desert",
+      "Desert",
+    ];
   }
   // Shuffle the tiles to randomize their distribution
   shuffleArray(tiles);
@@ -104,7 +153,10 @@ function fillResources(board: BoardTile[][], expansion: boolean) {
   // Loop until all tiles are placed
   while (tiles.length > 0) {
     // Place the tile on the board and set its number to 0 initially
-    board[Math.floor(itr / 10)][itr % 10] = { resource: tiles.pop() || 'Desert', number: 0 }
+    board[Math.floor(itr / 10)][itr % 10] = {
+      resource: tiles.pop() || "Desert",
+      number: 0,
+    };
     // Move to the next index, with special cases handled by incrementCounter
     itr = incrementCounter(itr, expansion);
   }
@@ -112,7 +164,9 @@ function fillResources(board: BoardTile[][], expansion: boolean) {
 
 // Helper function for fillNumbers to check if the board's number distribution follows the game's rules
 function checkNeighbors(board: BoardTile[][], expansion: boolean): boolean {
-  const neighborMap: { [key: number]: number[] }  = expansion ? expandedNeighbors : neighbors;
+  const neighborMap: { [key: number]: number[] } = expansion
+    ? expandedNeighbors
+    : neighbors;
   const limit: number = expansion ? 62 : 42;
   let itr = 0;
   // Iterator for checking each tile
@@ -128,9 +182,13 @@ function checkNeighbors(board: BoardTile[][], expansion: boolean): boolean {
         fillResources(board, true);
         return checkNeighbors(board, true);
       }
-      if (neighbor.number === tile.number ||
-       ((tile.number === 6 || tile.number === 8) && (neighbor.number === 6 || neighbor.number === 8)) ||
-       ((tile.number === 2 || (tile.number === 12)) && (neighbor.number === 2 || neighbor.number === 12))) {
+      if (
+        neighbor.number === tile.number ||
+        ((tile.number === 6 || tile.number === 8) &&
+          (neighbor.number === 6 || neighbor.number === 8)) ||
+        ((tile.number === 2 || tile.number === 12) &&
+          (neighbor.number === 2 || neighbor.number === 12))
+      ) {
         return false;
       }
     }
@@ -148,9 +206,14 @@ function fillNumbers(board: BoardTile[][], expansion: boolean) {
   // Loop until a valid configuration is found
   while (!valid) {
     // Array of numbers to be distributed on the board
-    let numbers: number[] = [2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12];
+    let numbers: number[] = [
+      2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12,
+    ];
     if (expansion) {
-      numbers = [2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 8, 8, 8, 9, 9, 9, 10, 10, 10, 11, 11, 11, 12, 12]
+      numbers = [
+        2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 8, 8, 8, 9, 9, 9, 10, 10, 10,
+        11, 11, 11, 12, 12,
+      ];
     }
     // Shuffle the numbers to randomize their distribution
     shuffleArray(numbers);
@@ -172,7 +235,7 @@ function fillNumbers(board: BoardTile[][], expansion: boolean) {
     valid = checkNeighbors(board, expansion);
   }
 }
-  
+
 // Main function to generate a Catan board
 export function generateCatanBoard() {
   // Initialize the board with empty rows of varying lengths
@@ -181,7 +244,7 @@ export function generateCatanBoard() {
     new Array(4).fill(null),
     new Array(5).fill(null),
     new Array(4).fill(null),
-    new Array(3).fill(null)
+    new Array(3).fill(null),
   ];
   // Fill the board with resources and then numbers
   fillResources(board, false);
@@ -200,7 +263,7 @@ export function generateExpansionBoard() {
     new Array(6).fill(null),
     new Array(5).fill(null),
     new Array(4).fill(null),
-    new Array(3).fill(null)
+    new Array(3).fill(null),
   ];
   // Fill the board with resources and then numbers
   fillResources(board, true);

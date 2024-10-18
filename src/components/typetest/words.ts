@@ -997,5 +997,5 @@ export const words: string[] = [
   "quotient",
   "teeth",
   "shell",
-  "neck"
+  "neck",
 ];

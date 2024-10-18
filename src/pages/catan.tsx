@@ -11,4 +11,4 @@ const Catan: React.FC = () => {
   );
 };
 
-export default Catan
+export default Catan;
