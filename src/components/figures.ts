@@ -26,21 +26,11 @@ export const figures: Figure[] = [
     categories: [
       {
         name: "Socratic Dialogues",
-        options: [
-          { label: "Happiness" },
-          { label: "Friendship" },
-          { label: "Courage" },
-          { label: "Justice" },
-        ],
+        options: [{ label: "Happiness" }, { label: "Friendship" }, { label: "Courage" }, { label: "Justice" }],
       },
       {
         name: "Philosophical Teachings",
-        options: [
-          { label: "Ethics" },
-          { label: "Logic" },
-          { label: "Metaphysics" },
-          { label: "Politics" },
-        ],
+        options: [{ label: "Ethics" }, { label: "Logic" }, { label: "Metaphysics" }, { label: "Politics" }],
       },
     ],
   },
@@ -52,19 +42,11 @@ export const figures: Figure[] = [
     categories: [
       {
         name: "Thought Experiments",
-        options: [
-          { label: "Relativity" },
-          { label: "Time Dilation" },
-          { label: "Twin Paradox" },
-        ],
+        options: [{ label: "Relativity" }, { label: "Time Dilation" }, { label: "Twin Paradox" }],
       },
       {
         name: "Physics Lessons",
-        options: [
-          { label: "General Relativity" },
-          { label: "Quantum Mechanics" },
-          { label: "Photoelectric Effect" },
-        ],
+        options: [{ label: "General Relativity" }, { label: "Quantum Mechanics" }, { label: "Photoelectric Effect" }],
       },
     ],
   },
@@ -76,19 +58,11 @@ export const figures: Figure[] = [
     categories: [
       {
         name: "Creative Brainstorming",
-        options: [
-          { label: "Inventions" },
-          { label: "Art Projects" },
-          { label: "Flight Machines" },
-        ],
+        options: [{ label: "Inventions" }, { label: "Art Projects" }, { label: "Flight Machines" }],
       },
       {
         name: "Art Lessons",
-        options: [
-          { label: "Painting Techniques" },
-          { label: "Anatomy" },
-          { label: "Perspective Drawing" },
-        ],
+        options: [{ label: "Painting Techniques" }, { label: "Anatomy" }, { label: "Perspective Drawing" }],
       },
     ],
   },
@@ -100,17 +74,11 @@ export const figures: Figure[] = [
     categories: [
       {
         name: "Military Simulations",
-        options: [
-          { label: "Battle Strategies" },
-          { label: "Leadership Challenges" },
-        ],
+        options: [{ label: "Battle Strategies" }, { label: "Leadership Challenges" }],
       },
       {
         name: "Leadership Lessons",
-        options: [
-          { label: "Commanding Armies" },
-          { label: "Political Strategy" },
-        ],
+        options: [{ label: "Commanding Armies" }, { label: "Political Strategy" }],
       },
     ],
   },
@@ -122,17 +90,11 @@ export const figures: Figure[] = [
     categories: [
       {
         name: "Role-Playing Diplomacy",
-        options: [
-          { label: "Negotiating Alliances" },
-          { label: "Court Intrigues" },
-        ],
+        options: [{ label: "Negotiating Alliances" }, { label: "Court Intrigues" }],
       },
       {
         name: "History Lessons",
-        options: [
-          { label: "Ancient Egyptian Culture" },
-          { label: "Governance" },
-        ],
+        options: [{ label: "Ancient Egyptian Culture" }, { label: "Governance" }],
       },
     ],
   },
@@ -160,17 +122,11 @@ export const figures: Figure[] = [
     categories: [
       {
         name: "Evolution & Biology",
-        options: [
-          { label: "Natural Selection" },
-          { label: "The Origin of Species" },
-        ],
+        options: [{ label: "Natural Selection" }, { label: "The Origin of Species" }],
       },
       {
         name: "Passion & Commitment",
-        options: [
-          { label: "Dedication to Discovery" },
-          { label: "Overcoming Doubts & Challenges" },
-        ],
+        options: [{ label: "Dedication to Discovery" }, { label: "Overcoming Doubts & Challenges" }],
       },
     ],
   },
@@ -204,18 +160,9 @@ export const figures: Figure[] = [
 export const changePrimaryColor = (figure: Figure) => {
   const { color, colorRGB } = figure;
   document.documentElement.style.setProperty("--primary-color", color);
-  document.documentElement.style.setProperty(
-    "--primary-color-r",
-    colorRGB.r.toString(),
-  );
-  document.documentElement.style.setProperty(
-    "--primary-color-g",
-    colorRGB.g.toString(),
-  );
-  document.documentElement.style.setProperty(
-    "--primary-color-b",
-    colorRGB.b.toString(),
-  );
+  document.documentElement.style.setProperty("--primary-color-r", colorRGB.r.toString());
+  document.documentElement.style.setProperty("--primary-color-g", colorRGB.g.toString());
+  document.documentElement.style.setProperty("--primary-color-b", colorRGB.b.toString());
 };
 
 export const resetPrimaryColor = () => {
@@ -225,10 +172,7 @@ export const resetPrimaryColor = () => {
   document.documentElement.style.setProperty("--primary-color-b", "235");
 };
 
-export const getModeForOption = (
-  figureName: string,
-  categoryName: string,
-): string => {
+export const getModeForOption = (figureName: string, categoryName: string): string => {
   const modeMapping: { [key: string]: { [key: string]: string } } = {
     Aristotle: {
       "Socratic Dialogues": "socratic",

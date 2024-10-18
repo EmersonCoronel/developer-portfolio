@@ -18,10 +18,7 @@ const Tile: React.FC<TileProps> = ({ resource, number, expansion }) => {
       Ore: "https://assets.emersoncoronel.com/images/catan/tiles/mountain.svg",
       Desert: "https://assets.emersoncoronel.com/images/catan/tiles/desert.svg",
     };
-    return (
-      resourceMap[resource] ||
-      "https://assets.emersoncoronel.com/images/catan/tiles/desert.svg"
-    );
+    return resourceMap[resource] || "https://assets.emersoncoronel.com/images/catan/tiles/desert.svg";
   };
 
   return (

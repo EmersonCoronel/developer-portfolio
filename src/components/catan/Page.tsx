@@ -14,16 +14,10 @@ const Page: React.FC = () => {
     <div>
       <Board key={key} expansion={expansion} />
       <div className="button-container">
-        <button
-          onClick={() => generateBoard(false)}
-          className="generate-board-button"
-        >
+        <button onClick={() => generateBoard(false)} className="generate-board-button">
           Generate Regular Board
         </button>
-        <button
-          onClick={() => generateBoard(true)}
-          className="generate-board-button"
-        >
+        <button onClick={() => generateBoard(true)} className="generate-board-button">
           Generate Expansion Board
         </button>
       </div>

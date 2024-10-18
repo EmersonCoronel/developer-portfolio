@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  generateCatanBoard,
-  generateExpansionBoard,
-  BoardTile,
-} from "./BoardGenerator";
+import { generateCatanBoard, generateExpansionBoard, BoardTile } from "./BoardGenerator";
 import Tile from "./Tile";
 
 interface BoardProps {
@@ -14,9 +10,7 @@ const Board: React.FC<BoardProps> = ({ expansion }) => {
   const [board, setBoard] = useState<BoardTile[][]>([]);
 
   useEffect(() => {
-    const generatedBoard = expansion
-      ? generateExpansionBoard()
-      : generateCatanBoard();
+    const generatedBoard = expansion ? generateExpansionBoard() : generateCatanBoard();
     setBoard(generatedBoard);
   }, [expansion]);
 

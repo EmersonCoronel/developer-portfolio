@@ -164,9 +164,7 @@ function fillResources(board: BoardTile[][], expansion: boolean) {
 
 // Helper function for fillNumbers to check if the board's number distribution follows the game's rules
 function checkNeighbors(board: BoardTile[][], expansion: boolean): boolean {
-  const neighborMap: { [key: number]: number[] } = expansion
-    ? expandedNeighbors
-    : neighbors;
+  const neighborMap: { [key: number]: number[] } = expansion ? expandedNeighbors : neighbors;
   const limit: number = expansion ? 62 : 42;
   let itr = 0;
   // Iterator for checking each tile
@@ -184,10 +182,8 @@ function checkNeighbors(board: BoardTile[][], expansion: boolean): boolean {
       }
       if (
         neighbor.number === tile.number ||
-        ((tile.number === 6 || tile.number === 8) &&
-          (neighbor.number === 6 || neighbor.number === 8)) ||
-        ((tile.number === 2 || tile.number === 12) &&
-          (neighbor.number === 2 || neighbor.number === 12))
+        ((tile.number === 6 || tile.number === 8) && (neighbor.number === 6 || neighbor.number === 8)) ||
+        ((tile.number === 2 || tile.number === 12) && (neighbor.number === 2 || neighbor.number === 12))
       ) {
         return false;
       }
@@ -206,14 +202,9 @@ function fillNumbers(board: BoardTile[][], expansion: boolean) {
   // Loop until a valid configuration is found
   while (!valid) {
     // Array of numbers to be distributed on the board
-    let numbers: number[] = [
-      2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12,
-    ];
+    let numbers: number[] = [2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12];
     if (expansion) {
-      numbers = [
-        2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 8, 8, 8, 9, 9, 9, 10, 10, 10,
-        11, 11, 11, 12, 12,
-      ];
+      numbers = [2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 8, 8, 8, 9, 9, 9, 10, 10, 10, 11, 11, 11, 12, 12];
     }
     // Shuffle the numbers to randomize their distribution
     shuffleArray(numbers);

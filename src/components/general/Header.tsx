@@ -18,10 +18,7 @@ const Header: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Link
-                href="mailto:dev@emersoncoronel.com"
-                className="nav-link px-2 header-links-text"
-              >
+              <Link href="mailto:dev@emersoncoronel.com" className="nav-link px-2 header-links-text">
                 Contact
               </Link>
             </li>

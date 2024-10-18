@@ -31,28 +31,16 @@ const TestDisplay: React.FC = () => {
             <span>
               <span style={{ margin: "0 20px" }}>|</span>
               Set Duration:
-              <button
-                className="set-timer-button"
-                onClick={() => handleTimerChange(15)}
-              >
+              <button className="set-timer-button" onClick={() => handleTimerChange(15)}>
                 15
               </button>
-              <button
-                className="set-timer-button"
-                onClick={() => handleTimerChange(30)}
-              >
+              <button className="set-timer-button" onClick={() => handleTimerChange(30)}>
                 30
               </button>
-              <button
-                className="set-timer-button"
-                onClick={() => handleTimerChange(60)}
-              >
+              <button className="set-timer-button" onClick={() => handleTimerChange(60)}>
                 60
               </button>
-              <button
-                className="set-timer-button"
-                onClick={() => handleTimerChange(120)}
-              >
+              <button className="set-timer-button" onClick={() => handleTimerChange(120)}>
                 120
               </button>
             </span>
@@ -80,11 +68,7 @@ const TestDisplay: React.FC = () => {
             caretColor: "red",
           }}
         />
-        <div
-          id="type-text-block"
-          className={timer === 0 ? "finished" : ""}
-          onClick={handleTextBlockClick}
-        >
+        <div id="type-text-block" className={timer === 0 ? "finished" : ""} onClick={handleTextBlockClick}>
           {lines.map((line, index) => (
             <Line
               key={index}
@@ -98,10 +82,7 @@ const TestDisplay: React.FC = () => {
           ))}
         </div>
         <button id="reset-test" onClick={resetTest}>
-          <img
-            src="https://assets.emersoncoronel.com/images/redo.svg"
-            alt="Reset"
-          />
+          <img src="https://assets.emersoncoronel.com/images/redo.svg" alt="Reset" />
         </button>
       </div>
     </div>

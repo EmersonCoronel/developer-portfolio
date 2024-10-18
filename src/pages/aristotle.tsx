@@ -1,12 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Header from "../components/general/Header";
-import {
-  figures,
-  Figure,
-  changePrimaryColor,
-  getModeForOption,
-  resetPrimaryColor,
-} from "../components/figures";
+import { figures, Figure, changePrimaryColor, getModeForOption, resetPrimaryColor } from "../components/figures";
 
 interface Message {
   role: string;
@@ -23,8 +17,7 @@ const Aristotle: React.FC = () => {
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const API_URL =
-    process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000/api";
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000/api";
 
   useEffect(() => {
     if (selectedFigure) {
@@ -164,15 +157,9 @@ const Aristotle: React.FC = () => {
         assistantMessage += content;
 
         setMessages((prevMessages) => {
-          if (
-            prevMessages.length === 0 ||
-            prevMessages[prevMessages.length - 1].role !== "assistant"
-          ) {
+          if (prevMessages.length === 0 || prevMessages[prevMessages.length - 1].role !== "assistant") {
             // Add the initial assistant message only after the first chunk is processed
-            return [
-              ...prevMessages,
-              { role: "assistant", content: assistantMessage },
-            ];
+            return [...prevMessages, { role: "assistant", content: assistantMessage }];
           } else {
             const updatedMessages = [...prevMessages];
             const lastMessageIndex = updatedMessages.length - 1;
@@ -258,10 +245,7 @@ const Aristotle: React.FC = () => {
       <div className="chat-container">
         {/* Dropdown Menu for Mobile */}
         <div className="dropdown-container">
-          <button
-            className="dropdown-button"
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          >
+          <button className="dropdown-button" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
             {selectedFigure.name}
           </button>
           {isDropdownOpen && (
@@ -270,12 +254,7 @@ const Aristotle: React.FC = () => {
               <h3>Select Figure</h3>
               <select
                 value={selectedFigure.name}
-                onChange={(e) =>
-                  setSelectedFigure(
-                    figures.find((f) => f.name === e.target.value) ||
-                      figures[0],
-                  )
-                }
+                onChange={(e) => setSelectedFigure(figures.find((f) => f.name === e.target.value) || figures[0])}
                 style={{ whiteSpace: "normal" }}
               >
                 {figures.map((figure) => (
@@ -301,9 +280,7 @@ const Aristotle: React.FC = () => {
 
               {/* Scenario-Based Advice */}
               <h3>Scenario-Based Advice</h3>
-              <button onClick={startScenarioAdvice}>
-                Start Scenario Advice
-              </button>
+              <button onClick={startScenarioAdvice}>Start Scenario Advice</button>
             </div>
           )}
         </div>
@@ -337,11 +314,7 @@ const Aristotle: React.FC = () => {
           <h3>Select Figure</h3>
           <select
             value={selectedFigure.name}
-            onChange={(e) =>
-              setSelectedFigure(
-                figures.find((f) => f.name === e.target.value) || figures[0],
-              )
-            }
+            onChange={(e) => setSelectedFigure(figures.find((f) => f.name === e.target.value) || figures[0])}
             style={{ whiteSpace: "normal" }}
           >
             {figures.map((figure) => (

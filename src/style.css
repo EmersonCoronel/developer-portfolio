@@ -325,12 +325,7 @@ div .card {
   padding: 10px;
   border: 1px solid var(--primary-color);
   border-radius: 8px;
-  background: rgba(
-    var(--primary-color-r),
-    var(--primary-color-g),
-    var(--primary-color-b),
-    0.15
-  );
+  background: rgba(var(--primary-color-r), var(--primary-color-g), var(--primary-color-b), 0.15);
   color: var(--primary-color);
   font-family: "Montserrat", sans-serif;
   resize: none;

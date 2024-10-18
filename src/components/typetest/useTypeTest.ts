@@ -126,8 +126,7 @@ const useTypeTest = () => {
 
   // Calculate words per minute and accuracy
   const wordsPerMinute = totalCharsTyped / 5 / (selectedTimer / 60);
-  const accuracy =
-    totalCharsTyped > 0 ? (correctCharsTyped / totalCharsTyped) * 100 : 0;
+  const accuracy = totalCharsTyped > 0 ? (correctCharsTyped / totalCharsTyped) * 100 : 0;
 
   // Reset test
   const resetTest = () => {

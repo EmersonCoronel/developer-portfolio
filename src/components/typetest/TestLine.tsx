@@ -9,14 +9,7 @@ interface LineProps {
   timer: number;
 }
 
-const Line: React.FC<LineProps> = ({
-  line,
-  userInput,
-  currentLineIndex,
-  lineIndex,
-  currentCharIndex,
-  timer,
-}) => {
+const Line: React.FC<LineProps> = ({ line, userInput, currentLineIndex, lineIndex, currentCharIndex, timer }) => {
   const lineChars = line.split("");
   const userChars = userInput.split("");
 
@@ -39,8 +32,7 @@ const Line: React.FC<LineProps> = ({
           }
         }
 
-        const isCursor =
-          isCurrentLine && index === currentCharIndex && timer > 0;
+        const isCursor = isCurrentLine && index === currentCharIndex && timer > 0;
 
         const displayChar = char === " " ? "\u00A0" : char;
 

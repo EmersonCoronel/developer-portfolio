@@ -19,10 +19,7 @@ const Number: React.FC<NumberProps> = ({ value }) => {
       11: "https://assets.emersoncoronel.com/images/catan/numbers/11.png",
       12: "https://assets.emersoncoronel.com/images/catan/numbers/12.png",
     };
-    return (
-      imageMap[num] ||
-      "https://assets.emersoncoronel.com/images/catan/numbers/2.png"
-    );
+    return imageMap[num] || "https://assets.emersoncoronel.com/images/catan/numbers/2.png";
   };
 
   if (value === 0) {

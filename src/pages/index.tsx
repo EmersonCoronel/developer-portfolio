@@ -14,12 +14,7 @@ const Home: React.FC = () => {
         </div>
         <div className="row justify-content-center">
           {projects.map((project, index) => (
-            <ProjectCard
-              key={index}
-              title={project.title}
-              imageUrl={project.imageUrl}
-              link={project.link}
-            />
+            <ProjectCard key={index} title={project.title} imageUrl={project.imageUrl} link={project.link} />
           ))}
         </div>
       </div>
