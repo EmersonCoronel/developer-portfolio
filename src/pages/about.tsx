@@ -10,7 +10,7 @@ const About: React.FC = () => {
       <div className="container">
         <div id="professionalimg">
           <Image
-            src="https://assets.emersoncoronel.com/images/emerson-coronel.jpeg"
+            src="https://assets.emersoncoronel.com/images/emerson-coronel.webp"
             alt="Emerson Coronel"
             layout="responsive"
             height={700}

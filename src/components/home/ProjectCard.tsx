@@ -14,13 +14,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, imageUrl, link }) => {
       <Link href={link} className="card-link">
         <div className="card">
           <div className="card-image-container">
-            <Image
+            <img
               src={imageUrl}
               className="card-img-top"
               alt={title + "display image"}
-              width={100}
-              height={200}
-              priority
             />
           </div>
           <div className="card-body">

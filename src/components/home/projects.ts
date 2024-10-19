@@ -11,7 +11,7 @@ const projects = [
   },
   {
     title: "Settlers of Catan Board Generator",
-    imageUrl: "https://assets.emersoncoronel.com/images/project-cards/catan-board.png",
+    imageUrl: "https://assets.emersoncoronel.com/images/project-cards/catan-board.webp",
     link: "/catan",
   },
 ];
