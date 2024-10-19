@@ -1,23 +1,16 @@
 import React from "react";
 import Header from "../components/general/Header";
 import Link from "next/link";
-import Image from "next/image";
 
 const About: React.FC = () => {
   return (
     <>
       <Header />
       <div className="container">
-        <div id="professionalimg">
-          <Image
+          <img id="professionalimg"
             src="https://assets.emersoncoronel.com/images/emerson-coronel.webp"
             alt="Emerson Coronel"
-            layout="responsive"
-            height={700}
-            width={430}
-            priority
           />
-        </div>
         <div className="content top-buffer">
           <p className="about-text">
             Welcome to my website! I&apos;m Emerson Coronel, a passionate and driven software developer. I graduated
