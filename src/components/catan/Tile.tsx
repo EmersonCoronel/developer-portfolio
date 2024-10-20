@@ -11,14 +11,14 @@ interface TileProps {
 const Tile: React.FC<TileProps> = ({ resource, number, expansion }) => {
   const getResourceImage = (resource: string): string => {
     const resourceMap: { [key: string]: string } = {
-      Wood: "https://assets.emersoncoronel.com/images/catan/tiles/forest.svg",
-      Brick: "https://assets.emersoncoronel.com/images/catan/tiles/hill.svg",
-      Wheat: "https://assets.emersoncoronel.com/images/catan/tiles/field.svg",
-      Sheep: "https://assets.emersoncoronel.com/images/catan/tiles/pasture.svg",
-      Ore: "https://assets.emersoncoronel.com/images/catan/tiles/mountain.svg",
-      Desert: "https://assets.emersoncoronel.com/images/catan/tiles/desert.svg",
+      Wood: "https://assets.emersoncoronel.com/images/catan/tiles/forest.webp",
+      Brick: "https://assets.emersoncoronel.com/images/catan/tiles/hill.webp",
+      Wheat: "https://assets.emersoncoronel.com/images/catan/tiles/field.webp",
+      Sheep: "https://assets.emersoncoronel.com/images/catan/tiles/pasture.webp",
+      Ore: "https://assets.emersoncoronel.com/images/catan/tiles/mountain.webp",
+      Desert: "https://assets.emersoncoronel.com/images/catan/tiles/desert.webp",
     };
-    return resourceMap[resource] || "https://assets.emersoncoronel.com/images/catan/tiles/desert.svg";
+    return resourceMap[resource] || "https://assets.emersoncoronel.com/images/catan/tiles/desert.webp";
   };
 
   return (

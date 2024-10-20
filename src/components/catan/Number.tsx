@@ -8,18 +8,18 @@ interface NumberProps {
 const Number: React.FC<NumberProps> = ({ value }) => {
   const getImageForNumber = (num: number): string => {
     const imageMap: { [key: number]: string } = {
-      2: "https://assets.emersoncoronel.com/images/catan/numbers/2.png",
-      3: "https://assets.emersoncoronel.com/images/catan/numbers/3.png",
-      4: "https://assets.emersoncoronel.com/images/catan/numbers/4.png",
-      5: "https://assets.emersoncoronel.com/images/catan/numbers/5.png",
-      6: "https://assets.emersoncoronel.com/images/catan/numbers/6.png",
-      8: "https://assets.emersoncoronel.com/images/catan/numbers/8.png",
-      9: "https://assets.emersoncoronel.com/images/catan/numbers/9.png",
-      10: "https://assets.emersoncoronel.com/images/catan/numbers/10.png",
-      11: "https://assets.emersoncoronel.com/images/catan/numbers/11.png",
-      12: "https://assets.emersoncoronel.com/images/catan/numbers/12.png",
+      2: "https://assets.emersoncoronel.com/images/catan/numbers/2.webp",
+      3: "https://assets.emersoncoronel.com/images/catan/numbers/3.webp",
+      4: "https://assets.emersoncoronel.com/images/catan/numbers/4.webp",
+      5: "https://assets.emersoncoronel.com/images/catan/numbers/5.webp",
+      6: "https://assets.emersoncoronel.com/images/catan/numbers/6.webp",
+      8: "https://assets.emersoncoronel.com/images/catan/numbers/8.webp",
+      9: "https://assets.emersoncoronel.com/images/catan/numbers/9.webp",
+      10: "https://assets.emersoncoronel.com/images/catan/numbers/10.webp",
+      11: "https://assets.emersoncoronel.com/images/catan/numbers/11.webp",
+      12: "https://assets.emersoncoronel.com/images/catan/numbers/12.webp",
     };
-    return imageMap[num] || "https://assets.emersoncoronel.com/images/catan/numbers/2.png";
+    return imageMap[num] || "https://assets.emersoncoronel.com/images/catan/numbers/2.webp";
   };
 
   if (value === 0) {
