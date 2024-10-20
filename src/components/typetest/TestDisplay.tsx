@@ -16,14 +16,14 @@ const TestDisplay: React.FC = () => {
     hiddenInputRef,
     handleInputChange,
     handleKeyDown,
-    handleTextBlockClick,
+    focusTextBox,
     handleTimerChange,
     resetTest,
   } = useTypeTest();
 
   // The TypeTest component to be placed inside the page
   return (
-    <div>
+    <div onClick={() => focusTextBox()}>
       <div className="text-center centered-container">
         <div id="timer">
           {timer}
@@ -68,7 +68,7 @@ const TestDisplay: React.FC = () => {
             caretColor: "red",
           }}
         />
-        <div id="type-text-block" className={timer === 0 ? "finished" : ""} onClick={handleTextBlockClick}>
+        <div id="type-text-block" className={timer === 0 ? "finished" : ""}>
           {lines.map((line, index) => (
             <Line
               key={index}

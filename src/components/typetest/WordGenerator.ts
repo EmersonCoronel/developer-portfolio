@@ -7,7 +7,7 @@ import { words } from "./words";
  * @param {number} maxChars - The maximum number of characters for the line.
  * @returns {string} A line of random words.
  */
-const generateRandomLine = (minChars: number = 80, maxChars: number = 100): string => {
+const generateRandomLine = (minChars: number = 90, maxChars: number = 100): string => {
   let line = "";
   let lineLength = 0;
 

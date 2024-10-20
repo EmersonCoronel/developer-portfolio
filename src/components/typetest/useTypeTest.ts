@@ -96,7 +96,7 @@ const useTypeTest = () => {
 
   // Reference to the hidden input field
   const hiddenInputRef = useRef<HTMLInputElement>(null);
-  const handleTextBlockClick = () => {
+  const focusTextBox = () => {
     hiddenInputRef.current?.focus();
   };
 
@@ -157,7 +157,7 @@ const useTypeTest = () => {
     hiddenInputRef,
     handleInputChange,
     handleKeyDown,
-    handleTextBlockClick,
+    focusTextBox,
     handleTimerChange,
     resetTest,
   };
