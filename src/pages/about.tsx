@@ -49,7 +49,7 @@ const About: React.FC = () => {
             <Link href="https://assets.emersoncoronel.com/CV.pdf" target="_blank" rel="noopener noreferrer">
               <i>here</i>
             </Link>{" "}
-            and reach out at <Link href="mailto:dev@emersoncoronel.com">dev@emersoncoronel.com</Link>.
+            and reach out at <Link href="mailto:contact@emersoncoronel.com">contact@emersoncoronel.com</Link>.
           </p>
         </div>
       </div>
