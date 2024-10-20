@@ -23,14 +23,10 @@ const Tile: React.FC<TileProps> = ({ resource, number, expansion }) => {
 
   return (
     <div className={expansion ? "catan-tile-expansion" : "catan-tile"}>
-      <Image
+      <img
         src={getResourceImage(resource)}
         alt={resource}
         className="tile-image"
-        layout="responsive"
-        width={1}
-        height={1}
-        priority={true}
       />
       <Number value={number} />
     </div>
