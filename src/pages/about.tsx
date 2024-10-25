@@ -7,10 +7,11 @@ const About: React.FC = () => {
     <>
       <Header />
       <div className="container">
-          <img id="professionalimg"
-            src="https://assets.emersoncoronel.com/images/emerson-coronel.webp"
-            alt="Emerson Coronel"
-          />
+        <img
+          id="professionalimg"
+          src="https://assets.emersoncoronel.com/images/emerson-coronel.webp"
+          alt="Emerson Coronel"
+        />
         <div className="content top-buffer">
           <p className="about-text">
             Welcome to my website! I&apos;m Emerson Coronel, a passionate and driven software developer. I graduated
@@ -45,11 +46,8 @@ const About: React.FC = () => {
             more accessible and impactful globally.
           </p>
           <p className="about-text">
-            Thank you for visiting my website! Feel free to take a look at my CV{" "}
-            <Link href="https://assets.emersoncoronel.com/CV.pdf" target="_blank" rel="noopener noreferrer">
-              <i>here</i>
-            </Link>{" "}
-            and reach out at <Link href="mailto:contact@emersoncoronel.com">contact@emersoncoronel.com</Link>.
+            Thank you for visiting my website! If you'd like to connect or have any questions, please don&apos;t
+            hesitate to reach out at <Link href="mailto:contact@emersoncoronel.com">contact@emersoncoronel.com</Link>.
           </p>
         </div>
       </div>

@@ -10,7 +10,6 @@ export default function Document() {
           name="description"
           content="Emerson Coronel's personal portfolio showcasing projects in full-stack development, AI, and software engineering."
         />
-
         <link rel="icon" href="https://assets.emersoncoronel.com/images/logo.png" />
 
         <link rel="preload" href="https://assets.emersoncoronel.com/images/emerson-coronel.webp" as="image" />
