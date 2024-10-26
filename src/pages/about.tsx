@@ -46,7 +46,7 @@ const About: React.FC = () => {
             more accessible and impactful globally.
           </p>
           <p className="about-text">
-            Thank you for visiting my website! If you'd like to connect or have any questions, please don&apos;t
+            Thank you for visiting my website! If you&apos;d like to connect or have any questions, please don&apos;t
             hesitate to reach out at <Link href="mailto:contact@emersoncoronel.com">contact@emersoncoronel.com</Link>.
           </p>
         </div>

@@ -8,6 +8,7 @@
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "depcheck": "^1.4.7",
+    "docker": "^1.0.0",
     "eslint-config-react-app": "^7.0.1",
     "next": "^14.2.15",
     "react": "^18.3.1",
@@ -16,9 +17,9 @@
     "typographia": "^1.1.7"
   },
   "scripts": {
-    "dev": "next dev",
+    "start": "next build && next start",
     "build": "next build",
-    "start": "next start",
+    "dev": "next dev",
     "lint": "next lint",
     "format": "prettier --write --print-width 120 \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
   },
