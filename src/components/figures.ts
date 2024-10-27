@@ -154,6 +154,30 @@ export const figures: Figure[] = [
       },
     ],
   },
+  {
+    name: "J.R.R. Tolkien",
+    color: "#70c1b3", // Slightly Greener and Lighter Greenish-Blue
+    colorRGB: { r: 34, g: 139, b: 34 },
+    image: "https://assets.emersoncoronel.com/images/backgrounds/tolkien.webp",
+    categories: [
+      {
+        name: "Creative Writing",
+        options: [
+          { label: "World Building" },
+          { label: "Character Development" },
+          { label: "Mythology" },
+        ],
+      },
+      {
+        name: "Literature Lessons",
+        options: [
+          { label: "The Lord of the Rings" },
+          { label: "The Hobbit" },
+          { label: "Themes in Middle-earth" },
+        ],
+      },
+    ],
+  },
 ];
 
 // Function to change primary color based on selected figure
