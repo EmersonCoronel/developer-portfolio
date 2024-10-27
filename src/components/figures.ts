@@ -170,6 +170,30 @@ export const figures: Figure[] = [
       },
     ],
   },
+  {
+    name: "Mozart",
+    color: "#FFD700", // Gold
+    colorRGB: { r: 255, g: 215, b: 0 },
+    image: "https://assets.emersoncoronel.com/images/backgrounds/mozart.webp",
+    categories: [
+      {
+        name: "Music Composition",
+        options: [
+          { label: "Symphonies" },
+          { label: "Operas" },
+          { label: "Chamber Music" },
+        ],
+      },
+      {
+        name: "Piano Lessons",
+        options: [
+          { label: "Technique" },
+          { label: "Expressiveness" },
+          { label: "Improvisation" },
+        ],
+      },
+    ],
+  },
 ];
 
 // Function to change primary color based on selected figure
@@ -226,6 +250,14 @@ export const getModeForOption = (figureName: string, categoryName: string): stri
       "Music & Legacy": "creative_discussion",
       "Cultural Impact": "creative_discussion",
       "Philosophy & Reflection": "philosophy",
+    },
+    "J.R.R. Tolkien": {
+      "Creative Writing": "creative_discussion",
+      "Literature Lessons": "lesson",
+    },
+    "Wolfgang Amadeus Mozart": {
+      "Music Composition": "composition",
+      "Piano Lessons": "lesson",
     },
   };
 

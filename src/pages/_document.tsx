@@ -26,6 +26,8 @@ export default function Document() {
         <link rel="preload" href="https://assets.emersoncoronel.com/images/backgrounds/confucius.webp" as="image" />
         <link rel="preload" href="https://assets.emersoncoronel.com/images/backgrounds/darwin.webp" as="image" />
         <link rel="preload" href="https://assets.emersoncoronel.com/images/backgrounds/rebbe.webp" as="image" />
+        <link rel="preload" href="https://assets.emersoncoronel.com/images/backgrounds/tolkien.webp" as="image" />
+        <link rel="preload" href="https://assets.emersoncoronel.com/images/backgrounds/mozart.webp" as="image" />
 
         <link rel="preload" href="https://assets.emersoncoronel.com/images/catan/tiles/desert.webp" as="image" />
         <link rel="preload" href="https://assets.emersoncoronel.com/images/catan/tiles/hill.webp" as="image" />
