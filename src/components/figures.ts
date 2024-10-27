@@ -162,19 +162,11 @@ export const figures: Figure[] = [
     categories: [
       {
         name: "Creative Writing",
-        options: [
-          { label: "World Building" },
-          { label: "Character Development" },
-          { label: "Mythology" },
-        ],
+        options: [{ label: "World Building" }, { label: "Character Development" }, { label: "Mythology" }],
       },
       {
         name: "Literature Lessons",
-        options: [
-          { label: "The Lord of the Rings" },
-          { label: "The Hobbit" },
-          { label: "Themes in Middle-earth" },
-        ],
+        options: [{ label: "The Lord of the Rings" }, { label: "The Hobbit" }, { label: "Themes in Middle-earth" }],
       },
     ],
   },
