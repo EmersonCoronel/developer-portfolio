@@ -21,17 +21,15 @@ jobs:
           DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
         run: echo $DOCKERHUB_TOKEN | docker login -u $DOCKERHUB_USERNAME --password-stdin
 
-      # Step 3: Build, tag, and push Docker image to Docker Hub
+      # Step 3: Build, tag, and push Docker image to Docker Hub as "latest"
       - name: Build, tag, and push Docker image
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
         run: |
-          IMAGE_TAG=$(date +%Y%m%d%H%M%S)
-          docker build -t $DOCKERHUB_USERNAME/developer-portfolio:$IMAGE_TAG .
-          docker push $DOCKERHUB_USERNAME/developer-portfolio:$IMAGE_TAG
-          echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV  # Save IMAGE_TAG for ECS update
+          docker build -t $DOCKERHUB_USERNAME/developer-portfolio:latest .
+          docker push $DOCKERHUB_USERNAME/developer-portfolio:latest
 
-      # Step 4: Update ECS service to use the new Docker image
+      # Step 4: Update ECS service to use the new "latest" Docker image
       - name: Deploy to ECS
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -40,7 +38,6 @@ jobs:
           ECS_CLUSTER: ${{ secrets.ECS_CLUSTER }}
           ECS_SERVICE: ${{ secrets.ECS_SERVICE }}
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          IMAGE_TAG: ${{ env.IMAGE_TAG }}
         run: |
           aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE \
             --force-new-deployment --region $AWS_REGION
