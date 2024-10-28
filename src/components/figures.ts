@@ -185,7 +185,7 @@ export const figures: Figure[] = [
         ],
       },
       {
-        name: "Piano Lessons",
+        name: "Piano",
         options: [
           { label: "Technique" },
           { label: "Expressiveness" },
