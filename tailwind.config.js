@@ -6,8 +6,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#87ceeb', 
-        secondary: '#0d6efd', // Slightly lighter greenish-blue
+        primary: 'rgb(var(--primary-color-r), var(--primary-color-g), var(--primary-color-b))',
+        secondary: '#0d6efd',
       },
       fontFamily: {
         montserrat: ['Montserrat', 'sans-serif'],
