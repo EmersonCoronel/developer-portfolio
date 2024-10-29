@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Board from "./Board";
+import styles from "./catan.module.css";
 
 const Page: React.FC = () => {
   const [expansion, setExpansion] = useState(false);
@@ -13,11 +14,11 @@ const Page: React.FC = () => {
   return (
     <div>
       <Board key={key} expansion={expansion} />
-      <div className="button-container">
-        <button onClick={() => generateBoard(false)} className="generate-board-button">
+      <div className={styles.buttonContainer}>
+        <button onClick={() => generateBoard(false)} className={styles.generateBoardButton}>
           Generate Regular Board
         </button>
-        <button onClick={() => generateBoard(true)} className="generate-board-button">
+        <button onClick={() => generateBoard(true)} className={styles.generateBoardButton}>
           Generate Expansion Board
         </button>
       </div>

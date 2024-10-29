@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import styles from "./catan.module.css";
 
 interface NumberProps {
   value: number;
@@ -27,11 +28,11 @@ const Number: React.FC<NumberProps> = ({ value }) => {
   }
 
   return (
-    <div className="number-container">
+    <div className={styles.numberContainer}>
       <Image
         src={getImageForNumber(value)}
         alt={`Number ${value}`}
-        className="number-image"
+        className={styles.numberImage}
         layout="responsive"
         width={1}
         height={1}

@@ -1,0 +1,96 @@
+.centeredContainer {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 80%;
+}
+
+.typeTextBlock {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 1.7vw;
+  width: 100%;
+  border: none;
+  background: rgba(0, 0, 0, 0.05);
+  white-space: wrap;
+  overflow: hidden;
+}
+
+.typeTextBlockFinished {
+  opacity: 0.5;
+}
+
+.testLine {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.char {
+  display: inline-flex;
+  align-items: center;
+}
+
+.cursor {
+  position: absolute;
+  animation: blink 1s step-end infinite;
+  color: gray;
+}
+
+@keyframes blink {
+  from,
+  to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.timer {
+  position: absolute;
+  top: -35%;
+  color: white;
+  font-size: 1.85vw;
+}
+
+.setTimerButton {
+  border: none;
+  background: transparent;
+  color: white;
+  padding-left: 15px;
+}
+
+.wpm {
+  position: absolute;
+  top: -35%;
+  right: 15%;
+  color: white;
+  font-size: 1.5vw;
+}
+
+.accuracy {
+  position: absolute;
+  top: -35%;
+  right: 0%;
+  color: white;
+  font-size: 1.5vw;
+}
+
+.resetTest {
+  background: none;
+  border: none;
+  cursor: pointer;
+  fill: white;
+  margin-top: 30px;
+}
+
+.resetTest img {
+  width: 25px;
+  height: 25px;
+}

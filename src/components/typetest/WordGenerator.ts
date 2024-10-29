@@ -3,11 +3,13 @@ import { words } from "./words";
 /**
  * Get a line of random words where the total number of characters
  * falls within the specified range.
- * @param {number} minChars - The minimum number of characters for the line.
- * @param {number} maxChars - The maximum number of characters for the line.
+ * @param {number} mobile - Is the screen mobile or desktop.
  * @returns {string} A line of random words.
  */
-const generateRandomLine = (minChars: number = 95, maxChars: number = 100): string => {
+const generateRandomLine = (mobile: boolean): string => {
+  console.log(mobile);
+  const minChars = mobile ? 85 : 100;
+  const maxChars = mobile ? 89 : 102;
   let line = "";
   let lineLength = 0;
 

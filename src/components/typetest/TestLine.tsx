@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./typetest.module.css";
 
 interface LineProps {
   line: string;
@@ -12,11 +13,10 @@ interface LineProps {
 const Line: React.FC<LineProps> = ({ line, userInput, currentLineIndex, lineIndex, currentCharIndex, timer }) => {
   const lineChars = line.split("");
   const userChars = userInput.split("");
-
   const isCurrentLine = lineIndex === currentLineIndex;
 
   return (
-    <div className="test-line">
+    <div className={styles.testLine}>
       {lineChars.map((char, index) => {
         const userChar = userChars[index];
 
@@ -25,20 +25,15 @@ const Line: React.FC<LineProps> = ({ line, userInput, currentLineIndex, lineInde
         };
 
         if (userChar !== undefined) {
-          if (userChar === char) {
-            charStyle.color = "white";
-          } else {
-            charStyle.color = "red";
-          }
+          charStyle.color = userChar === char ? "white" : "red";
         }
 
         const isCursor = isCurrentLine && index === currentCharIndex && timer > 0;
-
         const displayChar = char === " " ? "\u00A0" : char;
 
         return (
-          <span key={index} className="char">
-            {isCursor && <span className="cursor">|</span>}
+          <span key={index} className={styles.char}>
+            {isCursor && <span className={styles.cursor}>|</span>}
             <span style={charStyle}>{displayChar}</span>
           </span>
         );

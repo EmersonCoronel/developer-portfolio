@@ -1,6 +1,6 @@
 import React from "react";
 import Number from "./Number";
-import Image from "next/image";
+import styles from "./catan.module.css";
 
 interface TileProps {
   resource: string;
@@ -22,8 +22,8 @@ const Tile: React.FC<TileProps> = ({ resource, number, expansion }) => {
   };
 
   return (
-    <div className={expansion ? "catan-tile-expansion" : "catan-tile"}>
-      <img src={getResourceImage(resource)} alt={resource} className="tile-image" />
+    <div className={expansion ? styles.catanTileExpansion : styles.catanTile}>
+      <img src={getResourceImage(resource)} alt={resource} className={styles.tileImage} />
       <Number value={number} />
     </div>
   );

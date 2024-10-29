@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
+import styles from "./typetest.module.css";
 import Line from "./TestLine";
 import useTypeTest from "./useTypeTest";
 
 const TestDisplay: React.FC = () => {
-  // Logic defined in useTypeTest
   const {
     lines,
     userInputs,
@@ -19,28 +19,43 @@ const TestDisplay: React.FC = () => {
     focusTextBox,
     handleTimerChange,
     resetTest,
+    setMobile
   } = useTypeTest();
 
-  // The TypeTest component to be placed inside the page
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setMobile(true);
+      } else {
+        setMobile(false);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
-    <div onClick={() => focusTextBox()}>
-      <div className="text-center centered-container">
-        <div id="timer">
-          {timer}
+    <div onClick={focusTextBox}>
+      <div className={`text-center ${styles.centeredContainer}`}>
+        <div className={styles.timer}>
+          {timer}s
           {!typingStarted && (
             <span>
-              <span style={{ margin: "0 20px" }}>|</span>
+              <span className="mx-5">|</span>
               Set Duration:
-              <button className="set-timer-button" onClick={() => handleTimerChange(15)}>
+              <button className={styles.setTimerButton} onClick={() => handleTimerChange(15)}>
                 15
               </button>
-              <button className="set-timer-button" onClick={() => handleTimerChange(30)}>
+              <button className={styles.setTimerButton} onClick={() => handleTimerChange(30)}>
                 30
               </button>
-              <button className="set-timer-button" onClick={() => handleTimerChange(60)}>
+              <button className={styles.setTimerButton} onClick={() => handleTimerChange(60)}>
                 60
               </button>
-              <button className="set-timer-button" onClick={() => handleTimerChange(120)}>
+              <button className={styles.setTimerButton} onClick={() => handleTimerChange(120)}>
                 120
               </button>
             </span>
@@ -48,8 +63,8 @@ const TestDisplay: React.FC = () => {
         </div>
         {timer === 0 && (
           <div>
-            <div id="wpm">WPM: {Math.round(wordsPerMinute)}</div>
-            <div id="accuracy">Accuracy: {Math.round(accuracy)}%</div>
+            <div className={styles.wpm}>WPM: {Math.round(wordsPerMinute)}</div>
+            <div className={styles.accuracy}>Accuracy: {Math.round(accuracy)}%</div>
           </div>
         )}
         <input
@@ -68,7 +83,9 @@ const TestDisplay: React.FC = () => {
             caretColor: "red",
           }}
         />
-        <div id="type-text-block" className={timer === 0 ? "finished" : ""}>
+        <div
+          className={`${styles.typeTextBlock} ${timer === 0 ? styles.typeTextBlockFinished : ""}`}
+        >
           {lines.map((line, index) => (
             <Line
               key={index}
@@ -81,7 +98,7 @@ const TestDisplay: React.FC = () => {
             />
           ))}
         </div>
-        <button id="reset-test" onClick={resetTest}>
+        <button className={styles.resetTest} onClick={resetTest}>
           <img src="https://assets.emersoncoronel.com/images/redo.svg" alt="Reset" />
         </button>
       </div>

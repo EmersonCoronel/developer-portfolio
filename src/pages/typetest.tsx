@@ -1,14 +1,14 @@
 import React from "react";
 import Header from "../components/general/Header";
-import TypeTest from "../components/typetest/TestDisplay";
+import TestDisplay from "../components/typetest/TestDisplay";
 
-const TypingChallenge: React.FC = () => {
+const TypeTest: React.FC = () => {
   return (
     <div>
       <Header />
-      <TypeTest />
+      <TestDisplay />
     </div>
   );
 };
 
-export default TypingChallenge;
+export default TypeTest;

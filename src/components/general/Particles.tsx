@@ -7,12 +7,8 @@ const ParticlesComponent = (props: { id: any }) => {
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
-    }).then(particlesLoaded);
+    });
   }, []);
-
-  const particlesLoaded = (container: any) => {
-    console.log(container);
-  };
 
   const options = useMemo(
     () => ({
@@ -85,7 +81,18 @@ const ParticlesComponent = (props: { id: any }) => {
     [],
   );
 
-  return <Particles id={props.id} options={options} />;
+  return (
+    <div
+      style={{
+        zIndex: -1,
+        height: "100%",
+        width: "100%",
+        position: "absolute",
+      }}
+    >
+      <Particles id={props.id} options={options} />
+    </div>
+  );
 };
 
 export default ParticlesComponent;

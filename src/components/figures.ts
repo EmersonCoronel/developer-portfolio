@@ -178,19 +178,11 @@ export const figures: Figure[] = [
     categories: [
       {
         name: "Music Composition",
-        options: [
-          { label: "Symphonies" },
-          { label: "Operas" },
-          { label: "Chamber Music" },
-        ],
+        options: [{ label: "Symphonies" }, { label: "Operas" }, { label: "Chamber Music" }],
       },
       {
         name: "Piano",
-        options: [
-          { label: "Technique" },
-          { label: "Expressiveness" },
-          { label: "Improvisation" },
-        ],
+        options: [{ label: "Technique" }, { label: "Expressiveness" }, { label: "Improvisation" }],
       },
     ],
   },

@@ -6,7 +6,6 @@
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.5.0",
     "autoprefixer": "^10.4.20",
-    "bootstrap": "^5.3.3",
     "next": "^14.2.15",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { generateCatanBoard, generateExpansionBoard, BoardTile } from "./BoardGenerator";
 import Tile from "./Tile";
+import styles from "./catan.module.css";
 
 interface BoardProps {
   expansion: boolean;
@@ -15,9 +16,9 @@ const Board: React.FC<BoardProps> = ({ expansion }) => {
   }, [expansion]);
 
   return (
-    <div className="catan-board">
+    <div className={styles.catanBoard}>
       {board.map((row, rowIndex) => (
-        <div key={rowIndex} className="catan-board-row">
+        <div key={rowIndex} className={styles.catanBoardRow}>
           {row.map((tile, tileIndex) => (
             <Tile
               key={`${rowIndex}-${tileIndex}`}

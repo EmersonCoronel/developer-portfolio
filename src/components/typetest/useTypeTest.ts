@@ -2,7 +2,6 @@ import { useState, useEffect, useRef, ChangeEvent, KeyboardEvent } from "react";
 import generateRandomLine from "./WordGenerator";
 
 const useTypeTest = () => {
-  // State variables...
   const [lines, setLines] = useState<string[]>(["", "", ""]);
   const [userInputs, setUserInputs] = useState<string[]>(["", "", ""]);
   const [currentLineIndex, setCurrentLineIndex] = useState<number>(0);
@@ -12,6 +11,7 @@ const useTypeTest = () => {
   const [totalCharsTyped, setTotalCharsTyped] = useState<number>(0);
   const [correctCharsTyped, setCorrectCharsTyped] = useState<number>(0);
   const [selectedTimer, setSelectedTimer] = useState<number>(15);
+  const [mobile, setMobile] = useState<boolean>(false);
 
   // Handle input change
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -80,7 +80,7 @@ const useTypeTest = () => {
       // Shift the lines and generate a new one
       let newLines = [...lines];
       newLines.shift(); // Remove the first line
-      newLines.push(generateRandomLine()); // Add a new line at the end
+      newLines.push(generateRandomLine(mobile)); // Add a new line at the end
       setLines(newLines);
 
       // Shift the userInputs as well
@@ -104,7 +104,7 @@ const useTypeTest = () => {
   useEffect(() => {
     const newLines = Array(3)
       .fill(null)
-      .map(() => generateRandomLine());
+      .map(() => generateRandomLine(mobile));
     setLines(newLines);
     hiddenInputRef.current?.focus();
   }, []);
@@ -124,6 +124,10 @@ const useTypeTest = () => {
     setTimer(time);
   };
 
+  useEffect(() => {
+    resetTest();
+  }, [mobile]);
+
   // Calculate words per minute and accuracy
   const wordsPerMinute = totalCharsTyped / 5 / (selectedTimer / 60);
   const accuracy = totalCharsTyped > 0 ? (correctCharsTyped / totalCharsTyped) * 100 : 0;
@@ -133,7 +137,7 @@ const useTypeTest = () => {
     setLines(
       Array(3)
         .fill(null)
-        .map(() => generateRandomLine()),
+        .map(() => generateRandomLine(mobile)),
     );
     setUserInputs(["", "", ""]);
     setCurrentLineIndex(0);
@@ -160,6 +164,7 @@ const useTypeTest = () => {
     focusTextBox,
     handleTimerChange,
     resetTest,
+    setMobile
   };
 };
 
