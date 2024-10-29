@@ -18,7 +18,7 @@ export interface Figure {
 export const figures: Figure[] = [
   {
     name: "Aristotle",
-    color: "#ffffff", // White
+    color: "#ffffff",
     colorRGB: { r: 255, g: 255, b: 255 },
     image: "https://assets.emersoncoronel.com/images/backgrounds/aristotle.webp",
     categories: [
@@ -34,7 +34,7 @@ export const figures: Figure[] = [
   },
   {
     name: "Albert Einstein",
-    color: "#ADD8E6", // Light Blue
+    color: "#ADD8E6",
     colorRGB: { r: 173, g: 216, b: 230 },
     image: "https://assets.emersoncoronel.com/images/backgrounds/einstein.webp",
     categories: [
@@ -50,7 +50,7 @@ export const figures: Figure[] = [
   },
   {
     name: "Leonardo da Vinci",
-    color: "#C8A2C8", // Lavender
+    color: "#C8A2C8",
     colorRGB: { r: 200, g: 162, b: 200 },
     image: "https://assets.emersoncoronel.com/images/backgrounds/davinci.webp",
     categories: [
@@ -66,7 +66,7 @@ export const figures: Figure[] = [
   },
   {
     name: "Napoleon Bonaparte",
-    color: "#FFC0CB", // Pink
+    color: "#FFC0CB",
     colorRGB: { r: 255, g: 192, b: 203 },
     image: "https://assets.emersoncoronel.com/images/backgrounds/napoleon.webp",
     categories: [
@@ -82,7 +82,7 @@ export const figures: Figure[] = [
   },
   {
     name: "Cleopatra",
-    color: "#C2B280", // Sandy color
+    color: "#C2B280",
     colorRGB: { r: 194, g: 178, b: 128 },
     image: "https://assets.emersoncoronel.com/images/backgrounds/cleopatra.webp",
     categories: [
@@ -98,7 +98,7 @@ export const figures: Figure[] = [
   },
   {
     name: "Confucius",
-    color: "#F0E68C", // Khaki
+    color: "#F0E68C", 
     colorRGB: { r: 240, g: 230, b: 140 },
     image: "https://assets.emersoncoronel.com/images/backgrounds/confucius.webp",
     categories: [
@@ -114,7 +114,7 @@ export const figures: Figure[] = [
   },
   {
     name: "Charles Darwin",
-    color: "#98FF98", // Mint Green
+    color: "#98FF98",
     colorRGB: { r: 152, g: 255, b: 152 },
     image: "https://assets.emersoncoronel.com/images/backgrounds/darwin.webp",
     categories: [
@@ -154,8 +154,8 @@ export const figures: Figure[] = [
   },
   {
     name: "J.R.R. Tolkien",
-    color: "#70c1b3", // Slightly Greener and Lighter Greenish-Blue
-    colorRGB: { r: 34, g: 139, b: 34 },
+    color: "#70c1b3", 
+    colorRGB: { r: 112, g: 193, b: 179 },
     image: "https://assets.emersoncoronel.com/images/backgrounds/tolkien.webp",
     categories: [
       {
@@ -170,7 +170,7 @@ export const figures: Figure[] = [
   },
   {
     name: "Mozart",
-    color: "#FFD700", // Gold
+    color: "#FFD700", 
     colorRGB: { r: 255, g: 215, b: 0 },
     image: "https://assets.emersoncoronel.com/images/backgrounds/mozart.webp",
     categories: [
@@ -204,7 +204,7 @@ export const resetPrimaryColor = () => {
 
 export const getModeForOption = (figureName: string, categoryName: string): string => {
   const modeMapping: { [key: string]: { [key: string]: string } } = {
-    Aristotle: {
+    "Aristotle": {
       "Socratic Dialogues": "socratic",
       "Philosophical Teachings": "teaching",
     },
@@ -220,13 +220,13 @@ export const getModeForOption = (figureName: string, categoryName: string): stri
       "Military Simulations": "simulation",
       "Leadership Lessons": "lesson",
     },
-    Cleopatra: {
+    "Cleopatra": {
       "Role-Playing Diplomacy": "role_play",
       "History Lessons": "lesson",
     },
-    Confucius: {
+    "Confucius": {
       "Philosophical Discussions": "discussion",
-      Teachings: "lesson",
+      "Teachings": "lesson",
     },
     "Charles Darwin": {
       "Evolution & Biology": "teaching",
