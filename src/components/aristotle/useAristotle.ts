@@ -248,7 +248,7 @@ const useAristotle = () => {
     startScenarioAdvice,
     sendMessage,
     handleKeyDown,
-    figures
+    figures,
   };
 };
 

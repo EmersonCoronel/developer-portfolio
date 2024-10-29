@@ -32,9 +32,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
           <h3 className={styles.dropdownHeading}>Select Figure</h3>
           <select
             value={selectedFigure.name}
-            onChange={(e) =>
-              setSelectedFigure(figures.find((f) => f.name === e.target.value) || figures[0])
-            }
+            onChange={(e) => setSelectedFigure(figures.find((f) => f.name === e.target.value) || figures[0])}
             className={styles.selectInput}
           >
             {figures.map((figure) => (
@@ -51,10 +49,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
               <ul className={styles.dropdownList}>
                 {category.options.map((option: any, optIndex: number) => (
                   <li key={optIndex} className={styles.dropdownListItem}>
-                    <button
-                      onClick={option.action}
-                      className={styles.dropdownContentButton}
-                    >
+                    <button onClick={option.action} className={styles.dropdownContentButton}>
                       {option.label}
                     </button>
                   </li>

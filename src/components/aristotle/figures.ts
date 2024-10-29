@@ -204,7 +204,7 @@ export const resetPrimaryColor = () => {
 
 export const getModeForOption = (figureName: string, categoryName: string): string => {
   const modeMapping: { [key: string]: { [key: string]: string } } = {
-    "Aristotle": {
+    Aristotle: {
       "Socratic Dialogues": "socratic",
       "Philosophical Teachings": "teaching",
     },
@@ -220,13 +220,13 @@ export const getModeForOption = (figureName: string, categoryName: string): stri
       "Military Simulations": "simulation",
       "Leadership Lessons": "lesson",
     },
-    "Cleopatra": {
+    Cleopatra: {
       "Role-Playing Diplomacy": "role_play",
       "History Lessons": "lesson",
     },
-    "Confucius": {
+    Confucius: {
       "Philosophical Discussions": "discussion",
-      "Teachings": "lesson",
+      Teachings: "lesson",
     },
     "Charles Darwin": {
       "Evolution & Biology": "teaching",

@@ -37,12 +37,7 @@ const ChatBox: React.FC<ChatBoxProps> = ({
         }}
       >
         {messages.map((msg, index) => (
-          <div
-            key={index}
-            className={`${styles.message} ${
-              styles[`message${capitalizeFirstLetter(msg.role)}`]
-            }`}
-          >
+          <div key={index} className={`${styles.message} ${styles[`message${capitalizeFirstLetter(msg.role)}`]}`}>
             {msg.content}
           </div>
         ))}

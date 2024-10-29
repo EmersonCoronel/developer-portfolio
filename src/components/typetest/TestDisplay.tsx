@@ -19,7 +19,7 @@ const TestDisplay: React.FC = () => {
     focusTextBox,
     handleTimerChange,
     resetTest,
-    setMobile
+    setMobile,
   } = useTypeTest();
 
   useEffect(() => {
@@ -31,9 +31,9 @@ const TestDisplay: React.FC = () => {
       }
     };
     handleResize();
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -83,9 +83,7 @@ const TestDisplay: React.FC = () => {
             caretColor: "red",
           }}
         />
-        <div
-          className={`${styles.typeTextBlock} ${timer === 0 ? styles.typeTextBlockFinished : ""}`}
-        >
+        <div className={`${styles.typeTextBlock} ${timer === 0 ? styles.typeTextBlockFinished : ""}`}>
           {lines.map((line, index) => (
             <Line
               key={index}

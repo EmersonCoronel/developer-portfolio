@@ -22,9 +22,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       <h3 className={styles.sidebarHeading}>Select Figure</h3>
       <select
         value={selectedFigure.name}
-        onChange={(e) =>
-          setSelectedFigure(figures.find((f) => f.name === e.target.value) || figures[0])
-        }
+        onChange={(e) => setSelectedFigure(figures.find((f) => f.name === e.target.value) || figures[0])}
         className={styles.selectInput}
       >
         {figures.map((figure) => (

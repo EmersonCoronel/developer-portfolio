@@ -164,7 +164,7 @@ const useTypeTest = () => {
     focusTextBox,
     handleTimerChange,
     resetTest,
-    setMobile
+    setMobile,
   };
 };
 
