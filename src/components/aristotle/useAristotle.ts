@@ -1,4 +1,3 @@
-// components/aristotle/useAristotle.ts
 import { useState, useEffect, useRef } from "react";
 import { figures, Figure, changePrimaryColor, getModeForOption, resetPrimaryColor } from "./figures";
 
@@ -203,7 +202,7 @@ const useAristotle = () => {
       console.error("Error sending message:", error);
     }
   };
-  
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };

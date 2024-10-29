@@ -1,4 +1,3 @@
-// components/aristotle/Sidebar.tsx
 import React from "react";
 import { Figure } from "./figures";
 import styles from "./aristotle.module.css";

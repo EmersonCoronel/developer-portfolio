@@ -1,4 +1,3 @@
-// components/aristotle/ChatBox.tsx
 import React from "react";
 import styles from "./aristotle.module.css";
 

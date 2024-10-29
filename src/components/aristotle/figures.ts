@@ -1,5 +1,3 @@
-// figures.ts
-
 export interface Option {
   label: string;
 }

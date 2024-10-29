@@ -1,4 +1,3 @@
-// components/aristotle/DropdownMenu.tsx
 import React from "react";
 import { Figure } from "./figures";
 import styles from "./aristotle.module.css";

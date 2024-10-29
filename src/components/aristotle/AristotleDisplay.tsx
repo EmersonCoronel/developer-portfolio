@@ -1,4 +1,3 @@
-// components/aristotle/AristotleDisplay.tsx
 import React from "react";
 import useAristotle from "./useAristotle";
 import ChatBox from "./ChatBox";
