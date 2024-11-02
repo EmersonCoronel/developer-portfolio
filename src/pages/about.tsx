@@ -28,12 +28,12 @@ const About: React.FC = () => {
             both the front and back end, integrating diverse platforms and technologies.
           </p>
           <p className="text-left opacity-90 w-full font-montserrat text-primary text-lg mb-4">
-            In addition to my development skills, I&apos;ve gained valuable experience across multiple roles. As a
-            Software Engineer at Genjo.ai, I worked within a small team to develop an AI-powered sales assistant. I
-            personally lead the development of a react-native mobile app, integrating AWS APIs and services to build a
-            user-friendly front end connected to a robust backend. At New Direction, a Tel Aviv-based startup, I took on
-            a full-stack development role, working closely with company administrators and leading key projects to
-            ensure high-quality delivery. Additionally, as a Research Assistant in Dr. Randi Martin&apos;s Lab at Rice
+            In addition to my personal projects, I&apos;ve gained valuable experience across various software engineering roles. As a
+            Software Engineer at Genjo.ai, I work within a small team to develop AI-powered sales assistants. I
+            personally led the development of a React Native mobile app, integrating AWS APIs and services to build a
+            user-friendly front end connected to a robust backend. At New Direction, a Tel Aviv-based startup, I worked as
+            a full-stack developer, working closely with company administrators and leading key projects to
+            ensure rapid deployment. Additionally, as a Research Assistant in Dr. Randi Martin&apos;s Lab at Rice
             University, I conducted linguistic analysis using natural language processing, designing user-friendly
             workflows for non-technical staff to improve lab efficiency.
           </p>
