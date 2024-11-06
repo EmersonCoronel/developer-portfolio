@@ -1,7 +1,8 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import AristotleDisplay from '../../../src/components/aristotle/AristotleDisplay'
 import useAristotle from '../../../src/components/aristotle/useAristotle'
+import '@testing-library/jest-dom'
 
 // Mock the custom hook
 jest.mock('../../../src/components/aristotle/useAristotle')

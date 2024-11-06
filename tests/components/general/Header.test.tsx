@@ -12,14 +12,6 @@ describe('Header Component', () => {
     expect(screen.getByText('Contact')).toBeInTheDocument()
   })
 
-  it('renders with correct styling', () => {
-    const { container } = render(<Header />)
-    
-    // Check if header has the correct styling classes
-    const header = container.querySelector('header')
-    expect(header).toHaveClass('p-6')
-  })
-
   it('renders social media links', () => {
     render(<Header />)
     

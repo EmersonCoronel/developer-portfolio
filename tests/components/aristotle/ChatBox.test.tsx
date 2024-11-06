@@ -1,6 +1,7 @@
 import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import ChatBox from '../../../src/components/aristotle/ChatBox'
+import '@testing-library/jest-dom'
 
 // Mock the CSS module
 jest.mock('../../../src/components/aristotle/aristotle.module.css', () => ({
