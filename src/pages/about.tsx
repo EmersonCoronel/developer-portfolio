@@ -30,7 +30,7 @@ const About: React.FC = () => {
           <p className="text-left opacity-90 w-full font-montserrat text-primary text-lg mb-4">
             In addition to my personal projects, I&apos;ve gained valuable experience across various software engineering roles. As a
             Software Engineer at Genjo.ai, I work within a small team to develop AI-powered sales assistants. I
-            personally led the development of a React Native mobile app, integrating AWS APIs and services to build a
+            personally led the development of a React Native mobile app, integrating APIs and services to build a
             user-friendly front end connected to a robust backend. At New Direction, a Tel Aviv-based startup, I worked as
             a full-stack developer, working closely with company administrators and leading key projects to
             ensure rapid deployment. Additionally, as a Research Assistant in Dr. Randi Martin&apos;s Lab at Rice
