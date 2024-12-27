@@ -11,3 +11,8 @@
   --primary-color-g: 206;
   --primary-color-b: 235;
 }
+
+html,
+body {
+  overflow-x: hidden; 
+}
