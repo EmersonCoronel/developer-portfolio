@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FullScreenPicture, ParagraphText, TitleText, LargePicture, PicturePanel } from "../../components/notebook/notebook-components";
 
-const peru2024: React.FC = () => {
+const Peru2024: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const imageUrls = [
@@ -198,4 +198,4 @@ const peru2024: React.FC = () => {
   );
 };
 
-export default peru2024;
+export default Peru2024;
