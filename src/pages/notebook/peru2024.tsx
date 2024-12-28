@@ -25,7 +25,7 @@ const peru2024: React.FC = () => {
       />
 
       <ParagraphText
-        text="The Amazon felt like the purest form of adventure—vast, unpredictable, and teeming with life."
+        text="The Amazon felt like the purest form of adventure--vast, unpredictable, and teeming with life."
       />
 
       <PicturePanel
@@ -56,7 +56,7 @@ const peru2024: React.FC = () => {
       />
 
       <ParagraphText
-        text="The desert was endless sand dunes, quiet and lifeless—a sharp contrast to the vibrancy of the Amazon."
+        text="The desert was endless sand dunes, quiet and lifeless—-a sharp contrast to the vibrancy of the Amazon."
       />
 
       <PicturePanel
@@ -80,7 +80,7 @@ const peru2024: React.FC = () => {
       />
 
       <ParagraphText
-        text="The highlight of my trip to Peru was hiking the Inca Trail. Renowned as one of the most famous treks in the world, this four-day journey begins in Cusco and winds through stunning mountain landscapes, ultimately leading to the legendary Machu Picchu - the same path once walked by the Incas themselves."
+        text="The highlight of my trip to Peru was hiking the Inca Trail. Renowned as one of the most famous treks in the world, this four-day journey begins in Cusco and winds through stunning mountain landscapes, ultimately leading to the legendary Machu Picchu--the same path once walked by the Incas themselves."
       />
 
       <PicturePanel
@@ -93,7 +93,7 @@ const peru2024: React.FC = () => {
       />
 
       <ParagraphText
-        text="As we ascended the Andes, every view felt like it belonged on a postcard. The mountains stretched endlessly, and the thin air at 13,800 feet reminded me just how high we were—quite literally breathtaking."
+        text="As we ascended the Andes, every view felt like it belonged on a postcard. The mountains stretched endlessly, and the thin air at 13,800 feet reminded me just how high we were-—quite literally breathtaking."
       />
 
       <PicturePanel
@@ -127,7 +127,7 @@ const peru2024: React.FC = () => {
       />
 
       <ParagraphText
-        text="When I graduated from college, I was searching for something big - an adventure, a connection to the unknown, and a way to push myself far beyond my comfort zone. My time in Peru gave me all of that and more."
+        text="When I graduated from college, I was searching for something big--an adventure, a connection to the unknown, and a way to push myself far beyond my comfort zone. My time in Peru gave me all of that and more."
       />
 
       <LargePicture
