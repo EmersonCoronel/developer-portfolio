@@ -1,7 +1,67 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FullScreenPicture, ParagraphText, TitleText, LargePicture, PicturePanel } from "../../components/notebook/notebook-components";
 
 const peru2024: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const imageUrls = [
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/peru-main.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/amazon-main.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/amazon-1.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/amazon-2.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/amazon-3.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/animal-2.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/animal-1.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/animal-3.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/huacachina-6.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/huacachina-7.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/huacachina-4.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/huacachina-1.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/huacachina-8.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/inca-7.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/inca-1.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/inca-2.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/inca-3.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/inca-4.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/wanderer-1.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/wanderer-2.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/animal-5.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/inca-10.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/inca-13.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/machu-2.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/machu-1.webp",
+    "https://assets.emersoncoronel.com/images/notebook/peru2024/machu-4.webp",
+  ];
+  
+
+  useEffect(() => {
+    preloadImages(imageUrls).then(() => {
+      setIsLoading(false);
+    });
+  }, []);
+
+  const preloadImages = (imageUrls: string[]): Promise<unknown[]> => {
+    return Promise.all(
+      imageUrls.map((src) => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.src = src;
+          img.onload = resolve;
+          img.onerror = reject;
+        });
+      })
+    );
+  };
+
+  if (isLoading) {
+    // Show a spinner or loading screen while images are preloading
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p>Loading...</p> {/* You can replace this with a spinner component */}
+      </div>
+    );
+  }
+  
   return (
     <div>
       {/* Full screen header image */}

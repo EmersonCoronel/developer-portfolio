@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/general/Header";
-import ProjectCard from "../components/home/ProjectCard";
+import NotebookCard from "../components/notebook/NotebookCard";
 import entries from "../components/notebook/entries"
 
 const Notebook: React.FC = () => {
@@ -9,9 +9,9 @@ const Notebook: React.FC = () => {
       <Header />
       <main className="p-4">
         <h1 className="text-center text-3xl font-bold mb-8">Journal Index</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="justify-items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {entries.map((entry, index) => (
-            <ProjectCard
+            <NotebookCard
               key={index}
               title={entry.title}
               imageUrl={entry.imageUrl}
