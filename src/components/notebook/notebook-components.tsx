@@ -63,6 +63,13 @@ interface PicturePanelProps {
 }
 
 const PicturePanel: React.FC<PicturePanelProps> = ({ images }) => {
+  const calculateWidth = () => {
+    if (images.length === 2) {
+      return "w-[calc(50%-1rem)]"; // Each picture takes half the width minus the gap
+    }
+    return "w-[calc(100%/4-1rem)]"; // Default: 4 pictures in a row
+  };
+
   return (
     <div className="flex justify-center gap-4 my-8 px-4">
       {images.map((image, index) => (
@@ -70,11 +77,12 @@ const PicturePanel: React.FC<PicturePanelProps> = ({ images }) => {
           key={index}
           src={image.imageUrl}
           alt={image.alt}
-          className="w-[calc(100%/4-1rem)] h-auto rounded-md object-cover"
+          className={`${calculateWidth()} h-auto rounded-md object-cover`}
         />
       ))}
     </div>
   );
 };
+
 
 export { FullScreenPicture, ParagraphText, TitleText, LargePicture, PicturePanel };
