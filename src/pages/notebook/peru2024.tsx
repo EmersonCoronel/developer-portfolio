@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { FullScreenPicture, ParagraphText, TitleText, LargePicture, PicturePanel } from "../../components/notebook/notebook-components";
 
 const Peru2024: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
   const imageUrls = [
     "https://assets.emersoncoronel.com/images/notebook/peru2024/peru-main.webp",
     "https://assets.emersoncoronel.com/images/notebook/peru2024/amazon-main.webp",
@@ -32,12 +30,9 @@ const Peru2024: React.FC = () => {
     "https://assets.emersoncoronel.com/images/notebook/peru2024/machu-1.webp",
     "https://assets.emersoncoronel.com/images/notebook/peru2024/machu-4.webp",
   ];
-  
 
   useEffect(() => {
-    preloadImages(imageUrls).then(() => {
-      setIsLoading(false);
-    });
+    preloadImages(imageUrls)
   }, []);
 
   const preloadImages = (imageUrls: string[]): Promise<unknown[]> => {
@@ -52,15 +47,6 @@ const Peru2024: React.FC = () => {
       })
     );
   };
-
-  if (isLoading) {
-    // Show a spinner or loading screen while images are preloading
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <p>Loading...</p> {/* You can replace this with a spinner component */}
-      </div>
-    );
-  }
   
   return (
     <div>
