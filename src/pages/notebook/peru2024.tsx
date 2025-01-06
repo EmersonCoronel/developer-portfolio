@@ -58,10 +58,6 @@ const Peru2024: React.FC = () => {
 
       <TitleText text="Peru, November 2024" />
 
-      <ParagraphText
-        text="The jungle, the desert, and the mountains. The food, the people, and the culture. My trip to Peru was everything what I wanted travel to be."
-      />
-
       {/* Section: The Amazon */}
       <TitleText text="The Amazon" />
 
