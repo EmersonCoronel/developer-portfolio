@@ -184,37 +184,6 @@ export const figures: Figure[] = [
       },
     ],
   },
-  {
-    name: "El Arroyo Sign",
-    color: "#FFB3B0", // Soft Light Red
-    colorRGB: { r: 255, g: 179, b: 176 },    
-    image: "https://assets.emersoncoronel.com/images/backgrounds/elarroyo.jpg",
-    categories: [
-      {
-        name: "Daily Jokes",
-        options: [
-          { label: "Random Joke" },
-          { label: "Pun of the Day" },
-        ],
-      },
-      {
-        name: "Life Advice (Not Really)",
-        options: [
-          { label: "Questionable Wisdom" },
-          { label: "Sarcastic Tips" },
-          { label: "Unhelpful Hacks" },
-        ],
-      },
-      {
-        name: "Food Humor",
-        options: [
-          { label: "Taco Jokes" },
-          { label: "Spicy Puns" },
-          { label: "Margarita Musings" },
-        ],
-      },
-    ],
-  },
 ];
 
 // Function to change primary color based on selected figure
@@ -279,11 +248,6 @@ export const getModeForOption = (figureName: string, categoryName: string): stri
     "Wolfgang Amadeus Mozart": {
       "Music Composition": "composition",
       "Piano Lessons": "lesson",
-    },
-    "El Arroyo Sign": {
-      "Daily Jokes": "humor",
-      "Life Advice (Not Really)": "humor",
-      "Food Humor": "humor",
     },
   };
 
