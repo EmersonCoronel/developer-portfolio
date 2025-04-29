@@ -23,8 +23,7 @@ const About: React.FC = () => {
             passion for solving real-world problems and building innovative solutions that I actually use in my daily
             life. For example, my friends and I love to play Catan, so I created a custom board generator just for us. I
             also recreated my favorite online typing test so I could practice right here on my own website.
-            Additionally, I built Aristotle AI to guide me through my reading of the Nicomachean Ethics, making
-            philosophy more interactive and dialectic. These projects are meant to demonstrate my ability to work across
+            These projects are meant to demonstrate my ability to work across
             both the front and back end, integrating diverse platforms and technologies.
           </p>
           <p className="text-left opacity-90 w-full font-montserrat text-primary text-lg mb-4">
