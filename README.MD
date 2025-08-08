@@ -11,6 +11,7 @@ A personal website showcasing my projects and skills as a software developer.
 ## Technologies Used
 
 - React
+- Next.js
 - TailwindCSS
 - Node.js
 - Typescript
