@@ -14,6 +14,11 @@ const projects = [
     imageUrl: "https://assets.emersoncoronel.com/images/project-cards/catan-board.webp",
     link: "/catan",
   },
+  {
+    title: "Email Phishing Detector",
+    imageUrl: "https://assets.emersoncoronel.com/images/project-cards/email-phishing.webp",
+    link: "/email",
+  },
 ];
 
 export default projects;
