@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../components/general/Header";
 import EmailDisplay from "../components/email/EmailDisplay";
 
-const Catan: React.FC = () => {
+const Email: React.FC = () => {
   return (
     <>
       <Header />
@@ -11,4 +11,4 @@ const Catan: React.FC = () => {
   );
 };
 
-export default Catan;
+export default Email;
