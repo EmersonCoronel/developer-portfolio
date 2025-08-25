@@ -89,7 +89,7 @@ export default function GeoPulsePage() {
     setErr(null);
     setResult(null);
     try {
-      const resp = await fetch(`/api/geopulse/country?country=${encodeURIComponent(c.name)}`);
+      const resp = await fetch(`${process.env.NEXT_PUBLIC_OSINT_ENDPOINT}/api/country?country=${encodeURIComponent(c.name)}`);
       const json: ApiResult = await resp.json();
       if (!resp.ok) throw new Error(json.error || `HTTP ${resp.status}`);
       setResult(json);
