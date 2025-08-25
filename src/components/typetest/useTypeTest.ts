@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, ChangeEvent, KeyboardEvent } from "react";
+import { useState, useEffect, useRef, ChangeEvent, KeyboardEvent, useCallback } from "react";
 import generateRandomLine from "./WordGenerator";
 
 const useTypeTest = () => {
@@ -107,7 +107,7 @@ const useTypeTest = () => {
       .map(() => generateRandomLine(mobile));
     setLines(newLines);
     hiddenInputRef.current?.focus();
-  }, []);
+  }, [mobile]);
 
   // Timer countdown
   useEffect(() => {
@@ -125,8 +125,21 @@ const useTypeTest = () => {
   };
 
   useEffect(() => {
-    resetTest();
-  }, [mobile]);
+    // Reset test when mobile state changes
+    setLines(
+      Array(3)
+        .fill(null)
+        .map(() => generateRandomLine(mobile)),
+    );
+    setUserInputs(["", "", ""]);
+    setCurrentLineIndex(0);
+    setCurrentCharIndex(0);
+    setTimer(selectedTimer);
+    setTypingStarted(false);
+    setTotalCharsTyped(0);
+    setCorrectCharsTyped(0);
+    hiddenInputRef.current?.focus();
+  }, [mobile, selectedTimer]);
 
   // Calculate words per minute and accuracy
   const wordsPerMinute = totalCharsTyped / 5 / (selectedTimer / 60);

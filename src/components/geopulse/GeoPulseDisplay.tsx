@@ -201,7 +201,7 @@ export default function GeoPulsePage() {
 
               {/* Geostrategic Impact */}
               <section style={cardStyle}>
-                <h3 style={h3}>Impact on Israel's Strategic Position</h3>
+                <h3 style={h3}>Impact on Israel&apos;s Strategic Position</h3>
                 <p style={{ lineHeight: 1.6, margin: 0 }}>{result.analysis.geostrategic_impact}</p>
               </section>
             </div>

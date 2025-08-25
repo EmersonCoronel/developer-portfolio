@@ -35,7 +35,7 @@ const TestDisplay: React.FC = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [setMobile]);
 
   return (
     <div onClick={focusTextBox}>
