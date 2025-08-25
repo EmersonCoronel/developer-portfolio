@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
-
-const GEO_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
+import mapData from "../../../map.json";
 
 type Props = { onSelect: (country: { name: string }) => void };
 
@@ -47,7 +46,7 @@ export default function WorldPicker({ onSelect }: Props) {
             outline: "none"
           }}
         >
-          <Geographies geography={GEO_URL}>
+          <Geographies geography={mapData}>
             {({ geographies }) =>
               geographies.map((geo) => {
                 const p: any = geo.properties ?? {};

@@ -100,7 +100,7 @@ export default function GeoPulsePage() {
     }
     
     try {
-      const url = `${osintEndpoint}/api/country?country=${encodeURIComponent(c.name)}`;
+      const url = `${osintEndpoint}/api/analyze?country=${encodeURIComponent(c.name)}`;
       console.log('Fetching from:', url);
       
       const resp = await fetch(url);
