@@ -88,12 +88,27 @@ export default function GeoPulsePage() {
     setLoading(true);
     setErr(null);
     setResult(null);
+    
+    // Debug: Log the endpoint being used
+    const osintEndpoint = process.env.NEXT_PUBLIC_OSINT_ENDPOINT;
+    console.log('API Endpoint:', osintEndpoint);
+    
+    if (!osintEndpoint) {
+      setErr("OSINT endpoint not configured. Please check environment variables.");
+      setLoading(false);
+      return;
+    }
+    
     try {
-      const resp = await fetch(`${process.env.NEXT_PUBLIC_OSINT_ENDPOINT}/api/country?country=${encodeURIComponent(c.name)}`);
+      const url = `${osintEndpoint}/api/country?country=${encodeURIComponent(c.name)}`;
+      console.log('Fetching from:', url);
+      
+      const resp = await fetch(url);
       const json: ApiResult = await resp.json();
       if (!resp.ok) throw new Error(json.error || `HTTP ${resp.status}`);
       setResult(json);
     } catch (e: any) {
+      console.error('API Error:', e);
       setErr(e.message || "Fetch error");
     } finally {
       setLoading(false);
