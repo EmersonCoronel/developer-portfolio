@@ -206,7 +206,7 @@ export default function GeoPulsePage() {
             <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:24, marginTop: 24 }}>
               {/* Key Events */}
               <section style={cardStyle}>
-                <h3 style={h3}>Key Events (Last 24h)</h3>
+                <h3 style={h3}>Key Events (Last 7 days)</h3>
                 {result.analysis.key_events?.length ? (
                   <ul style={ul}>
                     {result.analysis.key_events.map((line, idx)=> <li key={idx}>{line}</li>)}
