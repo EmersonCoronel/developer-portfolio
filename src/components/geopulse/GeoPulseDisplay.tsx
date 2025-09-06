@@ -223,21 +223,26 @@ export default function GeoPulsePage() {
 
             {/* Descriptive Country Profile (narrative + scores from LLM, numbers already enforced) */}
             <section style={{ ...cardStyle, marginTop: 24 }}>
-              <h3 style={h3}>{selected?.name} Country Profile (Narrative)</h3>
+              <h3 style={h3}>{selected?.name} Country Profile</h3>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
                 {/* Economic & Military Strength */}
                 <div style={profileSectionStyle}>
                   <h4 style={h4}>Economic & Military Strength</h4>
-                  <div style={metricStyle}>
-                    <span style={labelStyle}>Economic Score:</span>
-                    <span style={valueStyle}>{result.analysis.country_profile.economic_strength.score}/10</span>
+                  <div>
+                    <div style={metricStyle}>
+                      <span style={labelStyle}>Economic Score:</span>
+                      <span style={valueStyle}>{result.analysis.country_profile.economic_strength.score}/10</span>
+                    </div>
+                    <p style={descriptionStyle}>{result.analysis.country_profile.economic_strength.description}</p>
                   </div>
-                  <div style={metricStyle}>
-                    <span style={labelStyle}>Military Score:</span>
-                    <span style={valueStyle}>{result.analysis.country_profile.military_strength.score}/10</span>
+                  <br />
+                  <div>
+                    <div style={metricStyle}>
+                      <span style={labelStyle}>Military Score:</span>
+                      <span style={valueStyle}>{result.analysis.country_profile.military_strength.score}/10</span>
+                    </div>
+                    <p style={descriptionStyle}>{result.analysis.country_profile.military_strength.description}</p>
                   </div>
-                  <p style={descriptionStyle}>{result.analysis.country_profile.economic_strength.description}</p>
-                  <p style={descriptionStyle}>{result.analysis.country_profile.military_strength.description}</p>
                 </div>
 
                 {/* Diplomatic Relationships & Regional Influence */}
