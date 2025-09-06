@@ -6,7 +6,7 @@ const EmailDropzone: React.FC<{ onFileContent: (content: string) => void }> = ({
 
   const handleFile = (file: File) => {
     if (!file.name.toLowerCase().endsWith('.eml')) {
-      setError("Please select a .eml file. To get a .eml file from Apple Mail, drag the email to your desktop or save it as a file first.");
+      setError("Please select a .eml file. To get a .eml file from your Mail app, drag the email to your desktop or save it as a file first.");
       return;
     }
 
@@ -26,7 +26,7 @@ const EmailDropzone: React.FC<{ onFileContent: (content: string) => void }> = ({
     if (files.length > 0) {
       handleFile(files[0]);
     } else {
-      setError("Please drop a .eml file. To get a .eml file from Apple Mail, drag the email to your desktop or save it as a file first.");
+      setError("Please drop a .eml file. To get a .eml file from your Mail app, drag the email to your desktop or save it as a file first.");
     }
   };
 

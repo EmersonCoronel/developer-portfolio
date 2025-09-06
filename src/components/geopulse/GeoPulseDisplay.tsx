@@ -179,7 +179,7 @@ export default function GeoPulsePage() {
             {result.profile && (
               <div style={{ display:"grid", gridTemplateColumns:"repeat(3, 1fr)", gap:24, marginTop:24 }}>
                 <section style={cardStyle}>
-                  <h3 style={h3}>Country Snapshot</h3>
+                  <h3 style={h3}>Country Profile</h3>
                   <MetricRow label="Population" value={`${result.profile.snapshot.population.value}${yearTag(result.profile.snapshot.population.year)}`} />
                   <MetricRow label="Surface Area" value={`${result.profile.snapshot.surface_km2.value} km²${yearTag(result.profile.snapshot.surface_km2.year)}`} />
                   <MetricRow label="Life Expectancy" value={`${result.profile.snapshot.life_expectancy.value}${yearTag(result.profile.snapshot.life_expectancy.year)}`} />
