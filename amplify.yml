@@ -7,6 +7,7 @@ frontend:
     build:
       commands:
         - echo "NEXT_PUBLIC_OSINT_ENDPOINT=$NEXT_PUBLIC_OSINT_ENDPOINT"
+        - env | grep -e ANTHROPIC_API_KEY -e NUTRITION_PASSCODE >> .env.production || true
         - npm run build
   artifacts:
     baseDirectory: .next
