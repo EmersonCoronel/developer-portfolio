@@ -10,7 +10,7 @@ const Home: React.FC = () => {
       <div className="container mx-auto">
         <div className="flex flex-col items-center text-center">
           <h1 className="font-montserrat tracking-widest text-primary opacity-80 text-[6.25vw] mt-24 pb-3 font-normal sm:whitespace-normal">
-            Hannah Poltorak
+            Emerson Coronel
           </h1>
 
           <h2 className="font-montserrat text-primary opacity-80 text-[2.25vw] tracking-[0.35em] pb-20 font-normal">

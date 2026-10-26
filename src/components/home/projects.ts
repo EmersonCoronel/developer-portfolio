@@ -1,19 +1,4 @@
 const projects = [
-  // {
-  //   title: "Aristotle.ai",
-  //   imageUrl: "https://assets.emersoncoronel.com/images/project-cards/aristotle.webp",
-  //   link: "/aristotle",
-  // },
-  {
-    title: "GeoPulse OSINT",
-    imageUrl: "https://assets.emersoncoronel.com/images/project-cards/geopulse.webp",
-    link: "/geopulse",
-  },
-  {
-    title: "Email Phishing Detector",
-    imageUrl: "https://assets.emersoncoronel.com/images/project-cards/email-phishing.webp",
-    link: "/email",
-  },
   {
     title: "Typing Challenge",
     imageUrl: "https://assets.emersoncoronel.com/images/project-cards/typetest.webp",
